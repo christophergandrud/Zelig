@@ -790,22 +790,28 @@ z$methods(
             cat("Model: Combined Bootstraps \n")
 
         coef_se <- combine_coef_se(.self, bagging = bagging, messages = FALSE)
-        Estimate <- as.vector(coef_se['coef'][[1]])
-        Std.Error <- as.vector(coef_se['se'][[1]])
-        Z.Value <- as.vector(coef_se['zvalue'][[1]])
-        Pr.z <- as.vector(coef_se['p'][[1]])
+        cmat <- matrix(unlist(coef_se), ncol = 4)
+        colnames(cmat) <- c("Estimate", "Std.Err", "Z value", "Pr(>z)")
+        rownames(cmat) <- names(coef_se[[1]])
+        printCoefmat(cmat, digits = max(3, getOption("digits") - 3),
+                     P.values = TRUE)
 
-        stars <- rep("", length(Estimate))
-        stars[Pr.z < 0.05] <- "."
-        stars[Pr.z < 0.01] <- "*"
-        stars[Pr.z < 0.001] <- "**"
-        stars[Pr.z < 0.0001] <- "***"
+#        Estimate <- as.vector(coef_se['coef'][[1]])
+#        Std.Error <- as.vector(coef_se['se'][[1]])
+#        Z.Value <- as.vector(coef_se['zvalue'][[1]])
+#        Pr.z <- as.vector(coef_se['p'][[1]])
 
-        results <- data.frame(Estimate, Std.Error, Z.Value, Pr.z, stars,
-                              row.names = names(coef_se[[1]]))
-        names(results) <- c("Estimate", "Std.Error", "z value", "Pr(>|z|)", "")
-        print(results, digits = max(3, getOption("digits") - 3))
-        cat("---\nSignif. codes:  '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n")
+#        stars <- rep("", length(Estimate))
+#        stars[Pr.z < 0.05] <- "."
+#        stars[Pr.z < 0.01] <- "*"
+#        stars[Pr.z < 0.001] <- "**"
+#        stars[Pr.z < 0.0001] <- "***"
+
+#        results <- data.frame(Estimate, Std.Error, Z.Value, Pr.z, stars,
+#                              row.names = names(coef_se[[1]]))
+#        names(results) <- c("Estimate", "Std.Error", "z value", "Pr(>|z|)", "")
+#        print(results, digits = max(3, getOption("digits") - 3))
+#        cat("---\nSignif. codes:  '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n")
         cat("\n")
         if (.self$mi)
             cat("For results from individual imputed datasets, use summary(x, subset = i:j)\n")
