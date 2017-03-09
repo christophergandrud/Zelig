@@ -5,13 +5,13 @@ templates:
 navbar:
   title: "Zelig Project"
   type: inverse
-  left: 
+  left:
     - text: "Quickstart"
       href: "articles/quickstart.html"
     - text: "Vignettes"
       href: "articles/index.html"
-      menu: 
-        - text: "Overview"
+      menu:
+        - text: "Zelig Overview"
           href: "articles/index.html#section-zelig-overview"
         - text: "Model Details"
           href: "articles/index.html#section-model-details"
@@ -19,7 +19,7 @@ navbar:
           href: "articles/index.html#section-other"
     - text: "Function Reference"
       href: "reference/index.html"
-      menu: 
+      menu:
         - text: "Workflow"
           href: "reference/index.html#section-main-zelig-workflow"
         - text: "Estimation Methods"
@@ -27,8 +27,14 @@ navbar:
         - text: "Interacting Outside of Zelig"
           href: "reference/index.html#section-exterior-interaction-functions"
   right:
-    - text: About
-      href: "articles/about.html"
+    - text: "About"
+      menu:
+        - text: "Contact/Development Team/Citation"
+          href: "articles/about.html"
+        - text: "Development Roadmap"
+          href: "articles/roadmap.html"
+        - text: "Zelig Adoption Metrics"
+          href: "https://iqss.github.io/rpackagemetrics/"
     - text: "Dev-Blog"
       icon: fa-medium
       href: https://medium.com/zelig-dev/archive
@@ -36,7 +42,7 @@ navbar:
       href: https://twitter.com/zeligproject
     - icon: fa-github fa-2x
       href: https://github.com/IQSS/Zelig
-      
+
 articles:
   - title: "Zelig Overview"
     contents:
@@ -46,14 +52,15 @@ articles:
       - available-models-overview
       - transforming-covariates
   - title: "Model Details"
-    contents: 
+    contents:
       - zelig-ls
+      - zelig-logit
   - title: "Other"
-    contents: 
+    contents:
       - about
       - developers-guide
-      
-reference: 
+
+reference:
   - title: "Main Zelig Workflow"
     desc: >
       The main functions Zelig's estimate, set fitted values, simulate, and plot
@@ -66,15 +73,18 @@ reference:
       - sim
       - graph
       - plot
-  - title: "Estimation Methods" 
+      - ci.plot
+      - qi.plot
+  - title: "Estimation Methods"
     desc: >
       Methods for finding parameter estimates
     contents:
       - zls
+      - zlogit
   - title: "Exterior Interaction Functions"
-    desc: > 
+    desc: >
       Functions for helping Zelig interact with the non-Zelig R world
-    contents: 
+    contents:
       - from_zelig_model
       - to_zelig_mi
       - zelig_qi_to_df

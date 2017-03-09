@@ -39,7 +39,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/index.html#section-zelig-overview">Overview</a>
+      <a href="../articles/index.html#section-zelig-overview">Zelig Overview</a>
     </li>
     <li>
       <a href="../articles/index.html#section-model-details">Model Details</a>
@@ -69,8 +69,23 @@
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    About
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
 <li>
-  <a href="../articles/about.html">About</a>
+      <a href="../articles/about.html">Contact/Development Team/Citation</a>
+    </li>
+    <li>
+      <a href="../articles/roadmap.html">Development Roadmap</a>
+    </li>
+    <li>
+      <a href="https://iqss.github.io/rpackagemetrics/">Zelig Adoption Metrics</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="https://medium.com/zelig-dev/archive">
@@ -197,23 +212,23 @@ z5$<span class="kw"><a href="../reference/sim.html">sim</a></span>()
 ##  sim x :
 ##  -----
 ## ev
-##       mean       sd      50%     2.5%    97.5%
-## 1 75.36919 1.611645 75.36546 72.31936 78.50889
+##      mean      sd      50%     2.5%    97.5%
+## 1 75.2034 1.64209 75.20016 71.95332 78.40572
 ## pv
-##          mean       sd      50%     2.5%    97.5%
-## [1,] 75.46017 9.893551 75.32497 55.31751 94.87535
+##         mean       sd      50%     2.5%    97.5%
+## [1,] 74.9722 9.754489 74.97181 55.03397 94.47473
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
-##       mean       sd      50%     2.5%    97.5%
-## 1 66.63338 1.508613 66.60213 63.84334 69.63026
+##       mean       sd      50%     2.5%   97.5%
+## 1 66.51588 1.502142 66.60336 63.62295 69.4077
 ## pv
 ##          mean       sd      50%     2.5%    97.5%
-## [1,] 66.61594 9.530137 66.79353 47.52224 85.09748
+## [1,] 66.80164 9.484023 66.69837 49.48572 85.39185
 ## fd
-##        mean      sd       50%      2.5%     97.5%
-## 1 -8.735806 1.42066 -8.727136 -11.52202 -5.969064</code></pre>
+##        mean       sd       50%     2.5%     97.5%
+## 1 -8.687524 1.479571 -8.649252 -11.5201 -5.849283</code></pre>
 <p>At this point, we’ve estimated a model, set the predictor value, and estimated easily interpretable quantities of interest. The <code>summary()</code> method shows us our quantities of interest, namely, our expected and predicted values at each level of education, as well as our first differences–the difference in expected values at the set levels of education.</p>
 </div>
 <div id="visualizations" class="section level3">

@@ -68,7 +68,8 @@ z5$sim()
 z5$graph()
 
 # Workflow: Zelig 4 Wrappers
-z.out <- zelig(Y ~ X1 + X2, model = "ls", weights = w, data = mydata)
+z.out <- zelig(Y ~ X1 + X2, model = "ls", weights = w, data = mydata,
+               cite = FALSE)
 x.out <- setx(z.out)
 s.out <- sim(z.out, x = x.out)
 plot(s.out)
@@ -82,7 +83,7 @@ data(macro)
 # Estimate model
 z.out1 <- zelig(unem ~ gdp + capmob + trade, model = "ls", data = macro)
 
-# Set explanatory variables to their default (mean/mode) values, with high 
+# Set explanatory variables to their default (mean/mode) values, with high
 # (80th percentile) and low (20th percentile) values for the trade variable
 x.high <- setx(z.out1, trade = quantile(macro$trade, 0.8))
 x.low <- setx(z.out1, trade = quantile(macro$trade, 0.2))

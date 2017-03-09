@@ -39,7 +39,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/index.html#section-zelig-overview">Overview</a>
+      <a href="../articles/index.html#section-zelig-overview">Zelig Overview</a>
     </li>
     <li>
       <a href="../articles/index.html#section-model-details">Model Details</a>
@@ -69,8 +69,23 @@
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    About
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
 <li>
-  <a href="../articles/about.html">About</a>
+      <a href="../articles/about.html">Contact/Development Team/Citation</a>
+    </li>
+    <li>
+      <a href="../articles/roadmap.html">Development Roadmap</a>
+    </li>
+    <li>
+      <a href="https://iqss.github.io/rpackagemetrics/">Zelig Adoption Metrics</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="https://medium.com/zelig-dev/archive">
@@ -175,23 +190,23 @@ x.low &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.
 ##  sim x :
 ##  -----
 ## ev
-##       mean        sd      50%     2.5%    97.5%
-## 1 5.421149 0.2018852 5.420138 5.027484 5.808355
+##       mean        sd      50%     2.5%   97.5%
+## 1 5.430024 0.1964366 5.429031 5.049011 5.81897
 ## pv
-##          mean       sd      50%        2.5%    97.5%
-## [1,] 5.391229 2.831104 5.210549 -0.03981317 10.87008
+##          mean      sd      50%        2.5%    97.5%
+## [1,] 5.408597 2.79621 5.420577 -0.03904898 10.80785
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
-##       mean        sd      50%     2.5%   97.5%
-## 1 4.595349 0.1820623 4.594466 4.236654 4.98072
+##       mean        sd      50%     2.5%    97.5%
+## 1 4.600166 0.1813224 4.601689 4.247772 4.956282
 ## pv
-##          mean       sd      50%       2.5%    97.5%
-## [1,] 4.475161 2.773139 4.484427 -0.8606818 9.648346
+##         mean       sd      50%       2.5%    97.5%
+## [1,] 4.47565 2.630811 4.345963 -0.4791686 9.739632
 ## fd
-##         mean        sd        50%     2.5%      97.5%
-## 1 -0.8257999 0.2377615 -0.8263526 -1.28875 -0.3766733</code></pre>
+##         mean        sd        50%      2.5%      97.5%
+## 1 -0.8298577 0.2380532 -0.8179216 -1.314332 -0.3616027</code></pre>
 <p>Plot the simulated distributions:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s.out1)</code></pre></div>
 <p><img src="zelig-ls_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>

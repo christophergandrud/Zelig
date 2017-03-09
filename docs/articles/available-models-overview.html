@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Available Zelig Models Overview • Zelig</title>
+<title>Available Zelig Models • Zelig</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -39,7 +39,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/index.html#section-zelig-overview">Overview</a>
+      <a href="../articles/index.html#section-zelig-overview">Zelig Overview</a>
     </li>
     <li>
       <a href="../articles/index.html#section-model-details">Model Details</a>
@@ -69,8 +69,23 @@
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    About
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
 <li>
-  <a href="../articles/about.html">About</a>
+      <a href="../articles/about.html">Contact/Development Team/Citation</a>
+    </li>
+    <li>
+      <a href="../articles/roadmap.html">Development Roadmap</a>
+    </li>
+    <li>
+      <a href="https://iqss.github.io/rpackagemetrics/">Zelig Adoption Metrics</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="https://medium.com/zelig-dev/archive">
@@ -100,10 +115,10 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
+      </header><script src="available-models-overview_files/htmlwidgets-0.8/htmlwidgets.js"></script><script src="available-models-overview_files/d3-4.5.0/d3.min.js"></script><script src="available-models-overview_files/diagonalNetwork-binding-0.3/diagonalNetwork.js"></script><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>Available Zelig Models Overview</h1>
+      <h1>Available Zelig Models</h1>
             
             <h4 class="date">2017-03-09</h4>
           </div>
@@ -112,258 +127,12 @@
     
 <div class="contents">
 <p><em>Built using Zelig version 5.0.17</em></p>
-<p>Zelig 5 supports the following models:</p>
 <div id="zelig-inheritance-tree" class="section level3">
 <h3 class="hasAnchor">
 <html><body><a href="#zelig-inheritance-tree" class="anchor"> </a></body></html>Zelig Inheritance Tree</h3>
-<style>
-.node {
-  cursor: pointer;
-}
-.node circle {
-  fill: #fff;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-.node text {
-  font: 12px sans-serif;
-}
-.node tip-text{
-  font: 20px sans-serif;
-}
-.link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 1.5px;
-}
-
-</style>
-<div id="modelsModalWrap">
-<script src="_static/d3.v3.min.js"></script><script>
-var margin = {top: 0, right: 0, bottom: 0, left: 40},
-    width = document.documentElement.clientWidth; // or a number, or set to some div
-    height = document.documentElement.clientHeight;
-    
-var i = 0,
-    duration = 750,
-    root;
-var tree = d3.layout.tree()
-    .size([height, width]);
-var diagonal = d3.svg.diagonal()
-    .projection(function(d) { return [d.y, d.x]; });
-var svg = d3.select("#modelsModalWrap").append("div").append("svg")
-    .attr("width", "1170" )
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-var nodes = [];
-var links = [];
-var k = 0;
-var dups = [];
-var big_tree = [];
-var models = [];
-var model_index = [];
-var urls = {};
-d3.select(self.frameElement).style("height", "800px");
-BigTree("_static/zelig5models.json", "Core", "zelig5models", function(){
-        BigTree("_static/zelig5choicemodels.json", "Choice", "zelig5choicemodels", function() {
-                for (var j = big_tree.length; j--;){
-                    if (dups.indexOf(big_tree[j]) == -1){
-                        dups.push(big_tree[j]);
-                        models.push({"name": big_tree[j], "children":[]});
-                        model_index.push(big_tree[j])
-                    }  else{continue;}
-                
-                    if (big_tree[j] == "Zelig"){
-                        continue;
-                    }
-                
-                    var tgt = model_index.indexOf(big_tree[j]);
-                    var src = model_index.indexOf(big_tree[j+1]);
-                    models[src].children.push(models[tgt]);
-                }
-                //     console.log(models);
-                
-                var flare = ({"name": "Zelig", "children":models[0].children.reverse()});
-                root = flare;
-                // console.log(flare);
-                root.x0 = height / 2;
-                root.y0 = 0;
-                
-                function collapse(d) {
-                    if (d.children) {
-                        d._children = d.children;
-                        d._children.forEach(collapse);
-                        d.children = null;
-                    }
-                }
-                
-                // root.children.forEach(collapse);
-                update(root);
-                });
-        });
-   
-// 
-// 
-function BigTree(url, name, level, callback) {
-    d3.json(url, function(z5models) {
-            data = z5models;
-            for (var key in data[level]) {
-                var model = data[level][key];
-                var reverse_tree = model.tree;
-                urls[data[level][key].tree[0]] = data[level][key]["vignette.url"][0];
-                for (var i = 0; i <= reverse_tree.length; i++){
-                    if(i==reverse_tree.length) {
-                        big_tree.push(name, "Zelig");
-                        continue;
-                    } else if(reverse_tree[i-1]=="Zelig-bayes" | reverse_tree[i-1]=="Zelig-gee") {
-                        continue; // skip current branch if the next branch is Zelig-bayes or Zelig-gee, as this indicates the current branch is the "shortcut" class with multiple inheritance
-                    }
-                    big_tree.push(reverse_tree[i]);
-                }
-            }
-            callback();
-            });
-}
-function update(source) {
-  // Compute the new tree layout.
-  var nodes = tree.nodes(root).reverse(),
-      links = tree.links(nodes);
-  // console.log(nodes);
-  // console.log(links);
-  // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 180; });
-  // Update the nodes…
-  var node = svg.selectAll("g.node")
-      .data(nodes, function(d) { return d.id || (d.id = ++i); });
-  // Enter any new nodes at the parent's previous position.
-  var nodeEnter = node.enter().append("g")
-      .attr("class", "node")
-      .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-     // .on("mouseover", mouseover)
-    //  .on("mouseout", mouseout)
-      .on("click", click);
-  nodeEnter.append("circle")
-      .attr("r", 1e-6)
-      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
-  nodeEnter.append("text")
-      .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
-      .attr("dy", ".35em")
-      .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-      .text(function(d) { return d.name; })
-      .style("fill-opacity", 1e-6);
-  // Transition nodes to their new position.
-  var nodeUpdate = node.transition()
-      .duration(duration)
-      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
-  nodeUpdate.select("circle")
-      .attr("r", 4.5)
-      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
-  nodeUpdate.select("text")
-      .style("fill-opacity", 1);
-  // Transition exiting nodes to the parent's new position.
-  var nodeExit = node.exit().transition()
-      .duration(duration)
-      .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
-      .remove();
-  nodeExit.select("circle")
-      .attr("r", 1e-6);
-  nodeExit.select("text")
-      .style("fill-opacity", 1e-6);
-  // Update the links…
-  var link = svg.selectAll("path.link")
-      .data(links, function(d) { return d.target.id; });
-  // Enter any new links at the parent's previous position.
-  link.enter().insert("path", "g")
-      .attr("class", "link")
-      .attr("d", function(d) {
-        var o = {x: source.x0, y: source.y0};
-        return diagonal({source: o, target: o});
-      });
-  // Transition links to their new position.
-  link.transition()
-      .duration(duration)
-      .attr("d", diagonal);
-  // Transition exiting nodes to the parent's new position.
-  link.exit().transition()
-      .duration(duration)
-      .attr("d", function(d) {
-        var o = {x: source.x, y: source.y};
-        return diagonal({source: o, target: o});
-      })
-      .remove();
-  // Stash the old positions for transition.
-  nodes.forEach(function(d) {
-    d.x0 = d.x;
-    d.y0 = d.y;
-  });
-}
-// Toggle children and redirect to model vignettes on click.
-function click(d) {
-  if (d.children) {
-    d._children = d.children;
-    d.children = null;
-  } else if (d._children) {
-    d.children = d._children;
-    d._children = null;
-  } else {
-      var vignette = urls[d.name];
-      var v1 = vignette.substr(0,28);
-      var v3 = vignette.substr(29,100);
-      var v2 = "/";
-      var vignette = v1 + v2 + v3;
-      if(vignette.substr(vignette.length-8) == "gee.html") {
-          vignette = vignette.substr(0,vignette.length-8) + vignette.substr(vignette.length-8);
-      }
-      else if(vignette.substr(vignette.length-10) == "bayes.html") {
-          vignette = vignette.substr(0,vignette.length-10) + vignette.substr(vignette.length-10);
-      }
-      window.open(vignette, "_top");
-  }
-  update(d);
-}
-function collapse(d) {
-  if (d.children) {
-    d._children = d.children;
-    d._children.forEach(collapse);
-    d.children = null;
-  }
-}
-function mouseover(d) {
-  if(d.children || d._children){
-    // 
-  } else {
-    d3.select(this)
-    .append("text")
-        .attr("class", "hover")
-        .attr('transform', function(d){ 
-            return 'translate(5,-10)';
-        })
-        .text("Click model for docs");
-    }
-}
-// Toggle children on click.
-function mouseout(d) {
-    d3.select(this).select("text.hover").remove();
-}
-var findNodeIndex = function(nodeName) {
-  for (var i in nodes) {
-    if(nodes[i]["name"] === nodeName) {return nodes[i]["id"];}
-  };
-}
-var findNode = function(nodeName) {
-    for (var i in nodes) {if (nodes[i]["name"] === nodeName) return nodes[i]};
-}
-// functions called by buttons
-function forceSwitch() {
-    forcetoggle = !forcetoggle;
-}
-function newtab() {
-    var win = window.open("http://datascience.iq.harvard.edu/zelig");
-    win.focus();
-}
-</script>
-</div>
+<p>Zelig 5 supports the following models:</p>
+<div id="htmlwidget-5d93cb6b82a37dd29328" style="width:672px;height:480px;" class="diagonalNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5d93cb6b82a37dd29328">{"x":{"root":{"name":"Zelig","children":[{"name":"Core","children":[{"name":"timeseries","children":[{"name":"ar"},{"name":"ma"},{"name":"arima"}]},{"name":"survey","children":[{"name":"poisson"},{"name":"gamma"},{"name":"normal"},{"name":"binchoice","children":[{"name":"probit"},{"name":"logit"}]}]},{"name":"wiebull"},{"name":"bayes"},{"name":"factor-bayes"},{"name":"gee"},{"name":"relogit"},{"name":"quantile"},{"name":"tobit"},{"name":"lognorm"},{"name":"exp"},{"name":"negbin"},{"name":"glm"},{"name":"ls"}]},{"name":"Choice","children":[{"name":"obinchoice"},{"name":"mlogit"},{"name":"bbinchoice"}]},{"name":"GAM","children":[{"name":"gam"}]},{"name":"EI","children":[{"name":"ei"}]}]},"options":{"height":null,"width":null,"fontSize":15,"fontFamily":"sans-serif","linkColour":"#ccc","nodeColour":"#fff","nodeStroke":"d16103","textColour":"#111","margin":{"top":null,"right":null,"bottom":null,"left":null},"opacity":0.9}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
   </div>
