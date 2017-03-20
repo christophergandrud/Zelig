@@ -11,3 +11,4 @@ index*
 _pkgdown.yml
 docs/*
 vignettes/_static/*
+^\.iqss_reportcard\.yml$

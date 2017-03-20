@@ -120,21 +120,21 @@
     <div class="page-header toc-ignore">
       <h1>Developer’s Guide</h1>
             
-            <h4 class="date">2017-03-09</h4>
+            <h4 class="date">2017-03-20</h4>
           </div>
 
     
     
 <div class="contents">
-<p><em>Built using Zelig version 5.0.17</em></p>
+<p><em>Built using Zelig version 5.0.18</em></p>
 <p>This is a guide for contributing to the Zelig Project by adding new statistical models into Zelig. Before getting started, familiarize yourself with R’s Reference Classes (RC), as Zelig5 makes extensive use of RCs to allow for the straightforward addition of new models. Useful resources include Hadley Wickham’s <a href="http://adv-r.had.co.nz/R5.html">chapter on Reference Classes</a>, and R’s <a href="https://stat.ethz.ch/R-manual/R-devel/library/methods/html/refClass.html">ReferenceClasses documentation</a>. Be sure to read <a href="http://gking.harvard.edu/files/making.pdf">King, Tomz, and Wittenberg (2000)</a> for the underlying algorithm that is deployed in Zelig. Finally, explore <a href="http://zeligproject.org/">zeligproject.org</a> to learn more about Zelig and our plans for the future.</p>
 <p>In the abstract, Zelig is a tool for estimating and visualizing easily interpretable quantities of interest for statistical models in R. To do so, Zelig leverages R’s open-source philosophy and builds on existing statistical model implementations such as those found in <strong>stats</strong> and <strong>VGAM</strong>. Consider the following R code for a typical Zelig 5 workflow:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(turnout)
-z5 &lt;-<span class="st"> </span>zlogit$<span class="kw">new</span>()
-z5$<span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote ~<span class="st"> </span>age, <span class="dt">data =</span> turnout)
-z5$<span class="kw"><a href="../reference/setx.html">setx</a></span>()
-z5$<span class="kw"><a href="../reference/sim.html">sim</a></span>()
-z5$<span class="kw">graph</span>()</code></pre></div>
+z5 &lt;-<span class="st"> </span>zlogit<span class="op">$</span><span class="kw">new</span>()
+z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> turnout)
+z5<span class="op">$</span><span class="kw"><a href="../reference/setx.html">setx</a></span>()
+z5<span class="op">$</span><span class="kw"><a href="../reference/sim.html">sim</a></span>()
+z5<span class="op">$</span><span class="kw">graph</span>()</code></pre></div>
 <p>First, we load the data. Then, the next five lines of code are nearly identical for any model in Zelig. The one exception is the first, in which we assign a new model object to z5. <code>zlogit</code> is the RC, and the <code>$</code> component selector means we are calling a method inside that RC. Each RC is its own environment, and a method is a function that is internal to that environment. Think of the RC as a home, and the method as a room in the home. To enter a room, you must first be inside the home.</p>
 <p><code>z5</code> is assigned the RC <code>zlogit</code>. <code>new()</code>, <code><a href="../reference/zelig.html">zelig()</a></code>, <code><a href="../reference/setx.html">setx()</a></code>, <code><a href="../reference/sim.html">sim()</a></code>, and <code>graph()</code> are all methods inside <code>zlogit</code> and, thus, inside <code>z5</code>. Anything entered between the parenthesis are arguments passed to the method. <code><a href="../reference/zelig.html">zelig()</a></code> is the method that calls the underlying estimation function, which for logistic regression is <code>glm()</code>. The arguments we pass to <code><a href="../reference/zelig.html">zelig()</a></code> are, minimally, the arguments we would pass to <code>glm()</code> if we were to call it directly. <code><a href="../reference/zelig.html">zelig()</a></code> also accepts some arguments that may not be accepted by the existing function, such as <code>by</code>.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> <code><a href="../reference/setx.html">setx()</a></code> is a function that sets the predictor values at which we want to simulate. In most implementations, <code><a href="../reference/setx.html">setx()</a></code> is independent of the model and contributors need not be concerned with it. <code><a href="../reference/sim.html">sim()</a></code> is the method that simulates draws from the data. For contributors, this is where the model’s link function, or the systematic component, is called. It is also where the relevant quantities of interest are specified. <code>graph()</code> visualizes the output of <code><a href="../reference/sim.html">sim()</a></code>, and while your model may have visualizations that you’d like to add, these are optional, as <code>graph()</code> has base visualizations that always work on the simulated estimates.</p>
 <p>In this guide, we are going to walk through an example with the logit model, as implemented by <code>glm()</code> in the <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html">stats</a> library to Zelig.</p>
@@ -153,8 +153,8 @@ z5$<span class="kw">graph</span>()</code></pre></div>
 </ul>
 <p>If you’re new to RStudio or would like to better understand what’s going on, add a print statement and rebuild the package. For example, inside <em>model-zelig.R</em>, find <code>zelig = function</code>. This is where the <code><a href="../reference/zelig.html">zelig()</a></code> method is declared. Inside the <code><a href="../reference/zelig.html">zelig()</a></code> method, add a line, <code>cat('Zelig')</code>. Save, and then click Build &amp; Reload in RStudio. After entering the following code in the R console:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(turnout)
-z5 &lt;-<span class="st"> </span>zlogit$<span class="kw">new</span>()
-z5$<span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote ∼ age, <span class="dt">data =</span> turnout)</code></pre></div>
+z5 &lt;-<span class="st"> </span>zlogit<span class="op">$</span><span class="kw">new</span>()
+z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote ∼ age, <span class="dt">data =</span> turnout)</code></pre></div>
 <p>you should see <code>Zelig</code> printed in the console.</p>
 </div>
 <div id="reference-classes-and-inheritance" class="section level2">
@@ -173,8 +173,8 @@ fit.probit &lt;-<span class="st"> </span><span class="kw">glm</span>(vote ∼ ag
 <p>A commonly used implementation of the logistic regression is the <code>glm()</code> function in stats. Load Zelig’s <code>turnout</code> data with <code>data(turnout)</code>, and estimate <span class="math inline">\(vote \sim age\)</span> using <code>glm()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit &lt;-<span class="st"> </span><span class="kw">glm</span>(vote ∼ age, <span class="dt">data=</span>turnout, <span class="dt">family=</span><span class="kw">binomial</span>(<span class="st">"logit"</span>))</code></pre></div>
 <p>The Zelig counterpart would be:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span>zlogit$<span class="kw">new</span>()
-z5$<span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote ∼ age, <span class="dt">data =</span> turnout)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span>zlogit<span class="op">$</span><span class="kw">new</span>()
+z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote ∼ age, <span class="dt">data =</span> turnout)</code></pre></div>
 <p>You could also use the Zelig 4 wrapper:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote ∼ age, <span class="dt">data =</span> turnout, <span class="dt">model =</span> <span class="st">"logit"</span>)</code></pre></div>
 <div id="new" class="section level3">
@@ -198,13 +198,13 @@ z5$<span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote ∼ 
                                   <span class="dt">linkinv =</span> <span class="st">"function"</span>))</code></pre></div>
 <p>In <em>Zelig</em>, we establish our most basic fields and methods, and get more specific as we move down the inheritance.</p>
 <p>When <code>zlogit$new()</code> is called, we actually call <code>initialize()</code> first at the end of the inheritance, inside <em>Zelig-logit</em>. Look inside <em>model-logit.R</em> at <code>initialize()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zlogit$<span class="kw">methods</span>(<span class="dt">initialize =</span> function() {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zlogit<span class="op">$</span><span class="kw">methods</span>(<span class="dt">initialize =</span> <span class="cf">function</span>() {
     <span class="kw">callSuper</span>()
-    .self$name &lt;-<span class="st"> "logit"</span>
-    .self$link &lt;-<span class="st"> "logit"</span>
-    .self$description =<span class="st"> "Logistic Regression for Dichotomous Dependent Variables"</span>
-    .self$packageauthors &lt;-<span class="st"> "R Core Team"</span>
-    .self$wrapper &lt;-<span class="st"> "logit"</span>
+    .self<span class="op">$</span>name &lt;-<span class="st"> "logit"</span>
+    .self<span class="op">$</span>link &lt;-<span class="st"> "logit"</span>
+    .self<span class="op">$</span>description =<span class="st"> "Logistic Regression for Dichotomous Dependent Variables"</span>
+    .self<span class="op">$</span>packageauthors &lt;-<span class="st"> "R Core Team"</span>
+    .self<span class="op">$</span>wrapper &lt;-<span class="st"> "logit"</span>
 })</code></pre></div>
 <p>The first line is <code>callSuper()</code>. <code>callSuper()</code> is a method that is common to all RCs, and useful particularly for inheritance. What it does it simple: it calls the same function in the parent object, or the object that the present object inherits from. So, since <em>Zelig-logit</em> inherits from <em>Zelig-binchoice</em>, <code>callSuper()</code> in <code>initialize()</code> calls <code>initialize()</code> inside <em>Zelig-binchoice</em>, where the first function is also <code>callSuper()</code>, and so <code>initialize()</code> is called in <em>Zelig-glm</em>, where the first function is also <code>callSuper()</code>, and so <code>initialize()</code> is called in <em>Zelig</em>. <em>Zelig</em> is at the top of the tree, and so now that we have climbed up the inheritance tree, we next climb down the tree, executing all functions inside <code>initialize()</code> and after <code>callSuper()</code>, first in <em>Zelig</em>, then <em>Zelig-glm</em>, then <em>Zelig-binchoice</em>, and lastly <em>Zelig-logit</em>.</p>
 <p>To summarize: upon executing <code>z5 &lt;- zlogit$new()</code>, we <code>callSuper()</code> inside <code>initialize()</code>, beginning at the end of the inheritance (<em>Zelig-logit</em>) and climbing to the top (<em>Zelig</em>). Then, for each RC, everything below <code>callSuper()</code> inside <code>initialize()</code> is executed, beginning at the top of the inheritance (<em>Zelig</em>) and climbing down (<em>Zelig-logit</em>), assigning the RC’s fields as we descend. For example, in <em>Zelig</em> <code>.self$authors &lt;- "Kosuke Imai, Gary King, and Olivia Lau"</code>, and in <em>Zelig-logit</em>, <code>.self$link &lt;- "logit"</code>. Doing so initializes our <em>Zelig</em> object, which now waits for <code><a href="../reference/zelig.html">zelig()</a></code> to be called.</p>
@@ -215,8 +215,8 @@ z5$<span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote ∼ 
 <code><a href="../reference/zelig.html">zelig()</a></code>
 </h3>
 <p><code><a href="../reference/zelig.html">zelig()</a></code> will help to make sense of why <code>initialize()</code> specifies the fields that it does. Let’s look at <code><a href="../reference/zelig.html">zelig()</a></code> inside <em><a href="https://github.com/IQSS/Zelig/blob/master/R/model-glm.R">model-glm.R</a></em>, the last RC in the inheritance to modify <code><a href="../reference/zelig.html">zelig()</a></code>. Recall that in <code>initialize()</code>, we started at the bottom of the inheritance, and because the first line is always <code>callSuper()</code>, we climbed to the top before executing any other function in <code>initialize()</code>. Well, here we don’t <code>callSuper()</code> until later, meaning that the code above <code>callSuper()</code> is execute and then we <code>callSuper()</code> and climb to the parent object. As we descend the inheritance, the code below <code>callSuper()</code> is executed. Let’s have a look at the first lines of code in <code><a href="../reference/zelig.html">zelig()</a></code> in <em>model-glm.R</em>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.self$zelig.call &lt;-<span class="st"> </span><span class="kw">match.call</span>(<span class="dt">expand.dots =</span> <span class="ot">TRUE</span>)
-.self$model.call &lt;-<span class="st"> </span>.self$zelig.call</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.self<span class="op">$</span>zelig.call &lt;-<span class="st"> </span><span class="kw">match.call</span>(<span class="dt">expand.dots =</span> <span class="ot">TRUE</span>)
+.self<span class="op">$</span>model.call &lt;-<span class="st"> </span>.self<span class="op">$</span>zelig.call</code></pre></div>
 <p>[TO COMPLETE based on <a href="http://docs.zeligproject.org/en/latest/devguide.html" class="uri">http://docs.zeligproject.org/en/latest/devguide.html</a>]</p>
 </div>
 </div>

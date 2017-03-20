@@ -121,24 +121,24 @@
       <h1>Logistic Regression for Dichotomous Dependent Variables with <code>logit</code>
 </h1>
             
-            <h4 class="date">2017-03-09</h4>
+            <h4 class="date">2017-03-20</h4>
           </div>
 
     
     
 <div class="contents">
-<p><em>Built using Zelig version 5.0.17</em></p>
+<p><em>Built using Zelig version 5.0.18</em></p>
 <p>Logistic regression specifies a dichotomous dependent variable as a function of a set of explanatory variables.</p>
 <div id="syntax" class="section level2">
 <h2 class="hasAnchor">
 <html><body><a href="#syntax" class="anchor"> </a></body></html>Syntax</h2>
 <p>With reference classes:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span>zlogit$<span class="kw">new</span>()
-z5$<span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Y ~<span class="st"> </span>X1 +<span class="st"> </span>X ~<span class="st"> </span>X, <span class="dt">weights =</span> w, <span class="dt">data =</span> mydata)
-z5$<span class="kw"><a href="../reference/setx.html">setx</a></span>()
-z5$<span class="kw"><a href="../reference/sim.html">sim</a></span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span>zlogit<span class="op">$</span><span class="kw">new</span>()
+z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X <span class="op">~</span><span class="st"> </span>X, <span class="dt">weights =</span> w, <span class="dt">data =</span> mydata)
+z5<span class="op">$</span><span class="kw"><a href="../reference/setx.html">setx</a></span>()
+z5<span class="op">$</span><span class="kw"><a href="../reference/sim.html">sim</a></span>()</code></pre></div>
 <p>With the Zelig 4 compatibility wrappers:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Y ~<span class="st"> </span>X1 +<span class="st"> </span>X2, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">weights =</span> w, <span class="dt">data =</span> mydata)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">weights =</span> w, <span class="dt">data =</span> mydata)
 x.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out)
 s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.html">sim</a></span>(z.out, <span class="dt">x =</span> x.out, <span class="dt">x1 =</span> <span class="ot">NULL</span>)</code></pre></div>
 </div>
@@ -152,7 +152,7 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Zelig)
 <span class="kw">data</span>(turnout)</code></pre></div>
 <p>Estimating parameter values for the logistic regression:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote ~<span class="st"> </span>age +<span class="st"> </span>race, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">data =</span> turnout, <span class="dt">cite =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>race, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">data =</span> turnout, <span class="dt">cite =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <p>Summarize estimated paramters:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
 <pre><code>## Model: 
@@ -202,10 +202,10 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <h2 class="hasAnchor">
 <html><body><a href="#first-differences" class="anchor"> </a></body></html>First differences</h2>
 <p>Estimating the risk difference (and risk ratio) between low education (25th percentile) and high education (75th percentile) while all the other variables held at their default values.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote ~<span class="st"> </span>race +<span class="st"> </span>educate, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">data =</span> turnout, 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote <span class="op">~</span><span class="st"> </span>race <span class="op">+</span><span class="st"> </span>educate, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">data =</span> turnout, 
                 <span class="dt">cite =</span> <span class="ot">FALSE</span>)
-x.high &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out2, <span class="dt">educate =</span> <span class="kw">quantile</span>(turnout$educate, <span class="dt">prob =</span> <span class="fl">0.75</span>))
-x.low &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out2, <span class="dt">educate =</span> <span class="kw">quantile</span>(turnout$educate, <span class="dt">prob =</span> <span class="fl">0.25</span>))
+x.high &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out2, <span class="dt">educate =</span> <span class="kw">quantile</span>(turnout<span class="op">$</span>educate, <span class="dt">prob =</span> <span class="fl">0.75</span>))
+x.low &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out2, <span class="dt">educate =</span> <span class="kw">quantile</span>(turnout<span class="op">$</span>educate, <span class="dt">prob =</span> <span class="fl">0.25</span>))
 s.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.html">sim</a></span>(z.out2, <span class="dt">x =</span> x.high, <span class="dt">x1 =</span> x.low)
 <span class="kw">summary</span>(s.out2)</code></pre></div>
 <pre><code>## 

@@ -120,13 +120,13 @@
     <div class="page-header toc-ignore">
       <h1>Zelig 5 Quickstart Guide</h1>
             
-            <h4 class="date">2017-03-09</h4>
+            <h4 class="date">2017-03-20</h4>
           </div>
 
     
     
 <div class="contents">
-<p><em>Built using Zelig version 5.0.17</em></p>
+<p><em>Built using Zelig version 5.0.18</em></p>
 <p>The release of Zelig 5.0 expands the set of models available, while simplifying the model wrapping process, and solving architectural problems by completely rewriting into R’s Reference Classes for a fully object-oriented architecture. Comparability wrappers are available so that you can still use pre-Zelig 5 syntax.</p>
 <div id="zelig-5-workflow-overview" class="section level2">
 <h2 class="hasAnchor">
@@ -150,7 +150,7 @@
 <p>If you haven’t already done so, open your R console and install Zelig:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">'Zelig'</span>)</code></pre></div>
 <p>Alternatively you can install the development version with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">'IQSS/Zelig'</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">'IQSS/Zelig'</span>)</code></pre></div>
 <p>Once Zelig is installed, load it:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Zelig)</code></pre></div>
 </div>
@@ -159,10 +159,10 @@
 <html><body><a href="#building-models" class="anchor"> </a></body></html>Building models</h3>
 <p>Let’s assume we want to estimate the effect of education on fertility. Since fertility is a continuous variable, least squares is an appropriate model choice. We first create a Zelig least squares object:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># initialize Zelig5 least squares object</span>
-z5 &lt;-<span class="st"> </span>zls$<span class="kw">new</span>()</code></pre></div>
+z5 &lt;-<span class="st"> </span>zls<span class="op">$</span><span class="kw">new</span>()</code></pre></div>
 <p>To estimate our model, we call the <code><a href="../reference/zelig.html">zelig()</a></code> method, which is a function that is internal to the Zelig object. We pass the <code><a href="../reference/zelig.html">zelig()</a></code> method two arguments: equation and data:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># estimate ls model</span>
-z5$<span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Fertility ~<span class="st"> </span>Education, <span class="dt">data =</span> swiss)
+z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Fertility <span class="op">~</span><span class="st"> </span>Education, <span class="dt">data =</span> swiss)
 
 <span class="co"># model summary</span>
 <span class="kw">summary</span>(z5)</code></pre></div>
@@ -187,10 +187,10 @@ z5$<span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Fertility
 ## Next step: Use 'setx' method</code></pre>
 <p>The -0.8624 coefficient on education suggests a negative relationship between the education of a province and its fertility rate. More precisely, for every one percent increase in draftees educated beyond primary school, the fertility rate of the province decreases 0.8624 units. To help us better interpret this finding, we may want other quantities of interest, such as expected values or first differences. Zelig makes this simple by automating the translation of model estimates into interpretable quantities of interest using Monte Carlo simulation methods (see King, Tomz, and Wittenberg (2000) for more information). For example, let’s say we want to examine the effect of increasing the percent of draftees educated from 5 to 15. To do so, we set our predictor value using the <code><a href="../reference/setx.html">setx()</a></code> method:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># set education to 5</span>
-z5$<span class="kw"><a href="../reference/setx.html">setx</a></span>(<span class="dt">Education =</span> <span class="dv">5</span>)
+z5<span class="op">$</span><span class="kw"><a href="../reference/setx.html">setx</a></span>(<span class="dt">Education =</span> <span class="dv">5</span>)
 
 <span class="co"># set education to 15</span>
-z5$<span class="kw"><a href="../reference/setx1.html">setx1</a></span>(<span class="dt">Education =</span> <span class="dv">15</span>)
+z5<span class="op">$</span><span class="kw"><a href="../reference/setx1.html">setx1</a></span>(<span class="dt">Education =</span> <span class="dv">15</span>)
 
 <span class="co"># model summary</span>
 <span class="kw">summary</span>(z5)</code></pre></div>
@@ -204,7 +204,7 @@ z5$<span class="kw"><a href="../reference/setx1.html">setx1</a></span>(<span cla
 ## Next step: Use 'sim' method</code></pre>
 <p>After setting our predictor value, we simulate using the <code><a href="../reference/sim.html">sim()</a></code> method:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># run simulations and estimate quantities of interest</span>
-z5$<span class="kw"><a href="../reference/sim.html">sim</a></span>()
+z5<span class="op">$</span><span class="kw"><a href="../reference/sim.html">sim</a></span>()
 
 <span class="co"># model summary</span>
 <span class="kw">summary</span>(z5)</code></pre></div>
@@ -235,19 +235,19 @@ z5$<span class="kw"><a href="../reference/sim.html">sim</a></span>()
 <h3 class="hasAnchor">
 <html><body><a href="#visualizations" class="anchor"> </a></body></html>Visualizations</h3>
 <p>Zelig’s <code>graph()</code> method plots the estimated quantities of interest:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5$<span class="kw">graph</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5<span class="op">$</span><span class="kw">graph</span>()</code></pre></div>
 <p><img src="quickstart_files/figure-html/example_plot_graph-1.png" width="672"></p>
 <p>We can also simulate and plot simulations from ranges of simulated values. For example, first use the <code>setrange</code> method to set a range of fitted values for one of the covariates and draw simulations as before:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span>zls$<span class="kw">new</span>()
-z5$<span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Fertility ~<span class="st"> </span>Education, <span class="dt">data =</span> swiss)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span>zls<span class="op">$</span><span class="kw">new</span>()
+z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Fertility <span class="op">~</span><span class="st"> </span>Education, <span class="dt">data =</span> swiss)
 
 <span class="co"># set Education to range from 5 to 15 at single integer increments</span>
-z5$<span class="kw">setrange</span>(<span class="dt">Education =</span> <span class="dv">5</span>:<span class="dv">15</span>)
+z5<span class="op">$</span><span class="kw">setrange</span>(<span class="dt">Education =</span> <span class="dv">5</span><span class="op">:</span><span class="dv">15</span>)
 
 <span class="co"># run simulations and estimate quantities of interest</span>
-z5$<span class="kw"><a href="../reference/sim.html">sim</a></span>()</code></pre></div>
+z5<span class="op">$</span><span class="kw"><a href="../reference/sim.html">sim</a></span>()</code></pre></div>
 <p>Then use the <code>graph()</code> method as before:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5$<span class="kw">graph</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5<span class="op">$</span><span class="kw">graph</span>()</code></pre></div>
 <p><img src="quickstart_files/figure-html/example_plot_ci_plot-1.png" width="480"></p>
 </div>
 </div>

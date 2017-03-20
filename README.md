@@ -1,5 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![zelig-logo](README_files/img/zelig.png)](http://zeligproject.org)
+[![zelig-logo](man/figures/zelig.png)](http://zeligproject.org)
 
 <!--- Badges ----->
 **Release:** [![CRAN
@@ -180,22 +180,22 @@ After setting our predictor value, we simulate using the `sim()` method:
     ##  -----
     ## ev
     ##       mean       sd      50%     2.5%    97.5%
-    ## 1 75.25222 1.618366 75.25595 72.12851 78.41382
+    ## 1 75.25386 1.624169 75.27712 72.29926 78.42785
     ## pv
     ##          mean      sd      50%     2.5%    97.5%
-    ## [1,] 75.25451 9.46391 75.36158 56.75077 93.68144
+    ## [1,] 75.67124 9.46876 75.86216 57.19442 93.84189
     ## 
     ##  sim x1 :
     ##  -----
     ## ev
     ##       mean       sd      50%     2.5%    97.5%
-    ## 1 66.66569 1.468467 66.64984 63.81606 69.52479
+    ## 1 66.70171 1.543556 66.63554 63.80424 69.89197
     ## pv
-    ##          mean       sd      50%     2.5%    97.5%
-    ## [1,] 66.35989 9.850214 66.59816 47.42681 85.59843
+    ##          mean       sd      50%     2.5%   97.5%
+    ## [1,] 67.26523 9.408431 67.37761 48.55274 85.9508
     ## fd
-    ##        mean      sd       50%      2.5%     97.5%
-    ## 1 -8.586528 1.44376 -8.578447 -11.45223 -5.787318
+    ##        mean       sd       50%      2.5%     97.5%
+    ## 1 -8.552144 1.494392 -8.493887 -11.49664 -5.719183
 
 At this point, we’ve estimated a model, set the predictor value, and
 estimated easily interpretable quantities of interest. The `summary()`
@@ -211,7 +211,7 @@ Zelig’s `graph()` method plots the estimated quantities of interest:
 
     z5$graph()
 
-![](README_files/figure-markdown_strict/example_plot_graph-1.png)
+![](man/figures/example_plot_graph-1.png)
 
 We can also simulate and plot simulations from ranges of simulated
 values. For example, first use the `setrange` method to set a range of
@@ -230,4 +230,4 @@ Then use the `graph()` method as before:
 
     z5$graph()
 
-![](README_files/figure-markdown_strict/example_plot_ci_plot-1.png)
+![](man/figures/example_plot_ci_plot-1.png)

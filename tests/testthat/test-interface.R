@@ -65,3 +65,39 @@ test_that('REQUIRE TEST zelig_qi_to_df setx, setrange, by', {
 
     expect_equal(nrow(zelig_qi_to_df(z.6)), 6000)
 })
+
+# REQUIRE TEST zelig_qi_to_df multinomial outcome ------------------------------
+test_that('REQUIRE TEST zelig_qi_to_df multinomial outcome', {
+    library(dplyr)
+    set.seed(123)
+    data(mexico)
+    sims1_setx <- zelig(vote88 ~ pristr + othcok + othsocok,
+                        model = "mlogit.bayes", data = mexico,
+                        verbose = FALSE) %>%
+        setx() %>%
+        sim() %>%
+        zelig_qi_to_df()
+
+    sims1_setrange <- zelig(vote88 ~ pristr + othcok + othsocok,
+                            model = "mlogit.bayes", data = mexico,
+                            verbose = FALSE) %>%
+        setx(pristr = 1:3) %>%
+        sim() %>%
+        zelig_qi_to_df()
+
+    expected_col_names <- c("setx_value", "pristr", "othcok", "othsocok",
+                            "expected_P(Y=1)", "expected_P(Y=2)",
+                            "expected_P(Y=3)", "predicted_value")
+    expect_equal(names(sims1_setx), expected_col_names)
+    expect_equal(names(sims1_setrange), expected_col_names)
+
+    slimmed_setx <- qi_slimmer(sims1_setx, qi_type = "expected_P(Y=2)")
+    expect_lt(slimmed_setx$qi_ci_median, 0.25)
+    slimmed_setrange <- qi_slimmer(sims1_setrange, qi_type = "predicted_value")
+    expected_sr_colnames <- c("setx_value", "pristr", "othcok", "othsocok",
+                              "predicted_proportion_(Y=1)",
+                              "predicted_proportion_(Y=2)",
+                              "predicted_proportion_(Y=3)")
+    expect_equal(names(slimmed_setrange), expected_sr_colnames)
+})
+

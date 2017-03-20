@@ -148,12 +148,16 @@
 from models estimated with multiply imputed data sets or bootstrapped</p>
     
 
-    <pre><span class='fu'>combine_coef_se</span>(<span class='no'>obj</span>, <span class='kw'>bagging</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre><span class='fu'>combine_coef_se</span>(<span class='no'>obj</span>, <span class='kw'>out_type</span> <span class='kw'>=</span> <span class='st'>"matrix"</span>, <span class='kw'>bagging</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>obj</dt>
       <dd>a zelig object with an estimated model</dd>
+      <dt>out_type</dt>
+      <dd>either <code>&quot;matrix&quot;</code> or <code>&quot;list&quot;</code> specifying
+whether the results should be returned as a matrix or a list.</dd>
       <dt>bagging</dt>
       <dd>logical whether or not to bag the bootstrapped coefficients</dd>
       <dt>messages</dt>
@@ -168,10 +172,10 @@ returned</dd>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>If the model uses multiply imputed or bootstrapped data then a
- list of combined coefficients (<code>coef</code>), standard errors (<code>se</code>),
- z values (<code>zvalue</code>), p-values (<code>p</code>) is returned. Rubin&#39;s Rules
- are used to combine output from multiply imputed data.
- An error is returned if no imputations were included or there wasn&#39;t
+ matrix (default) or list of combined coefficients (<code>coef</code>), standard
+ errors (<code>se</code>), z values (<code>zvalue</code>), p-values (<code>p</code>) is
+ returned. Rubin&#39;s Rules are used to combine output from multiply imputed
+ data. An error is returned if no imputations were included or there wasn&#39;t
  bootstrapping. Please use <code>get_coef</code>, <code>get_se</code>, and
  <code>get_pvalue</code> methods instead in cases where there are no imputations or
  bootstrap.</p>
@@ -197,43 +201,17 @@ returned</dd>
 #&gt;   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
 #&gt;   &quot;Zelig: Everyone&#39;s Statistical Software,&quot; http://zeligproject.org/</div><div class='input'>
 <span class='co'># Combine and extract coefficients and standard errors</span>
-<span class='fu'>combine_coef_se</span>(<span class='no'>z.out.mi</span>)</div><div class='output co'>#&gt; <span class='message'>Combining imputations. . .</span></div><div class='output co'>#&gt; $coef
-#&gt; (Intercept)           x 
-#&gt; -0.12240923  0.03042057 
-#&gt; 
-#&gt; $se
-#&gt; (Intercept)           x 
-#&gt;   0.2139979   0.3763320 
-#&gt; 
-#&gt; $zvalue
-#&gt; (Intercept)           x 
-#&gt; -0.57201129  0.08083441 
-#&gt; 
-#&gt; $p
-#&gt; (Intercept)           x 
-#&gt;   0.5673143   0.9355736 
-#&gt; </div><div class='input'>
+<span class='fu'>combine_coef_se</span>(<span class='no'>z.out.mi</span>)</div><div class='output co'>#&gt; <span class='message'>Combining imputations. . .</span></div><div class='output co'>#&gt;                Estimate Std.Error     z value  Pr(&gt;|z|)
+#&gt; (Intercept) -0.12240923 0.2139979 -0.57201129 0.5673143
+#&gt; x            0.03042057 0.3763320  0.08083441 0.9355736</div><div class='input'>
 <span class='co'>## Bootstrap example</span>
 <span class='no'>z.out.boot</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>y</span> ~ <span class='no'>x</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data.1</span>, <span class='kw'>bootstrap</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; How to cite this model in Zelig:
 #&gt;   R Core Team. 2007.
 #&gt;   ls: Least Squares Regression for Continuous Dependent Variables
 #&gt;   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-#&gt;   &quot;Zelig: Everyone&#39;s Statistical Software,&quot; http://zeligproject.org/</div><div class='input'><span class='fu'>combine_coef_se</span>(<span class='no'>z.out.boot</span>)</div><div class='output co'>#&gt; <span class='message'>Combining bootstraps . . .</span></div><div class='output co'>#&gt; $coef
-#&gt; (Intercept)           x 
-#&gt; -0.15723024  0.09965409 
-#&gt; 
-#&gt; $se
-#&gt; (Intercept)           x 
-#&gt;   0.2369467   0.3852040 
-#&gt; 
-#&gt; $zvalue
-#&gt; (Intercept)           x 
-#&gt;  -0.6635679   0.2587048 
-#&gt; 
-#&gt; $p
-#&gt; (Intercept)           x 
-#&gt;   0.5069669   0.7958631 
-#&gt; </div><div class='input'>
+#&gt;   &quot;Zelig: Everyone&#39;s Statistical Software,&quot; http://zeligproject.org/</div><div class='input'><span class='fu'>combine_coef_se</span>(<span class='no'>z.out.boot</span>)</div><div class='output co'>#&gt; <span class='message'>Combining bootstraps . . .</span></div><div class='output co'>#&gt;                Estimate Std.Error    z value  Pr(&gt;|z|)
+#&gt; (Intercept) -0.15723024 0.2369467 -0.6635679 0.5069669
+#&gt; x            0.09965409 0.3852040  0.2587048 0.7958631</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
