@@ -190,12 +190,12 @@ swiss <span class="op">%&gt;%</span><span class="st"> </span>
 
 <span class="kw">head</span>(sims.full)</code></pre></div>
 <pre><code>##   setx_value Agriculture Examination expected_value predicted_value
-## 1          x           1    16.48936       76.41528        75.47596
-## 2          x           1    16.48936       72.75534        84.74508
-## 3          x           1    16.48936       73.49852        80.07780
-## 4          x           1    16.48936       80.14901        89.62973
-## 5          x           1    16.48936       76.99579        90.25763
-## 6          x           1    16.48936       83.83313        74.38445</code></pre>
+## 1          x           1    16.48936       72.99534        79.42264
+## 2          x           1    16.48936       81.80215        80.75995
+## 3          x           1    16.48936       75.51840        70.03156
+## 4          x           1    16.48936       75.79146        67.02142
+## 5          x           1    16.48936       69.54492        70.45713
+## 6          x           1    16.48936       71.10402        83.94419</code></pre>
 <p>Each row contains information for an individual “observation”, i.e. a quantity of interest calculated from one draw of the model parameters from the multivariate normal distribution.</p>
 <p>The first three columns of the object returned by <code>zelig_qi_to_df</code> in this case contain information that identifies the scenario that the quantity of interest is from. For example, the first row is from a scenario where <code>Agriculture</code> is fitted at <code>1</code> and <code>Examination</code> is fitted at the sample mean 16.4893617. The <code>setx_value</code> column identifies if the values were fitted by a <code>setx</code> call as <code>x</code> or <code>x1</code>–a contrasting scenario used to find first differences.</p>
 <p>The final two columns contain the expected and predicted value of the quantity of interest, respectively.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
@@ -204,12 +204,12 @@ swiss <span class="op">%&gt;%</span><span class="st"> </span>
 <pre><code>## Slimming Expected Values . . .</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(sims.slimmed)</code></pre></div>
 <pre><code>##   setx_value Agriculture Examination qi_ci_min qi_ci_median qi_ci_max
-## 1          x           1    16.48936  66.34444     74.82101  83.72351
-## 2          x           6    16.48936  66.59330     74.33717  82.49264
-## 3          x          11    16.48936  66.90127     73.89156  81.21503
-## 4          x          16    16.48936  67.22545     73.43740  80.03091
-## 5          x          21    16.48936  67.47173     72.95070  78.80004
-## 6          x          26    16.48936  67.87379     72.45208  77.56918</code></pre>
+## 1          x           1    16.48936  65.94270     74.73759  83.25799
+## 2          x           6    16.48936  66.34784     74.23959  82.14131
+## 3          x          11    16.48936  66.72700     73.83116  81.02464
+## 4          x          16    16.48936  67.08506     73.32431  79.63945
+## 5          x          21    16.48936  67.32871     72.85389  78.48408
+## 6          x          26    16.48936  67.64051     72.42597  77.29087</code></pre>
 <p>Now we have one row for each scenario. This contains the columns <code>qi_ci_min</code>, <code>qi_ci_median</code>, and <code>qi_ci_max</code> for the central interval of the simulations from each scenario. By default <code>qi_ci_min</code> and <code>qi_ci_max</code> contain central interval bounds at the lower 2.5 and upper 97.5 percentiles, respectively. <code>qi_ci_median</code> contains the simulated distribution’s median. The interval can be changed with the <code>ci</code> argument. You can choose expected value (<code>ev</code>) or predicted value (<code>pv</code>) with the <code>qi_ci_type</code> argument.</p>
 <p>Now we have everything to make a ggplot2 plot summarizing the simulated quantity of interest:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sims.slimmed, <span class="kw">aes</span>(Agriculture, qi_ci_median)) <span class="op">+</span>
