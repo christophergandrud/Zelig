@@ -55,7 +55,7 @@ names(cars.poly)[ncol(cars.poly)] <- 'dist_2'
 head(cars.poly)
 ```
 
-Now include this in the `zelig` call and `setx for both the base and second order 
+Now include this in the `zelig` call and `setx` for both the base and second order 
 polynomial version of the `dist` variable:
 
 ```{r, message=FALSE}
