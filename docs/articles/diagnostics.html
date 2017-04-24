@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diagnostics • Zelig</title>
+<title>Diagnostics for MCMC convergence • Zelig</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -118,7 +118,7 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>Diagnostics</h1>
+      <h1>Diagnostics for MCMC convergence</h1>
             
             <h4 class="date">2017-04-24</h4>
           </div>
@@ -128,10 +128,6 @@
 <div class="contents">
 <p><em>Built using Zelig version 5.1.0.90000</em></p>
 <hr>
-<p>========================</p>
-<div id="diagnostics-for-mcmc-convergence-" class="section level2">
-<h2 class="hasAnchor">
-<a href="#diagnostics-for-mcmc-convergence-" class="anchor"></a>Diagnostics for MCMC convergence.</h2>
 <p>Zelig has three available diagnostic tests for MCMC models. Here is an example of their use. First we attach the sample dataset and estimate a linear regression using the MCMC <code>normal.bayes</code> model:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(macro)
 z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(unem <span class="op">~</span><span class="st"> </span>gdp <span class="op">+</span><span class="st"> </span>capmob <span class="op">+</span><span class="st"> </span>trade, <span class="dt">model =</span> <span class="st">"normal.bayes"</span>,
@@ -189,7 +185,6 @@ z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig
 ##  trade       2        3680  3746         0.982     
 ##  sigma2      2        3710  3746         0.990</code></pre>
 </div>
-</div>
 <div id="see-also" class="section level2">
 <h2 class="hasAnchor">
 <a href="#see-also" class="anchor"></a>See also</h2>
@@ -208,8 +203,7 @@ z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig
         <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#diagnostics-for-mcmc-convergence.">Diagnostics for MCMC convergence.</a></li>
-      <li><a href="#see-also">See also</a></li>
+<li><a href="#see-also">See also</a></li>
       </ul>
 </div>
       </div>

@@ -66,6 +66,6 @@ z.out$sim()
 plot(z.out)
 ```
 
-Other multiply imputed data
+## Other multiply imputed data
 
 Zelig also includes a function called `from_zelig_model()` to conform multiply imputed data sets from other sources to a form that `zelig` can use.

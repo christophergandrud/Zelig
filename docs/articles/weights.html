@@ -159,16 +159,16 @@ w2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c<
 ## 
 ## Weighted Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -2.8393 -1.2373 -0.5963  0.2376  3.3560 
+## -3.0856 -1.1834 -0.3308  0.3923  2.7724 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)   0.1840     0.2756   0.668  0.50610
-## x             1.3404     0.4587   2.922  0.00442
+## (Intercept)  -0.3739     0.3357  -1.114    0.268
+## x             2.4800     0.5016   4.944 3.63e-06
 ## 
-## Residual standard error: 1.302 on 88 degrees of freedom
-## Multiple R-squared:  0.08844,    Adjusted R-squared:  0.07808 
-## F-statistic: 8.538 on 1 and 88 DF,  p-value: 0.00442
+## Residual standard error: 1.313 on 88 degrees of freedom
+## Multiple R-squared:  0.2174, Adjusted R-squared:  0.2085 
+## F-statistic: 24.44 on 1 and 88 DF,  p-value: 3.633e-06
 ## 
 ## Next step: Use 'setx' method</code></pre>
 <p>In our second example, the weights are provided as a separate vector of the same length as the dataset. These weights give weight to both relationships present when we constructed the data, and we see the estimated relationship is now negative.</p>
@@ -182,16 +182,16 @@ w2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c<
 ## 
 ## Weighted Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -4.5123 -0.8701 -0.1264  0.6846  5.0336 
+## -5.2375 -0.8114  0.1559  0.9629  3.8208 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept) -0.03159    0.33356  -0.095    0.925
-## x            0.21442    0.59849   0.358    0.721
+## (Intercept)  -0.4823     0.4411  -1.094    0.277
+## x             0.6230     0.7047   0.884    0.379
 ## 
-## Residual standard error: 1.684 on 88 degrees of freedom
-## Multiple R-squared:  0.001457,   Adjusted R-squared:  -0.009891 
-## F-statistic: 0.1284 on 1 and 88 DF,  p-value: 0.721
+## Residual standard error: 1.925 on 88 degrees of freedom
+## Multiple R-squared:  0.008802,   Adjusted R-squared:  -0.002462 
+## F-statistic: 0.7815 on 1 and 88 DF,  p-value: 0.3791
 ## 
 ## Next step: Use 'setx' method</code></pre>
 <p>Some checking of the supplied weights are conducted, and warnings or error messages will be given to the user if, for example, the supplied weights are of the wrong length, or the variable name supplied is not present in the dataset. Negative weights are treated as zero weights. Here we use the object oriented approach to building the Zelig object.</p>
@@ -210,10 +210,10 @@ z5.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zeli
 z6.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(z <span class="op">~</span><span class="st"> </span>x, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">weights =</span> integer.weights,
                 <span class="dt">data =</span> mydata)</code></pre></div>
 </div>
-<div id="using-matching-weights-from-the-matchit-package" class="section level2">
+<div id="using-matching-weights-from-matchit" class="section level2">
 <h2 class="hasAnchor">
-<a href="#using-matching-weights-from-the-matchit-package" class="anchor"></a>Using Matching Weights from the MatchIt Package</h2>
-<p>Weights that are creating using the matching mechanisms in the <a href="http://gking.harvard.edu/matchit">MatchIt</a> package will be automatically employed in Zelig analyses if the output object from MatchIt is passed to Zelig as the data argument. For more detail, see <a href="using_Zelig_with_MatchIt">Using Zelig with MatchIt</a>.</p>
+<a href="#using-matching-weights-from-matchit" class="anchor"></a>Using Matching Weights from MatchIt</h2>
+<p>Weights that are creating using the matching mechanisms in the <a href="http://gking.harvard.edu/matchit">MatchIt</a> package will be automatically employed in Zelig analyses if the output object from MatchIt is passed to Zelig as the data argument. For more detail, see <a href="using_Zelig_with_Amelia.html">Using Zelig with MatchIt</a>.</p>
 </div>
 </div>
   </div>
@@ -223,7 +223,7 @@ z6.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zeli
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#examples">Examples</a></li>
-      <li><a href="#using-matching-weights-from-the-matchit-package">Using Matching Weights from the MatchIt Package</a></li>
+      <li><a href="#using-matching-weights-from-matchit">Using Matching Weights from MatchIt</a></li>
       </ul>
 </div>
       </div>

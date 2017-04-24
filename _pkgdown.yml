@@ -59,6 +59,7 @@ articles:
       - zelig_tidyverse
   - title: "Model Details"
     contents:
+      - zelig_ar
       - zelig_arima
       - zelig_exp
       - zelig_factorbayes

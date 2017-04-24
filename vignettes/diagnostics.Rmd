@@ -1,5 +1,5 @@
 ---
-title: "Diagnostics"
+title: "Diagnostics for MCMC convergence"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -22,11 +22,6 @@ knitr::opts_chunk$set(
 options(cite = FALSE)
 ```
 ---
-
- ========================
-
-Diagnostics for MCMC convergence.
-------
 
 ```{r, eval = TRUE, echo = FALSE}
 rm(list=ls(pattern="\\.out"))
