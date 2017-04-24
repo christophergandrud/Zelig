@@ -7,13 +7,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Combines estimated coefficients and associated statistics
- — combine_coef_se • Zelig</title>
+from models estimated with multiply imputed data sets or bootstrapped — combine_coef_se • Zelig</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -26,12 +26,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -140,7 +142,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Combines estimated coefficients and associated statistics
-</h1>
+from models estimated with multiply imputed data sets or bootstrapped</h1>
     </div>
 
     
@@ -148,22 +150,31 @@
 from models estimated with multiply imputed data sets or bootstrapped</p>
     
 
-    <pre><span class='fu'>combine_coef_se</span>(<span class='no'>obj</span>, <span class='kw'>out_type</span> <span class='kw'>=</span> <span class='st'>"matrix"</span>, <span class='kw'>bagging</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+    <pre class="usage"><span class='fu'>combine_coef_se</span>(<span class='no'>obj</span>, <span class='kw'>out_type</span> <span class='kw'>=</span> <span class='st'>"matrix"</span>, <span class='kw'>bagging</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>obj</dt>
-      <dd>a zelig object with an estimated model</dd>
-      <dt>out_type</dt>
-      <dd>either <code>&quot;matrix&quot;</code> or <code>&quot;list&quot;</code> specifying
-whether the results should be returned as a matrix or a list.</dd>
-      <dt>bagging</dt>
-      <dd>logical whether or not to bag the bootstrapped coefficients</dd>
-      <dt>messages</dt>
-      <dd>logical whether or not to return messages for what is being
-returned</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>obj</th>
+      <td><p>a zelig object with an estimated model</p></td>
+    </tr>
+    <tr>
+      <th>out_type</th>
+      <td><p>either <code>"matrix"</code> or <code>"list"</code> specifying
+whether the results should be returned as a matrix or a list.</p></td>
+    </tr>
+    <tr>
+      <th>bagging</th>
+      <td><p>logical whether or not to bag the bootstrapped coefficients</p></td>
+    </tr>
+    <tr>
+      <th>messages</th>
+      <td><p>logical whether or not to return messages for what is being
+returned</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
@@ -174,8 +185,8 @@ returned</dd>
     <p>If the model uses multiply imputed or bootstrapped data then a
  matrix (default) or list of combined coefficients (<code>coef</code>), standard
  errors (<code>se</code>), z values (<code>zvalue</code>), p-values (<code>p</code>) is
- returned. Rubin&#39;s Rules are used to combine output from multiply imputed
- data. An error is returned if no imputations were included or there wasn&#39;t
+ returned. Rubin's Rules are used to combine output from multiply imputed
+ data. An error is returned if no imputations were included or there wasn't
  bootstrapping. Please use <code>get_coef</code>, <code>get_se</code>, and
  <code>get_pvalue</code> methods instead in cases where there are no imputations or
  bootstrap.</p>
@@ -199,7 +210,7 @@ returned</dd>
 #&gt;   R Core Team. 2007.
 #&gt;   ls: Least Squares Regression for Continuous Dependent Variables
 #&gt;   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-#&gt;   &quot;Zelig: Everyone&#39;s Statistical Software,&quot; http://zeligproject.org/</div><div class='input'>
+#&gt;   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</div><div class='input'>
 <span class='co'># Combine and extract coefficients and standard errors</span>
 <span class='fu'>combine_coef_se</span>(<span class='no'>z.out.mi</span>)</div><div class='output co'>#&gt; <span class='message'>Combining imputations. . .</span></div><div class='output co'>#&gt;                Estimate Std.Error     z value  Pr(&gt;|z|)
 #&gt; (Intercept) -0.12240923 0.2139979 -0.57201129 0.5673143
@@ -209,7 +220,7 @@ returned</dd>
 #&gt;   R Core Team. 2007.
 #&gt;   ls: Least Squares Regression for Continuous Dependent Variables
 #&gt;   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-#&gt;   &quot;Zelig: Everyone&#39;s Statistical Software,&quot; http://zeligproject.org/</div><div class='input'><span class='fu'>combine_coef_se</span>(<span class='no'>z.out.boot</span>)</div><div class='output co'>#&gt; <span class='message'>Combining bootstraps . . .</span></div><div class='output co'>#&gt;                Estimate Std.Error    z value  Pr(&gt;|z|)
+#&gt;   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</div><div class='input'><span class='fu'>combine_coef_se</span>(<span class='no'>z.out.boot</span>)</div><div class='output co'>#&gt; <span class='message'>Combining bootstraps . . .</span></div><div class='output co'>#&gt;                Estimate Std.Error    z value  Pr(&gt;|z|)
 #&gt; (Intercept) -0.15723024 0.2369467 -0.6635679 0.5069669
 #&gt; x            0.09965409 0.3852040  0.2587048 0.7958631</div><div class='input'>
 </div></pre>

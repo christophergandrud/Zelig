@@ -47,18 +47,18 @@ articles:
   - title: "Zelig Overview"
     contents:
       - quickstart
-      - zelig5-vs-zelig4
-      - zelig-tidyverse
-      - available-models-overview
-      - transforming-covariates
+      - zelig5_vs_zelig4
+      - zelig_tidyverse
+      - available_models_overview
+      - transforming_covariates
   - title: "Model Details"
     contents:
-      - zelig-ls
-      - zelig-logit
+      - zelig_ls
+      - zelig_logit
   - title: "Other"
     contents:
       - about
-      - developers-guide
+      - developers_guide
 
 reference:
   - title: "Main Zelig Workflow"
@@ -68,13 +68,7 @@ reference:
     contents:
       - zelig
       - setx
-      - setx1
-      - setxrange
       - sim
-      - graph
-      - plot
-      - ci.plot
-      - qi.plot
   - title: "Estimation Methods"
     desc: >
       Methods for finding parameter estimates

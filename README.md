@@ -8,13 +8,14 @@ Version](http://www.r-pkg.org/badges/version/Zelig)](http://cran.r-project.org/p
 Downloads](http://cranlogs.r-pkg.org/badges/last-month/Zelig) ![CRAN
 Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/Zelig)
 
-**Development:** [![Travis (LINUX) Build
+**Development:** [![Project Status: Active - The project has reached a
+stable, usable state and is being actively
+developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Travis (LINUX) Build
 Status](https://travis-ci.org/IQSS/Zelig.svg?branch=master)](https://travis-ci.org/IQSS/Zelig)
 [![AppVeyor (Windows) Build
 Status](https://ci.appveyor.com/api/projects/status/github/IQSS/Zelig?branch=master&svg=true)](https://ci.appveyor.com/project/IQSS/Zelig)
 [![codecov](https://codecov.io/gh/IQSS/Zelig/branch/master/graph/badge.svg)](https://codecov.io/gh/IQSS/Zelig)
-[![Pull requests waiting for
-review](https://badge.waffle.io/iqss/zelig.svg?label=development)](https://waffle.io/iqss/zelig)
 [![Gitter
 chat](https://badges.gitter.im/Zelig-dev/gitter.png)](https://gitter.im/Zelig-dev/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 [Dev-Blog](https://medium.com/zelig-dev)
@@ -116,24 +117,24 @@ arguments: equation and data:
     # model summary
     summary(z5)
 
-    ## Model: 
-    ## 
+    ## Model:
+    ##
     ## Call:
     ## z5$zelig(formula = Fertility ~ Education, data = swiss)
-    ## 
+    ##
     ## Residuals:
-    ##     Min      1Q  Median      3Q     Max 
-    ## -17.036  -6.711  -1.011   9.526  19.689 
-    ## 
+    ##     Min      1Q  Median      3Q     Max
+    ## -17.036  -6.711  -1.011   9.526  19.689
+    ##
     ## Coefficients:
     ##             Estimate Std. Error t value Pr(>|t|)
     ## (Intercept)  79.6101     2.1041  37.836  < 2e-16
     ## Education    -0.8624     0.1448  -5.954 3.66e-07
-    ## 
+    ##
     ## Residual standard error: 9.446 on 45 degrees of freedom
-    ## Multiple R-squared:  0.4406, Adjusted R-squared:  0.4282 
+    ## Multiple R-squared:  0.4406, Adjusted R-squared:  0.4282
     ## F-statistic: 35.45 on 1 and 45 DF,  p-value: 3.659e-07
-    ## 
+    ##
     ## Next step: Use 'setx' method
 
 The -0.8624 coefficient on education suggests a negative relationship
@@ -164,7 +165,7 @@ predictor value using the `setx()` method:
     ## setx1:
     ##   (Intercept) Education
     ## 1           1        15
-    ## 
+    ##
     ## Next step: Use 'sim' method
 
 After setting our predictor value, we simulate using the `sim()` method:
@@ -175,7 +176,7 @@ After setting our predictor value, we simulate using the `sim()` method:
     # model summary
     summary(z5)
 
-    ## 
+    ##
     ##  sim x :
     ##  -----
     ## ev
@@ -184,7 +185,7 @@ After setting our predictor value, we simulate using the `sim()` method:
     ## pv
     ##          mean      sd      50%     2.5%    97.5%
     ## [1,] 75.67124 9.46876 75.86216 57.19442 93.84189
-    ## 
+    ##
     ##  sim x1 :
     ##  -----
     ## ev

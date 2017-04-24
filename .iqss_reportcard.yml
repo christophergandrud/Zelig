@@ -2,10 +2,13 @@
 
  Documentation:
   readme: yes
+  roxygen: no
   news: yes
   bugreports: yes
   vignettes: yes
-  pkgdown_website: no
+  website:
+    openscholar: no
+    pkgdown_website: no
 License:
   gpl3_license: yes
 Version_Control:
@@ -15,12 +18,17 @@ Testing:
   uses_testthat: yes
   uses_travis: yes
   uses_appveyor: yes
-  no_check_warnings: yes
-  no_check_errors: yes
-  no_check_notes: yes
-  test_coverage: 86
+  build_check:
+    build_check_completed: yes
+    no_check_warnings: yes
+    no_check_errors: yes
+    no_check_notes: yes
+  test_coverage: 88
 Background:
   package_name: Zelig
-  package_version: 5.0-18
-  package_commit_sha: 5b134b230e22178e21e7c71ef519fb68391fc1c7
-  check_time: 2017-03-16 13:14:39
+  package_version: 5.1-0.90000
+  package_language: R
+  package_commit_sha: 0e5a01c9912c2effdd80e6b3edef7b5d3e862b32
+  iqss_bestpractices_version: 0.0.0.9000
+  iqssdevtools_version: 0.0.0.9000
+  check_time: 2017-04-24 14:26:41

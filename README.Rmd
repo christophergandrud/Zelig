@@ -24,35 +24,45 @@ knitr::opts_chunk$set(
 ![CRAN Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/Zelig)
 
 **Development:**
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Travis (LINUX) Build Status](https://travis-ci.org/IQSS/Zelig.svg?branch=master)](https://travis-ci.org/IQSS/Zelig)
 [![AppVeyor (Windows) Build Status](https://ci.appveyor.com/api/projects/status/github/IQSS/Zelig?branch=master&svg=true)](https://ci.appveyor.com/project/IQSS/Zelig)
 [![codecov](https://codecov.io/gh/IQSS/Zelig/branch/master/graph/badge.svg)](https://codecov.io/gh/IQSS/Zelig)
-[![Pull requests waiting for review](https://badge.waffle.io/iqss/zelig.svg?label=development)](https://waffle.io/iqss/zelig)
-[![Gitter chat](https://badges.gitter.im/Zelig-dev/gitter.png)](https://gitter.im/Zelig-dev/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
+[![Gitter
+chat](https://badges.gitter.im/Zelig-dev/gitter.png)](https://gitter.im/Zelig-dev/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 [Dev-Blog](https://medium.com/zelig-dev)
 
 
-The release of Zelig 5.0 expands the set of models available, while simplifying the model wrapping process, and solving architectural problems by completely rewriting into R’s Reference Classes for a fully object-oriented architecture. Comparability wrappers are available so that you can still use pre-Zelig 5 syntax.
+The release of Zelig 5.0 expands the set of models available, while simplifying
+the model wrapping process, and solving architectural problems by completely
+rewriting into R’s Reference Classes for a fully object-oriented architecture.
+Comparability wrappers are available so that you can still use pre-Zelig 5 syntax.
 
 ## Zelig 5 workflow overview
 
-All models in Zelig 5 can be estimated and results explored presented using a five simple steps:
+All models in Zelig 5 can be estimated and results explored presented using a
+five simple steps:
 
-- Initialise the Zelig object, e.g with `z.out <- zls$new()` for a least squares model. Then populate the object with:
+- Initialise the Zelig object, e.g with `z.out <- zls$new()` for a least squares
+- model. Then populate the object with:
 
   + `zelig` to estimate the parameters,
-  
+
   + `setx` to set fitted values for which we want to find quantities of interest,
-  
+
   + `sim` to simulate the quantities of interest,
-  
+
   + `graph` to plot the simulation results.
 
 ### Differences from Zelig 4 and backwards compatability
 
-Zelig 5 uses [reference classes](http://adv-r.had.co.nz/R5.html) which work a bit differently from what you may expect in R. The big difference is that they are "mutable", i.e. assigning values to them does not overwrite the objects previous contents. 
+Zelig 5 uses [reference classes](http://adv-r.had.co.nz/R5.html) which work a
+bit differently from what you may expect in R. The big difference is that they
+are "mutable", i.e. assigning values to them does not overwrite the objects
+previous contents.
 
-Zelig 5 does contain wrappers (largely) allowing you to use Zelig 4 syntax if you'd like. Here is an example workflow with Zelig 5:
+Zelig 5 does contain wrappers (largely) allowing you to use Zelig 4 syntax if
+you'd like. Here is an example workflow with Zelig 5:
 
 ```{r zelig-5-pseudo, eval=FALSE}
 z5 <- zls$new()
@@ -71,12 +81,18 @@ s.out <- sim(z.out, x = x.out)
 plot(s.out)
 ```
 
-Note that all of the output objects from the Zelig 4 wrappers are Zelig 5 reference class objects, so you can mix and match which syntax you like.
+Note that all of the output objects from the Zelig 4 wrappers are Zelig 5
+reference class objects, so you can mix and match which syntax you like.
 
 ## Zelig 5 Quickstart Guide
 
-Let’s walk through an example. This example uses the swiss dataset. It contains 
-data on fertility and socioeconomic factors in Switzerland’s 47 French-speaking provinces in 1888 (Mosteller and Tukey, 1977, 549-551). We will model the effect of education on fertility, where education is measured as the percent of draftees with education beyond primary school and fertility is measured using the common standardized fertility measure (see Muehlenbein (2010, 80-81) for details).
+Let’s walk through an example. This example uses the swiss dataset. It contains
+data on fertility and socioeconomic factors in Switzerland’s 47 French-speaking
+provinces in 1888 (Mosteller and Tukey, 1977, 549-551). We will model the effect
+of education on fertility, where education is measured as the percent of
+draftees with education beyond primary school and fertility is measured using
+the common standardized fertility measure (see Muehlenbein (2010, 80-81) for
+details).
 
 ## Installing and Loading Zelig
 
@@ -100,14 +116,18 @@ library(Zelig)
 
 ## Building Models
 
-Let’s assume we want to estimate the effect of education on fertility. Since fertility is a continuous variable, least squares is an appropriate model choice. We first create a Zelig least squares object:
+Let’s assume we want to estimate the effect of education on fertility. Since
+fertility is a continuous variable, least squares is an appropriate model
+choice. We first create a Zelig least squares object:
 
 ```{r}
 # initialize Zelig5 least squares object
 z5 <- zls$new()
 ```
 
-To estimate our model, we call the `zelig()` method, which is a function that is internal to the Zelig object. We pass the `zelig()` method two arguments: equation and data:
+To estimate our model, we call the `zelig()` method, which is a function that is
+internal to the Zelig object. We pass the `zelig()` method two arguments:
+equation and data:
 
 ```{r}
 # estimate ls model
@@ -121,7 +141,17 @@ summary(z5)
 edu_coef <- round(z5$get_coef()[[1]][2], digits = 4)
 ```
 
-The `r edu_coef` coefficient on education suggests a negative relationship between the education of a province and its fertility rate. More precisely, for every one percent increase in draftees educated beyond primary school, the fertility rate of the province decreases `r edu_coef * -1` units. To help us better interpret this finding, we may want other quantities of interest, such as expected values or first differences. Zelig makes this simple by automating the translation of model estimates into interpretable quantities of interest using Monte Carlo simulation methods (see King, Tomz, and Wittenberg (2000) for more information). For example, let’s say we want to examine the effect of increasing the percent of draftees educated from 5 to 15. To do so, we set our predictor value using the `setx()` method:
+The `r edu_coef` coefficient on education suggests a negative relationship
+between the education of a province and its fertility rate. More precisely,
+for every one percent increase in draftees educated beyond primary school, the
+fertility rate of the province decreases `r edu_coef * -1` units. To help us
+better interpret this finding, we may want other quantities of interest, such as
+expected values or first differences. Zelig makes this simple by automating the
+translation of model estimates into interpretable quantities of interest using
+Monte Carlo simulation methods (see King, Tomz, and Wittenberg (2000) for more
+information). For example, let’s say we want to examine the effect of increasing
+the percent of draftees educated from 5 to 15. To do so, we set our predictor
+value using the `setx()` method:
 
 ```{r}
 # set education to 5
@@ -144,7 +174,11 @@ z5$sim()
 summary(z5)
 ```
 
-At this point, we’ve estimated a model, set the predictor value, and estimated easily interpretable quantities of interest. The `summary()` method shows us our quantities of interest, namely, our expected and predicted values at each level of education, as well as our first differences–the difference in expected values at the set levels of education.
+At this point, we’ve estimated a model, set the predictor value, and estimated
+easily interpretable quantities of interest. The `summary()` method shows us our
+quantities of interest, namely, our expected and predicted values at each level
+of education, as well as our first differences–the difference in expected values
+at the set levels of education.
 
 # Visualizations
 
@@ -154,7 +188,9 @@ Zelig’s `graph()` method plots the estimated quantities of interest:
 z5$graph()
 ```
 
-We can also simulate and plot simulations from ranges of simulated values. For example, first use the `setrange` method to set a range of fitted values for one of the covariates and draw simulations as before: 
+We can also simulate and plot simulations from ranges of simulated values. For
+example, first use the `setrange` method to set a range of fitted values for one
+of the covariates and draw simulations as before:
 
 ```{r}
 z5 <- zls$new()
