@@ -5,8 +5,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Least Squares Regression for Continuous Dependent Variables with <code>ls</code> • Zelig</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<title>Least Squares Regression • Zelig</title>
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -118,8 +118,7 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>Least Squares Regression for Continuous Dependent Variables with <code>ls</code>
-</h1>
+      <h1>Least Squares Regression</h1>
             
             <h4 class="date">2017-04-24</h4>
           </div>
@@ -128,6 +127,7 @@
     
 <div class="contents">
 <p><em>Built using Zelig version 5.1.0.90000</em></p>
+<p>Least Squares Regression for Continuous Dependent Variables with <code>ls</code>.</p>
 <p>Use least squares regression analysis to estimate the best linear predictor for the specified dependent variables.</p>
 <div id="syntax" class="section level2">
 <h2 class="hasAnchor">
@@ -155,7 +155,7 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <pre><code>## Loading required package: survival</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(macro)</code></pre></div>
 <p>Estimate model:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(unem <span class="op">~</span><span class="st"> </span>gdp <span class="op">+</span><span class="st"> </span>capmob <span class="op">+</span><span class="st"> </span>trade, <span class="dt">model =</span> <span class="st">"ls"</span>, <span class="dt">data =</span> macro, 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(unem <span class="op">~</span><span class="st"> </span>gdp <span class="op">+</span><span class="st"> </span>capmob <span class="op">+</span><span class="st"> </span>trade, <span class="dt">model =</span> <span class="st">"ls"</span>, <span class="dt">data =</span> macro,
                 <span class="dt">cite =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <p>Summarize regression coefficients:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
@@ -191,23 +191,23 @@ x.low &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.
 ##  sim x :
 ##  -----
 ## ev
-##       mean        sd     50%     2.5%    97.5%
-## 1 5.429216 0.1968272 5.43148 5.045387 5.811344
+##       mean        sd      50%    2.5%    97.5%
+## 1 5.431942 0.1950366 5.431653 5.05387 5.821878
 ## pv
-##          mean       sd      50%       2.5%    97.5%
-## [1,] 5.462241 2.802631 5.435176 -0.1186221 11.30824
+##          mean       sd      50%      2.5%   97.5%
+## [1,] 5.496155 2.764798 5.429722 0.3564638 10.9019
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
 ##       mean        sd      50%     2.5%    97.5%
-## 1 4.594864 0.1789178 4.590178 4.253272 4.950766
+## 1 4.594181 0.1792109 4.592797 4.247902 4.949286
 ## pv
 ##          mean       sd      50%       2.5%    97.5%
-## [1,] 4.630808 2.640551 4.551904 -0.4521081 9.773231
+## [1,] 4.579725 2.730634 4.614332 -0.8495203 10.06614
 ## fd
 ##         mean        sd        50%      2.5%      97.5%
-## 1 -0.8343524 0.2274175 -0.8357055 -1.261967 -0.3766936</code></pre>
+## 1 -0.8377606 0.2289714 -0.8394297 -1.279629 -0.4107755</code></pre>
 <p>Plot the simulated distributions:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s.out1)</code></pre></div>
 <p><img src="zelig_ls_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
@@ -216,7 +216,7 @@ x.low &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.
 <h3 class="hasAnchor">
 <a href="#categorical-variables-including-fixed-effects" class="anchor"></a>Categorical variables, including fixed effects</h3>
 <p>Estimate a model with fixed effects for each country (see for help with dummy variables). Note that you do not need to create dummy variables, as the program will automatically parse the unique values in the selected variable into discrete levels.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(unem <span class="op">~</span><span class="st"> </span>gdp <span class="op">+</span><span class="st"> </span>trade <span class="op">+</span><span class="st"> </span>capmob <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(country), <span class="dt">model =</span> <span class="st">"ls"</span>, 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(unem <span class="op">~</span><span class="st"> </span>gdp <span class="op">+</span><span class="st"> </span>trade <span class="op">+</span><span class="st"> </span>capmob <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(country), <span class="dt">model =</span> <span class="st">"ls"</span>,
                 <span class="dt">data =</span> macro, <span class="dt">cite =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <p>Set values for the explanatory variables, using the default mean/mode values, with country set to the United States and Japan, respectively:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x.US &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out2, <span class="dt">country =</span> <span class="st">"United States"</span>)
@@ -262,7 +262,7 @@ x.Japan &lt;-<span class="st"> </span><span class="kw"><a href="../reference/set
 <h2 class="hasAnchor">
 <a href="#output-values" class="anchor"></a>Output Values</h2>
 <p>The output of each Zelig function call contains useful information which you may view. For example, using the <code>z.out1</code> object we estimated above, then you may see the coefficients by using <code>get_coef</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1<span class="op">$</span><span class="kw">get_coef</span>() </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1<span class="op">$</span><span class="kw">get_coef</span>()</code></pre></div>
 <pre><code>## [[1]]
 ## (Intercept)         gdp      capmob       trade 
 ##  6.18129445 -0.32360059  1.42193926  0.01985421</code></pre>

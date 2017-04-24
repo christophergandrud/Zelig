@@ -1,5 +1,5 @@
 ---
-title: "Least Squares Regression for Continuous Dependent Variables with `ls`"
+title: "Least Squares Regression"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -15,6 +15,8 @@ knitr::opts_knit$set(
         stop_on_error = 2L
 )
 ```
+
+Least Squares Regression for Continuous Dependent Variables with `ls`.
 
 Use least squares regression analysis to estimate the best linear
 predictor for the specified dependent variables.
@@ -38,7 +40,7 @@ x.out <- setx(z.out)
 s.out <- sim(z.out, x = x.out)
 ```
 
-For more details about the difference between Zelig's reference classes and 
+For more details about the difference between Zelig's reference classes and
 compatibility wrappers see the [Quickstart Vignette](articles/quickstart.html).
 
 The following examples typically use the compatibility wrappers.
@@ -57,7 +59,7 @@ data(macro)
 Estimate model:
 
 ```{r message=FALSE}
-z.out1 <- zelig(unem ~ gdp + capmob + trade, model = "ls", data = macro, 
+z.out1 <- zelig(unem ~ gdp + capmob + trade, model = "ls", data = macro,
                 cite = FALSE)
 ```
 
@@ -98,7 +100,7 @@ variables, as the program will automatically parse the unique values
 in the selected variable into discrete levels.
 
 ```{r}
-z.out2 <- zelig(unem ~ gdp + trade + capmob + as.factor(country), model = "ls", 
+z.out2 <- zelig(unem ~ gdp + trade + capmob + as.factor(country), model = "ls",
                 data = macro, cite = FALSE)
 ```
 
@@ -141,7 +143,7 @@ plot(s.out2)
    dependent variable given $x_i$, and minimizes the sum of
    squared residuals, $\sum_{i=1}^n (Y_i-x_i \beta)^2$.
 
-## Quantities of Interest Definition 
+## Quantities of Interest Definition
 
 -  The expected value (`qi$ev`) is the mean of simulations from the
    stochastic component,
@@ -163,15 +165,15 @@ plot(s.out2)
    $Y_i$ for observations in the treatment group, under the
    assumption that everything stays the same except that the treatment
    indicator is switched to :math: $t_i=0$.
-   
+
 ## Output Values
 
 The output of each Zelig function call contains useful information which you
-may view. For example, using the `z.out1` object we estimated above, 
+may view. For example, using the `z.out1` object we estimated above,
 then you may see the coefficients by using `get_coef`:
 
 ```{r}
-z.out1$get_coef() 
+z.out1$get_coef()
 ```
 
 or the variance-covariance matrix with `get_vcov`:
@@ -180,15 +182,15 @@ or the variance-covariance matrix with `get_vcov`:
 z.out1$get_vcov()
 ```
 
-For a default summary of information use either 
+For a default summary of information use either
 
 ```{r}
 z.out1$summarize()
 ```
 
-or as we saw before using the wrapper, e.g. `summary(z.out1)`. 
+or as we saw before using the wrapper, e.g. `summary(z.out1)`.
 
--  From the `zelig()` output object `z.out`, you may use the following 
+-  From the `zelig()` output object `z.out`, you may use the following
 'getter' functions to extract:
 
   - `get_pvalue` and `get_se`: p-values and standard errors, respectively.
@@ -201,7 +203,7 @@ or as we saw before using the wrapper, e.g. `summary(z.out1)`.
 
   -  `get_model_data`: the input data frame.
 
--  You can extract the entire original fitted model object with 
+-  You can extract the entire original fitted model object with
 `from_zelig_model`. For example:
 
 ```{r eval=FALSE}
@@ -229,7 +231,7 @@ You can then use `summary` and the component selector `$` to extract:
       increased number of explanatory variables.
 
   -  `cov.unscaled`: a $k \times k$ matrix of unscaled covariances.
-   
+
 For example:
 
 ```{r}

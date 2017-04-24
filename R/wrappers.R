@@ -50,7 +50,7 @@
 #' @keywords package
 #' @export
 
-zelig <- function(formula, model, data, ..., by = NULL, cite = TRUE) {
+zelig <- function(formula, model, data, ..., by = NULL, cite = FALSE) {
     # .Deprecated('\nz$new() \nz$zelig(...)') Check if required model argument is
     # specified
     if (missing(model))

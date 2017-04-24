@@ -1,4 +1,4 @@
-templates:
+template:
   params:
     bootswatch: paper
 
@@ -46,15 +46,24 @@ navbar:
 articles:
   - title: "Zelig Overview"
     contents:
+      - available_models_overview
+      - bootstraps
+      - diagnostics
+      - getters
       - quickstart
+      - transforming_covariates
+      - using_Zelig_with_Amelia
+      - using_Zelig_with_MatchIt
+      - weights
       - zelig5_vs_zelig4
       - zelig_tidyverse
-      - available_models_overview
-      - transforming_covariates
   - title: "Model Details"
     contents:
-      - zelig_ls
+      - zelig_arima
+      - zelig_exp
+      - zelig_factorbayes
       - zelig_logit
+      - zelig_ls
   - title: "Other"
     contents:
       - about

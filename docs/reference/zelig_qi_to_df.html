@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -188,11 +188,8 @@ a is column of the predicted outcomes (<code>predicted_value</code>).</p>
     <pre class="examples"><div class='input'><span class='co'>#### QIs without first difference or range, from covariates fitted at</span>
 <span class='co'>## central tendencies</span>
 <span class='no'>z.1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>Petal.Width</span> ~ <span class='no'>Petal.Length</span> + <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
-             <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)</div><div class='output co'>#&gt; How to cite this model in Zelig:
-#&gt;   R Core Team. 2007.
-#&gt;   ls: Least Squares Regression for Continuous Dependent Variables
-#&gt;   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-#&gt;   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</div><div class='input'><span class='no'>z.1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.1</span>)
+             <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)
+<span class='no'>z.1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.1</span>)
 <span class='no'>z.1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sim.html'>sim</a></span>(<span class='no'>z.1</span>)
 <span class='fu'>head</span>(<span class='fu'>zelig_qi_to_df</span>(<span class='no'>z.1</span>))</div><div class='output co'>#&gt; <span class='message'>zelig_qi_to_df is an experimental function.</span>
 #&gt; <span class='message'>  Please report issues to: https://github.com/IQSS/Zelig/issues</span></div><div class='output co'>#&gt;   setx_value Petal.Length   Species expected_value predicted_value
@@ -204,11 +201,8 @@ a is column of the predicted outcomes (<code>predicted_value</code>).</p>
 #&gt; 6          x        3.758 virginica       1.707744        1.948640</div><div class='input'>
 <span class='co'>#### QIs for first differences</span>
 <span class='no'>z.2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>Petal.Width</span> ~ <span class='no'>Petal.Length</span> + <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
-             <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)</div><div class='output co'>#&gt; How to cite this model in Zelig:
-#&gt;   R Core Team. 2007.
-#&gt;   ls: Least Squares Regression for Continuous Dependent Variables
-#&gt;   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-#&gt;   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</div><div class='input'><span class='no'>z.2a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.2</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+             <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)
+<span class='no'>z.2a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.2</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 <span class='no'>z.2b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.2</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>4.4</span>)
 <span class='no'>z.2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sim.html'>sim</a></span>(<span class='no'>z.2</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>z.2a</span>, <span class='kw'>x1</span> <span class='kw'>=</span> <span class='no'>z.2a</span>)
 <span class='fu'>head</span>(<span class='fu'>zelig_qi_to_df</span>(<span class='no'>z.2</span>))</div><div class='output co'>#&gt; <span class='message'>zelig_qi_to_df is an experimental function.</span>
@@ -221,11 +215,8 @@ a is column of the predicted outcomes (<code>predicted_value</code>).</p>
 #&gt; 6          x            2 virginica      1.3005309       1.1268853</div><div class='input'>
 <span class='co'>#### QIs for first differences, estimated by Species</span>
 <span class='no'>z.3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>Petal.Width</span> ~ <span class='no'>Petal.Length</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"Species"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
-             <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)</div><div class='output co'>#&gt; How to cite this model in Zelig:
-#&gt;   R Core Team. 2007.
-#&gt;   ls: Least Squares Regression for Continuous Dependent Variables
-#&gt;   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-#&gt;   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</div><div class='input'><span class='no'>z.3a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.3</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+             <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)
+<span class='no'>z.3a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.3</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 <span class='no'>z.3b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.3</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>4.4</span>)
 <span class='no'>z.3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sim.html'>sim</a></span>(<span class='no'>z.3</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>z.3a</span>, <span class='kw'>x1</span> <span class='kw'>=</span> <span class='no'>z.3a</span>)
 <span class='fu'>head</span>(<span class='fu'>zelig_qi_to_df</span>(<span class='no'>z.3</span>))</div><div class='output co'>#&gt; <span class='message'>zelig_qi_to_df is an experimental function.</span>
@@ -238,11 +229,8 @@ a is column of the predicted outcomes (<code>predicted_value</code>).</p>
 #&gt; 6          x setosa            2      0.2893863       0.2926288</div><div class='input'>
 <span class='co'>#### QIs for a range of fitted values</span>
 <span class='no'>z.4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>Petal.Width</span> ~ <span class='no'>Petal.Length</span> + <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
-             <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)</div><div class='output co'>#&gt; How to cite this model in Zelig:
-#&gt;   R Core Team. 2007.
-#&gt;   ls: Least Squares Regression for Continuous Dependent Variables
-#&gt;   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-#&gt;   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</div><div class='input'><span class='no'>z.4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.4</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>4</span>)
+             <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)
+<span class='no'>z.4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.4</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>4</span>)
 <span class='no'>z.4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sim.html'>sim</a></span>(<span class='no'>z.4</span>)
 <span class='fu'>head</span>(<span class='fu'>zelig_qi_to_df</span>(<span class='no'>z.4</span>))</div><div class='output co'>#&gt; <span class='message'>zelig_qi_to_df is an experimental function.</span>
 #&gt; <span class='message'>  Please report issues to: https://github.com/IQSS/Zelig/issues</span></div><div class='output co'>#&gt;   setx_value Petal.Length   Species expected_value predicted_value
@@ -254,11 +242,8 @@ a is column of the predicted outcomes (<code>predicted_value</code>).</p>
 #&gt; 6          x            2 virginica       1.135882        1.050911</div><div class='input'>
 <span class='co'>#### QIs for a range of fitted values, estimated by Species</span>
 <span class='no'>z.5</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>Petal.Width</span> ~ <span class='no'>Petal.Length</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"Species"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
-            <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)</div><div class='output co'>#&gt; How to cite this model in Zelig:
-#&gt;   R Core Team. 2007.
-#&gt;   ls: Least Squares Regression for Continuous Dependent Variables
-#&gt;   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-#&gt;   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</div><div class='input'><span class='no'>z.5</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.5</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>4</span>)
+            <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)
+<span class='no'>z.5</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.5</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>4</span>)
 <span class='no'>z.5</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sim.html'>sim</a></span>(<span class='no'>z.5</span>)
 <span class='fu'>head</span>(<span class='fu'>zelig_qi_to_df</span>(<span class='no'>z.5</span>))</div><div class='output co'>#&gt; <span class='message'>zelig_qi_to_df is an experimental function.</span>
 #&gt; <span class='message'>  Please report issues to: https://github.com/IQSS/Zelig/issues</span></div><div class='output co'>#&gt;   setx_value     by Petal.Length expected_value predicted_value
@@ -270,11 +255,8 @@ a is column of the predicted outcomes (<code>predicted_value</code>).</p>
 #&gt; 6          x setosa            2      0.3575925       0.4069134</div><div class='input'>
 <span class='co'>#### QIs for two ranges of fitted values</span>
 <span class='no'>z.6</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>Petal.Width</span> ~ <span class='no'>Petal.Length</span> + <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
-            <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)</div><div class='output co'>#&gt; How to cite this model in Zelig:
-#&gt;   R Core Team. 2007.
-#&gt;   ls: Least Squares Regression for Continuous Dependent Variables
-#&gt;   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-#&gt;   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</div><div class='input'><span class='no'>z.6a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.6</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>4</span>, <span class='kw'>Species</span> <span class='kw'>=</span> <span class='st'>"setosa"</span>)
+            <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)
+<span class='no'>z.6a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.6</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>4</span>, <span class='kw'>Species</span> <span class='kw'>=</span> <span class='st'>"setosa"</span>)
 <span class='no'>z.6b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z.6</span>, <span class='kw'>Petal.Length</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>4</span>, <span class='kw'>Species</span> <span class='kw'>=</span> <span class='st'>"virginica"</span>)
 <span class='no'>z.6</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sim.html'>sim</a></span>(<span class='no'>z.6</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>z.6a</span>, <span class='kw'>x1</span> <span class='kw'>=</span> <span class='no'>z.6b</span>)
 

@@ -5,8 +5,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Logistic Regression for Dichotomous Dependent Variables with <code>logit</code> • Zelig</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<title>Logistic Regression • Zelig</title>
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -118,8 +118,7 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>Logistic Regression for Dichotomous Dependent Variables with <code>logit</code>
-</h1>
+      <h1>Logistic Regression</h1>
             
             <h4 class="date">2017-04-24</h4>
           </div>
@@ -128,6 +127,7 @@
     
 <div class="contents">
 <p><em>Built using Zelig version 5.1.0.90000</em></p>
+<p>Logistic Regression for Dichotomous Dependent Variables with <code>logit</code>.</p>
 <p>Logistic regression specifies a dichotomous dependent variable as a function of a set of explanatory variables.</p>
 <div id="syntax" class="section level2">
 <h2 class="hasAnchor">
@@ -190,10 +190,10 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 ##  -----
 ## ev
 ##           mean         sd       50%      2.5%     97.5%
-## [1,] 0.7484039 0.01185735 0.7489078 0.7248053 0.7704579
+## [1,] 0.7480286 0.01156535 0.7477391 0.7247946 0.7711026
 ## pv
-##          0     1
-## [1,] 0.264 0.736</code></pre>
+##         0    1
+## [1,] 0.24 0.76</code></pre>
 <p>Show the results graphically:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s.out1)</code></pre></div>
 <p><img src="zelig_logit_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
@@ -203,7 +203,7 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <h2 class="hasAnchor">
 <a href="#first-differences" class="anchor"></a>First differences</h2>
 <p>Estimating the risk difference (and risk ratio) between low education (25th percentile) and high education (75th percentile) while all the other variables held at their default values.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote <span class="op">~</span><span class="st"> </span>race <span class="op">+</span><span class="st"> </span>educate, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">data =</span> turnout, 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote <span class="op">~</span><span class="st"> </span>race <span class="op">+</span><span class="st"> </span>educate, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">data =</span> turnout,
                 <span class="dt">cite =</span> <span class="ot">FALSE</span>)
 x.high &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out2, <span class="dt">educate =</span> <span class="kw">quantile</span>(turnout<span class="op">$</span>educate, <span class="dt">prob =</span> <span class="fl">0.75</span>))
 x.low &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out2, <span class="dt">educate =</span> <span class="kw">quantile</span>(turnout<span class="op">$</span>educate, <span class="dt">prob =</span> <span class="fl">0.25</span>))
@@ -213,23 +213,23 @@ s.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.
 ##  sim x :
 ##  -----
 ## ev
-##           mean        sd       50%      2.5%     97.5%
-## [1,] 0.8227929 0.0105268 0.8223598 0.8017651 0.8429653
+##           mean         sd       50%      2.5%     97.5%
+## [1,] 0.8226264 0.01036417 0.8227821 0.8025566 0.8427453
 ## pv
 ##          0     1
-## [1,] 0.199 0.801
+## [1,] 0.171 0.829
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
-##           mean         sd       50%      2.5%     97.5%
-## [1,] 0.7098327 0.01296711 0.7106768 0.6847549 0.7341589
+##          mean         sd       50%     2.5%     97.5%
+## [1,] 0.709655 0.01265683 0.7101029 0.684016 0.7333111
 ## pv
 ##          0     1
 ## [1,] 0.299 0.701
 ## fd
-##            mean         sd        50%       2.5%       97.5%
-## [1,] -0.1129603 0.01160144 -0.1125202 -0.1358016 -0.08989302</code></pre>
+##            mean         sd        50%       2.5%      97.5%
+## [1,] -0.1129713 0.01135583 -0.1128081 -0.1354985 -0.0916759</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s.out2)</code></pre></div>
 <p><img src="zelig_logit_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
 </div>
