@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Available Zelig Models • Zelig</title>
+<title>MA • Zelig</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -115,10 +115,10 @@
 <!--/.navbar -->
 
       
-      </header><script src="available_models_overview_files/htmlwidgets-0.8/htmlwidgets.js"></script><script src="available_models_overview_files/d3-4.5.0/d3.min.js"></script><script src="available_models_overview_files/diagonalNetwork-binding-0.4/diagonalNetwork.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>Available Zelig Models</h1>
+      <h1>MA</h1>
             
             <h4 class="date">2017-04-25</h4>
           </div>
@@ -127,17 +127,31 @@
     
 <div class="contents">
 <p><em>Built using Zelig version 5.1.0.90000</em></p>
-<div id="zelig-inheritance-tree" class="section level3">
-<h3 class="hasAnchor">
-<a href="#zelig-inheritance-tree" class="anchor"></a>Zelig Inheritance Tree</h3>
-<p>Zelig 5 supports the following models:</p>
-<div id="htmlwidget-280fe34ca6086f6d9c6d" style="width:672px;height:480px;" class="diagonalNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-280fe34ca6086f6d9c6d">{"x":{"root":{"name":"Zelig","children":[{"name":"Core","children":[{"name":"timeseries","children":[{"name":"ar"},{"name":"ma"},{"name":"arima"}]},{"name":"survey","children":[{"name":"poisson"},{"name":"gamma"},{"name":"normal"},{"name":"binchoice","children":[{"name":"probit"},{"name":"logit"}]}]},{"name":"wiebull"},{"name":"bayes","children":[{"name":"logitbayes"},{"name":"mlogitbayes"}]},{"name":"factorbayes"},{"name":"gee","children":[{"name":"gamma gee"}]},{"name":"relogit"},{"name":"quantile"},{"name":"tobit"},{"name":"lognorm"},{"name":"exp"},{"name":"negbin"},{"name":"glm","children":[{"name":"gamma"},{"name":"normal"},{"name":"poisson"}]},{"name":"ls"}]},{"name":"Choice","children":[{"name":"obinchoice"},{"name":"mlogit"},{"name":"bbinchoice"}]},{"name":"GAM","children":[{"name":"gam"}]},{"name":"EI","children":[{"name":"ei"}]}]},"options":{"height":null,"width":null,"fontSize":15,"fontFamily":"sans-serif","linkColour":"#ccc","nodeColour":"#fff","nodeStroke":"d16103","textColour":"#111","margin":{"top":null,"right":null,"bottom":null,"left":null},"opacity":0.9}},"evals":[],"jsHooks":[]}</script>
+<hr>
+<p>Time-Series Model with Moving Average with <code>ma</code>.</p>
+<div id="syntax" class="section level2">
+<h2 class="hasAnchor">
+<a href="#syntax" class="anchor"></a>Syntax</h2>
+<p>With reference classes:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span>ma<span class="op">$</span><span class="kw">new</span>()
+z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2, <span class="dt">weights =</span> w, <span class="dt">data =</span> mydata)
+z5<span class="op">$</span><span class="kw"><a href="../reference/setx.html">setx</a></span>()
+z5<span class="op">$</span><span class="kw"><a href="../reference/sim.html">sim</a></span>()</code></pre></div>
+<p>With the Zelig 4 compatibility wrappers:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2, <span class="dt">model =</span> <span class="st">"ma"</span>, <span class="dt">weights =</span> w, <span class="dt">data =</span> mydata)
+x.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out)
+s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.html">sim</a></span>(z.out, <span class="dt">x =</span> x.out)</code></pre></div>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#syntax">Syntax</a></li>
+      </ul>
+</div>
       </div>
 
 </div>

@@ -72,6 +72,9 @@ articles:
       - zelig_logitsurvey
       - zelig_lognorm
       - zelig_ls
+      - zelig_ma
+      - zelig_mlogitbayes
+      - zelig_negbin
   - title: "Other"
     contents:
       - about

@@ -152,7 +152,7 @@ Again, for the purpose of illustration, create four Balanced
 Repeated Replicate (BRR) weights:
 
 ```{r, eval = TRUE}
-BRRrep<-2*cbind(c(1,0,1,0,1,0), c(1,0,0,1,0,1), c(0,1,1,0,0,1), c(0,1,0,1,1,0))
+BRRrep <- 2*cbind(c(1,0,1,0,1,0), c(1,0,0,1,0,1), c(0,1,1,0,0,1), c(0,1,0,1,1,0))
 ```
 
 Estimate the model using Zelig:

@@ -48,9 +48,10 @@ zelig_core <- list(name = "Zelig",
                                 list(name = "wiebull"),
                                 list(name = "bayes",
                                     children = list(
-                                        list(name = "logit bayes")
+                                        list(name = "logitbayes"),
+                                        list(name = "mlogitbayes")
                                         )),
-                                list(name = "factor-bayes"),
+                                list(name = "factorbayes"),
                                 list(name = "gee",
                                     children = list(
                                         list(name = "gamma gee")
