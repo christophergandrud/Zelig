@@ -63,7 +63,14 @@ articles:
       - zelig_arima
       - zelig_exp
       - zelig_factorbayes
+      - zelig_gamma
+      - zelig_gammagee
+      - zelig_gammasurvey
       - zelig_logit
+      - zelig_logitbayes
+      - zelig_logitgee
+      - zelig_logitsurvey
+      - zelig_lognorm
       - zelig_ls
   - title: "Other"
     contents:
