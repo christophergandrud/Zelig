@@ -75,6 +75,13 @@ articles:
       - zelig_ma
       - zelig_mlogitbayes
       - zelig_negbin
+      - zelig_normal #
+      - zelig_normalbayes
+      - zelig_normalsurvey
+      - zelig_oprobitbayes # Check equations ln 209
+      - zelig_poisson
+      - zelig_poissonbayes
+      - zelig_poissonsurvey
   - title: "Other"
     contents:
       - about
