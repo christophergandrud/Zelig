@@ -120,7 +120,7 @@
     <div class="page-header toc-ignore">
       <h1>Ordered Bayesian Probit</h1>
             
-            <h4 class="date">2017-04-26</h4>
+            <h4 class="date">2017-04-27</h4>
           </div>
 
     
@@ -181,11 +181,6 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
                <span class="dt">data =</span> sanction, <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <pre><code>## Warning in model.response(mf, "numeric"): using type = "numeric" with a
 ## factor response will be ignored</code></pre>
-<pre><code>## How to cite this model in Zelig:
-##   Ben Goodrich, and Ying Lu. 2013.
-##   oprobit-bayes: Bayesian Probit Regression for Dichotomous Dependent Variables
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <p>You can check for convergence before summarizing the estimates with three diagnostic tests. See the section <a href="diagnostics.html">Diagnostics for Zelig Models</a> for examples of the output with interpretation:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out<span class="op">$</span><span class="kw">geweke.diag</span>()
 z.out<span class="op">$</span><span class="kw">heidel.diag</span>()
@@ -314,7 +309,7 @@ z.out<span class="op">$</span><span class="kw">raftery.diag</span>()</code></pre
       for } j=1,\ldots, J.
 \end{aligned}
 \]</span></p>
-<p>where <span class="math inline">\(\tau_j\)</span> for <span class="math inline">\(j=0,\ldots, J\)</span> are the threshold parameters with the following constraints, <span class="math inline">\(\tau_l\)</span>( <span class="math inline">\(\tau_m\)</span> for <span class="math inline">\(lm\)</span>, and <span class="math inline">\(\tau_0=-\infty, \tau_J=\infty\)</span>.</p>
+<p>where <span class="math inline">\(\tau_j\)</span> for <span class="math inline">\(j=0,\ldots, J\)</span> are the threshold parameters with the following constraints, <span class="math inline">\(\tau_l &lt; \tau_m\)</span> for <span class="math inline">\(l &lt; m\)</span>, and <span class="math inline">\(\tau_0 = -\infty, \tau_J = \infty\)</span>.</p>
 <p>The probability of observing <span class="math inline">\(Y_i\)</span> equal to category <span class="math inline">\(j\)</span> is,</p>
 <p><span class="math display">\[
     \begin{aligned}

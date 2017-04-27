@@ -78,10 +78,15 @@ articles:
       - zelig_normal #
       - zelig_normalbayes
       - zelig_normalsurvey
-      - zelig_oprobitbayes # Check equations ln 209
+      - zelig_oprobitbayes
       - zelig_poisson
       - zelig_poissonbayes
       - zelig_poissonsurvey
+      - zelig_probit
+      - zelig_probitbayes
+      - zelig_probitgee
+      - zelig_probitsurvey
+      - zelig_quantile
   - title: "Other"
     contents:
       - about

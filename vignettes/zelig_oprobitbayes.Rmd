@@ -206,8 +206,8 @@ $$
 $$
 
    where $\tau_j$ for $j=0,\ldots, J$ are the threshold
-   parameters with the following constraints, $\tau_l$( $\tau_m$
-   for $lm$, and $\tau_0=-\infty, \tau_J=\infty$.
+   parameters with the following constraints, $\tau_l < \tau_m$
+   for $l < m$, and $\tau_0 = -\infty, \tau_J = \infty$.
 
    The probability of observing $Y_i$ equal to category $j$
    is,

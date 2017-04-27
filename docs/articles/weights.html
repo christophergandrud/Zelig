@@ -120,7 +120,7 @@
     <div class="page-header toc-ignore">
       <h1>Weights</h1>
             
-            <h4 class="date">2017-04-26</h4>
+            <h4 class="date">2017-04-27</h4>
           </div>
 
     
@@ -159,16 +159,16 @@ w2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c<
 ## 
 ## Weighted Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.6836 -1.2158 -0.4599  0.4234  4.2600 
+## -2.9373 -1.1340 -0.5766  0.3038  2.8993 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)  -0.4702     0.2764  -1.701   0.0925
-## x             2.2781     0.4665   4.884 4.62e-06
+## (Intercept)  0.06126    0.25965   0.236   0.8140
+## x            1.38859    0.45965   3.021   0.0033
 ## 
-## Residual standard error: 1.339 on 88 degrees of freedom
-## Multiple R-squared:  0.2132, Adjusted R-squared:  0.2043 
-## F-statistic: 23.85 on 1 and 88 DF,  p-value: 4.624e-06
+## Residual standard error: 1.29 on 88 degrees of freedom
+## Multiple R-squared:  0.09396,    Adjusted R-squared:  0.08367 
+## F-statistic: 9.126 on 1 and 88 DF,  p-value: 0.003299
 ## 
 ## Next step: Use 'setx' method</code></pre>
 <p>In our second example, the weights are provided as a separate vector of the same length as the dataset. These weights give weight to both relationships present when we constructed the data, and we see the estimated relationship is now negative.</p>
@@ -182,54 +182,33 @@ w2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c<
 ## 
 ## Weighted Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -5.4149 -0.7949 -0.0278  0.8846  6.6856 
+## -5.2655 -0.9704 -0.0821  0.8147  4.7108 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept) -0.15520    0.40523  -0.383    0.703
-## x           -0.04839    0.67594  -0.072    0.943
+## (Intercept)  -0.1926     0.3656  -0.527    0.600
+## x             0.1871     0.6296   0.297    0.767
 ## 
-## Residual standard error: 1.967 on 88 degrees of freedom
-## Multiple R-squared:  5.823e-05,  Adjusted R-squared:  -0.0113 
-## F-statistic: 0.005124 on 1 and 88 DF,  p-value: 0.9431
+## Residual standard error: 1.823 on 88 degrees of freedom
+## Multiple R-squared:  0.001003,   Adjusted R-squared:  -0.01035 
+## F-statistic: 0.08833 on 1 and 88 DF,  p-value: 0.767
 ## 
 ## Next step: Use 'setx' method</code></pre>
 <p>Some checking of the supplied weights are conducted, and warnings or error messages will be given to the user if, for example, the supplied weights are of the wrong length, or the variable name supplied is not present in the dataset. Negative weights are treated as zero weights. Here we use the object oriented approach to building the Zelig object.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z3.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">weights =</span> <span class="st">"noSuchName"</span>, <span class="dt">data =</span> mydata, <span class="dt">model=</span><span class="st">"ls"</span>)</code></pre></div>
 <pre><code>## Warning: Variable name given for weights not found in dataset, so will be ignored.</code></pre>
-<pre><code>## How to cite this model in Zelig:
-##   R Core Team. 2007.
-##   ls: Least Squares Regression for Continuous Dependent Variables
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z4.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">weights =</span> w2[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>], <span class="dt">data =</span> mydata, <span class="dt">model=</span><span class="st">"ls"</span>)</code></pre></div>
 <pre><code>## Warning: Length of vector given for weights is not equal to number of observations in dataset, and will be ignored.</code></pre>
-<pre><code>## How to cite this model in Zelig:
-##   R Core Team. 2007.
-##   ls: Least Squares Regression for Continuous Dependent Variables
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <p>Here we use a model where sampling weights are not accepted by the underlying package, so Zelig gives a warning message that bootstrapping will be conducted to construct a dataset.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">continuous.weights &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="fl">0.6</span>, <span class="dv">1</span>, <span class="fl">1.4</span>), <span class="dt">times =</span> <span class="dv">30</span>)
 z5.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(z <span class="op">~</span><span class="st"> </span>x, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">weights =</span> continuous.weights,
                 <span class="dt">data =</span> mydata)</code></pre></div>
 <pre><code>## Noninteger weights were set, but the model in Zelig is only able to use integer valued weights.
-##  A bootstrapped version of the dataset was constructed using the weights as sample probabilities.
-## 
-## How to cite this model in Zelig:
-##   R Core Team. 2007.
-##   logit: Logistic Regression for Dichotomous Dependent Variables
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
+##  A bootstrapped version of the dataset was constructed using the weights as sample probabilities.</code></pre>
 <p>But when the weights happen to be integer valued, then Zelig can construct a dataset by a combination of duplicating and deleting observations.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">integer.weights &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">times =</span> <span class="dv">30</span>)
 z6.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(z <span class="op">~</span><span class="st"> </span>x, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">weights =</span> integer.weights,
                 <span class="dt">data =</span> mydata)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   R Core Team. 2007.
-##   logit: Logistic Regression for Dichotomous Dependent Variables
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 </div>
 <div id="using-matching-weights-from-matchit" class="section level2">
 <h2 class="hasAnchor">
