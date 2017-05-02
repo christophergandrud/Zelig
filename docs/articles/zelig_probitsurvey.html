@@ -154,8 +154,9 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(api, <span class="dt">package =</span> <span class="st">"survey"</span>)</code></pre></div>
 <p>In this example, we will estimate a model using the percentages of students who receive subsidized lunch and the percentage who are new to a school to predict whether each California public school attends classes year round. We first make a numeric version of the variable in the example dataset, which you may not need to do in another dataset.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">apistrat<span class="op">$</span>yr.rnd.numeric &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(apistrat<span class="op">$</span>yr.rnd<span class="op">==</span><span class="st">"Yes"</span>)
-z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(yr.rnd.numeric <span class="op">~</span><span class="st"> </span>meals <span class="op">+</span><span class="st"> </span>mobility, <span class="dt">model =</span> <span class="st">"probit.survey"</span>, <span class="dt">weights=</span><span class="op">~</span>pw, <span class="dt">data =</span> apistrat)</code></pre></div>
-<pre><code>## Warning: Supplied weights argument is not a vector or a variable name in the dataset, and will be ignored.</code></pre>
+z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(yr.rnd.numeric <span class="op">~</span><span class="st"> </span>meals <span class="op">+</span><span class="st"> </span>mobility,
+                <span class="dt">model =</span> <span class="st">"probit.survey"</span>, <span class="dt">weights =</span> apistrat<span class="op">$</span>pw,
+                <span class="dt">data =</span> apistrat)</code></pre></div>
 <pre><code>## Warning in eval(family$initialize): non-integer #successes in a binomial
 ## glm!</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
@@ -163,7 +164,7 @@ z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zeli
 ## 
 ## Call:
 ## z5$zelig(formula = yr.rnd.numeric ~ meals + mobility, data = apistrat, 
-##     weights = ~pw)
+##     weights = apistrat$pw)
 ## 
 ## Survey design:
 ## survey::svydesign(data = data, ids = ids, probs = probs, strata = strata, 
@@ -171,18 +172,18 @@ z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zeli
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept) -2.886198   0.473858  -6.091 5.79e-09
-## meals        0.019272   0.005994   3.215  0.00152
-## mobility     0.033955   0.010504   3.233  0.00144
+## (Intercept) -2.980423   0.525356  -5.673 4.95e-08
+## meals        0.017937   0.006358   2.821  0.00528
+## mobility     0.046318   0.015090   3.069  0.00245
 ## 
-## (Dispersion parameter for binomial family taken to be 0.9377738)
+## (Dispersion parameter for binomial family taken to be 37.05532)
 ## 
-## Number of Fisher Scoring iterations: 6
+## Number of Fisher Scoring iterations: 7
 ## 
 ## Next step: Use 'setx' method</code></pre>
 <p>Set explanatory variables to their default (mean/mode) values, and set a high (80th percentile) and low (20th percentile) value for “meals,” the percentage of students who receive subsidized meals:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x.low &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out1, <span class="dt">meals=</span> <span class="kw">quantile</span>(apistrat<span class="op">$</span>meals, <span class="fl">0.2</span>))
-x.high &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out1, <span class="dt">meals=</span> <span class="kw">quantile</span>(apistrat<span class="op">$</span>meals, <span class="fl">0.8</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x.low &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out1, <span class="dt">meals =</span> <span class="kw">quantile</span>(apistrat<span class="op">$</span>meals, <span class="fl">0.2</span>))
+x.high &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out1, <span class="dt">meals =</span> <span class="kw">quantile</span>(apistrat<span class="op">$</span>meals, <span class="fl">0.8</span>))</code></pre></div>
 <p>Generate first differences for the effect of high versus low “meals” on the probability that a school will hold classes year round:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.html">sim</a></span>(z.out1, <span class="dt">x=</span>x.low, <span class="dt">x1=</span>x.high)
 <span class="kw">summary</span>(s.out1)</code></pre></div>
@@ -190,23 +191,23 @@ x.high &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx
 ##  sim x :
 ##  -----
 ## ev
-##            mean         sd        50%        2.5%      97.5%
-## [1,] 0.02937614 0.02331953 0.02319552 0.004483617 0.09057741
+##            mean         sd        50%        2.5%     97.5%
+## [1,] 0.03510943 0.02665325 0.02791981 0.005130145 0.1057188
 ## pv
 ##          0     1
-## [1,] 0.971 0.029
+## [1,] 0.964 0.036
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
 ##           mean         sd       50%      2.5%     97.5%
-## [1,] 0.1856784 0.04011685 0.1820837 0.1155503 0.2689011
+## [1,] 0.1886298 0.04351948 0.1858431 0.1109458 0.2808305
 ## pv
 ##          0     1
-## [1,] 0.832 0.168
+## [1,] 0.831 0.169
 ## fd
 ##           mean         sd      50%       2.5%     97.5%
-## [1,] 0.1563023 0.04398404 0.154498 0.07436443 0.2433758</code></pre>
+## [1,] 0.1535203 0.04761432 0.151906 0.06034836 0.2519095</code></pre>
 <p>Generate a second set of fitted values and a plot:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s.out1)</code></pre></div>
 <div class="figure">

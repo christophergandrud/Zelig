@@ -87,6 +87,7 @@ articles:
       - zelig_probitgee
       - zelig_probitsurvey
       - zelig_quantile
+# zelig_relogit
   - title: "Other"
     contents:
       - about

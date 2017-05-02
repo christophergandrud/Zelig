@@ -76,7 +76,9 @@ you may not need to do in another dataset.
 
 ```{r, eval = TRUE}
 apistrat$yr.rnd.numeric <- as.numeric(apistrat$yr.rnd=="Yes")
-z.out1 <- zelig(yr.rnd.numeric ~ meals + mobility, model = "probit.survey", weights=~pw, data = apistrat)
+z.out1 <- zelig(yr.rnd.numeric ~ meals + mobility,
+                model = "probit.survey", weights = apistrat$pw,
+                data = apistrat)
 summary(z.out1)
 ```
 
@@ -85,8 +87,8 @@ a high (80th percentile) and low (20th percentile) value for "meals,"
 the percentage of students who receive subsidized meals:
 
 ```{r, eval = TRUE}
-x.low <- setx(z.out1, meals= quantile(apistrat$meals, 0.2))
-x.high <- setx(z.out1, meals= quantile(apistrat$meals, 0.8))
+x.low <- setx(z.out1, meals = quantile(apistrat$meals, 0.2))
+x.high <- setx(z.out1, meals = quantile(apistrat$meals, 0.8))
 ```
 
 Generate first differences for the effect of high versus low "meals"
