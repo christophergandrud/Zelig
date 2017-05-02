@@ -48,8 +48,12 @@ zelig_core <- list(name = "Zelig",
                                 list(name = "wiebull"),
                                 list(name = "bayes",
                                     children = list(
-                                        list(name = "logitbayes"),
-                                        list(name = "mlogitbayes")
+                                        list(name = "logit bayes"),
+                                        list(name = "mlogit bayes"),
+                                        list(name = "normal bayes"),
+                                        list(name = "poisson bayes"),
+                                        list(name = "probit bayes"),
+                                        list(name = "tobit bayes")
                                         )),
                                 list(name = "factorbayes"),
                                 list(name = "gee",
@@ -72,7 +76,11 @@ zelig_core <- list(name = "Zelig",
                             )),
                        list(name = "Choice",
                             children = list(
+                                list(name = "blogit"),
+                                list(name = "bprobit"),
                                 list(name = "obinchoice"),
+                                list(name = "ologit"),
+                                list(name = "oprobit"),
                                 list(name = "mlogit"),
                                 list(name = "bbinchoice")
                             )),
@@ -82,7 +90,8 @@ zelig_core <- list(name = "Zelig",
                             )),
                        list(name = "EI",
                             children = list(
-                                list(name = "ei")
+                                list(name = "dynamic"),
+                                list(name = "hierarchical")
                             ))
                    ))
 

@@ -42,7 +42,10 @@
       <a href="../articles/index.html#section-zelig-overview">Zelig Overview</a>
     </li>
     <li>
-      <a href="../articles/index.html#section-model-details">Model Details</a>
+      <a href="../articles/index.html#section-core-zelig-model-details">Core Zelig Model Details</a>
+    </li>
+    <li>
+      <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
       <a href="../articles/index.html#section-other">Other</a>
@@ -120,7 +123,7 @@
     <div class="page-header toc-ignore">
       <h1>Zelig 5 Quickstart Guide</h1>
             
-            <h4 class="date">2017-04-27</h4>
+            <h4 class="date">2017-05-02</h4>
           </div>
 
     
@@ -212,23 +215,23 @@ z5<span class="op">$</span><span class="kw"><a href="../reference/sim.html">sim<
 ##  sim x :
 ##  -----
 ## ev
-##      mean       sd      50%     2.5%    97.5%
-## 1 75.2855 1.662612 75.31107 72.04486 78.52257
+##       mean       sd      50%     2.5%    97.5%
+## 1 75.27218 1.584655 75.23643 72.06561 78.51956
 ## pv
-##         mean       sd      50%     2.5%    97.5%
-## [1,] 75.4792 9.582623 75.66504 56.63732 93.96963
+##          mean       sd     50%     2.5%   97.5%
+## [1,] 75.11747 9.434335 75.1097 56.80884 92.8592
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
 ##       mean       sd      50%     2.5%    97.5%
-## 1 66.67307 1.512089 66.69056 63.75965 69.63206
+## 1 66.69524 1.463837 66.71376 63.69951 69.52037
 ## pv
 ##          mean       sd      50%     2.5%    97.5%
-## [1,] 66.48547 9.451167 66.58094 48.34412 85.54737
+## [1,] 66.73504 9.588225 66.77116 48.18896 86.51271
 ## fd
-##        mean       sd      50%      2.5%     97.5%
-## 1 -8.612426 1.438485 -8.58132 -11.41976 -5.899361</code></pre>
+##        mean       sd       50%      2.5%     97.5%
+## 1 -8.576938 1.443671 -8.604192 -11.43789 -5.716355</code></pre>
 <p>At this point, we’ve estimated a model, set the predictor value, and estimated easily interpretable quantities of interest. The <code>summary()</code> method shows us our quantities of interest, namely, our expected and predicted values at each level of education, as well as our first differences–the difference in expected values at the set levels of education.</p>
 </div>
 <div id="visualizations" class="section level3">

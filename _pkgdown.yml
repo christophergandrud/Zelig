@@ -13,8 +13,10 @@ navbar:
       menu:
         - text: "Zelig Overview"
           href: "articles/index.html#section-zelig-overview"
-        - text: "Model Details"
-          href: "articles/index.html#section-model-details"
+        - text: "Core Zelig Model Details"
+          href: "articles/index.html#section-core-zelig-model-details"
+        - text: "Zelig Choice Model Details"
+          href: "articles/index.html#section-zelig-choice-model-details"
         - text: "Other"
           href: "articles/index.html#section-other"
     - text: "Function Reference"
@@ -57,7 +59,7 @@ articles:
       - weights
       - zelig5_vs_zelig4
       - zelig_tidyverse
-  - title: "Model Details"
+  - title: "Core Zelig Model Details"
     contents:
       - zelig_ar
       - zelig_arima
@@ -75,8 +77,9 @@ articles:
       - zelig_ma
       - zelig_mlogitbayes
       - zelig_negbin
-      - zelig_normal #
+      - zelig_normal
       - zelig_normalbayes
+      - zelig_normalgee
       - zelig_normalsurvey
       - zelig_oprobitbayes
       - zelig_poisson
@@ -88,6 +91,20 @@ articles:
       - zelig_probitsurvey
       - zelig_quantile
 # zelig_relogit
+      - zelig_tobit
+      - zelig_tobitbayes
+      - zelig_weibull
+  - title: "Zelig Choice Model Details"
+    contents:
+      - zeligchoice_blogit
+      - zeligchoice_bprobit
+      - zeligchoice_mlogit
+      - zeligchoice_ologit
+      - zeligchoice_oprobit
+  - title: "Zelig Ecological Inference (EI) Model Details"
+    contents:
+      - zeligei_eidynamic
+      - 
   - title: "Other"
     contents:
       - about
@@ -102,7 +119,7 @@ reference:
       - zelig
       - setx
       - sim
-  - title: "Estimation Methods"
+  - title: "Estimation Methods (under development)"
     desc: >
       Methods for finding parameter estimates
     contents:

@@ -42,7 +42,10 @@
       <a href="../articles/index.html#section-zelig-overview">Zelig Overview</a>
     </li>
     <li>
-      <a href="../articles/index.html#section-model-details">Model Details</a>
+      <a href="../articles/index.html#section-core-zelig-model-details">Core Zelig Model Details</a>
+    </li>
+    <li>
+      <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
       <a href="../articles/index.html#section-other">Other</a>
@@ -120,7 +123,7 @@
     <div class="page-header toc-ignore">
       <h1>Weights</h1>
             
-            <h4 class="date">2017-04-27</h4>
+            <h4 class="date">2017-05-02</h4>
           </div>
 
     
@@ -159,16 +162,16 @@ w2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c<
 ## 
 ## Weighted Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -4.1664 -1.2438 -0.5940  0.5801  3.1860 
+## -2.6255 -1.1671 -0.5486  0.3769  3.5052 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept) -0.05502    0.29633  -0.186   0.8531
-## x            1.38251    0.53697   2.575   0.0117
+## (Intercept)  -0.2249     0.2762  -0.814  0.41757
+## x             1.9539     0.5015   3.896  0.00019
 ## 
-## Residual standard error: 1.417 on 88 degrees of freedom
-## Multiple R-squared:  0.07005,    Adjusted R-squared:  0.05948 
-## F-statistic: 6.629 on 1 and 88 DF,  p-value: 0.01171
+## Residual standard error: 1.332 on 88 degrees of freedom
+## Multiple R-squared:  0.1471, Adjusted R-squared:  0.1374 
+## F-statistic: 15.18 on 1 and 88 DF,  p-value: 0.00019
 ## 
 ## Next step: Use 'setx' method</code></pre>
 <p>In our second example, the weights are provided as a separate vector of the same length as the dataset. These weights give weight to both relationships present when we constructed the data, and we see the estimated relationship is now negative.</p>
@@ -182,16 +185,16 @@ w2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c<
 ## 
 ## Weighted Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -4.6565 -0.9273 -0.1296  0.6962  4.7198 
+## -5.4076 -0.8826 -0.0361  0.7660  4.5639 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept) -0.09217    0.39078  -0.236    0.814
-## x           -0.42514    0.68912  -0.617    0.539
+## (Intercept)   0.1149     0.3906   0.294    0.769
+## x            -0.6397     0.6937  -0.922    0.359
 ## 
-## Residual standard error: 1.697 on 88 degrees of freedom
-## Multiple R-squared:  0.004306,   Adjusted R-squared:  -0.007008 
-## F-statistic: 0.3806 on 1 and 88 DF,  p-value: 0.5389
+## Residual standard error: 1.799 on 88 degrees of freedom
+## Multiple R-squared:  0.009569,   Adjusted R-squared:  -0.001686 
+## F-statistic: 0.8502 on 1 and 88 DF,  p-value: 0.359
 ## 
 ## Next step: Use 'setx' method</code></pre>
 <p>Some checking of the supplied weights are conducted, and warnings or error messages will be given to the user if, for example, the supplied weights are of the wrong length, or the variable name supplied is not present in the dataset. Negative weights are treated as zero weights. Here we use the object oriented approach to building the Zelig object.</p>

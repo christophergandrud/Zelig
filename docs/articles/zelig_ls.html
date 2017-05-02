@@ -42,7 +42,10 @@
       <a href="../articles/index.html#section-zelig-overview">Zelig Overview</a>
     </li>
     <li>
-      <a href="../articles/index.html#section-model-details">Model Details</a>
+      <a href="../articles/index.html#section-core-zelig-model-details">Core Zelig Model Details</a>
+    </li>
+    <li>
+      <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
       <a href="../articles/index.html#section-other">Other</a>
@@ -120,7 +123,7 @@
     <div class="page-header toc-ignore">
       <h1>Least Squares Regression</h1>
             
-            <h4 class="date">2017-04-27</h4>
+            <h4 class="date">2017-05-02</h4>
           </div>
 
     
@@ -191,23 +194,23 @@ x.low &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.
 ##  sim x :
 ##  -----
 ## ev
-##       mean        sd      50%     2.5%    97.5%
-## 1 5.428805 0.1935843 5.423595 5.063879 5.815446
+##      mean        sd      50%   2.5%    97.5%
+## 1 5.43098 0.1931441 5.432357 5.0757 5.809439
 ## pv
-##          mean       sd      50%      2.5%    97.5%
-## [1,] 5.496468 2.673364 5.605082 0.3269617 10.64722
+##          mean       sd      50%        2.5%   97.5%
+## [1,] 5.449769 2.815681 5.637227 -0.09183404 11.1073
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
-##       mean        sd      50%     2.5%    97.5%
-## 1 4.597888 0.1916757 4.602819 4.224583 4.958734
+##      mean        sd      50%     2.5%    97.5%
+## 1 4.59889 0.1902739 4.593402 4.228475 4.965155
 ## pv
-##          mean       sd      50%       2.5%    97.5%
-## [1,] 4.643955 2.707957 4.629544 -0.5793974 9.875569
+##          mean      sd      50%       2.5%   97.5%
+## [1,] 4.475169 2.78887 4.439436 -0.7929207 10.1176
 ## fd
-##         mean        sd        50%     2.5%      97.5%
-## 1 -0.8309176 0.2403094 -0.8352922 -1.30916 -0.3760723</code></pre>
+##         mean        sd        50%      2.5%      97.5%
+## 1 -0.8320904 0.2417538 -0.8270152 -1.301448 -0.3783023</code></pre>
 <p>Plot the simulated distributions:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s.out1)</code></pre></div>
 <p><img src="zelig_ls_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
