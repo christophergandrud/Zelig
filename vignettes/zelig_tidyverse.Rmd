@@ -43,6 +43,7 @@ This example shows one way to integrate the Tidyverse and Zelig into one workflo
 Imagine we used the Tidyverse to create a data set in tidy format that we want to analyse with Zelig:
 
 ```{r, echo=FALSE}
+data(swiss)
 swiss <- swiss[, c('Fertility', 'Agriculture', 'Examination')]
 head(swiss)
 ```
