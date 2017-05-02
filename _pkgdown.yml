@@ -94,7 +94,7 @@ articles:
       - zelig_probitgee
       - zelig_probitsurvey
       - zelig_quantile
-# zelig_relogit
+      - zelig_relogit
       - zelig_tobit
       - zelig_tobitbayes
       - zelig_weibull

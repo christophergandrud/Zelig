@@ -1,13 +1,13 @@
 #' Time-Series Model with Autoregressive Disturbance
 #'
-#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig-ar.html}
+#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig_ar.html}
 #' @import methods
 #' @export Zelig-ar
 #' @exportClass Zelig-ar
 #'
 #' @include model-zelig.R
 #' @include model-timeseries.R
-  
+
 zar <- setRefClass("Zelig-ar",
                        contains = "Zelig-timeseries")
 

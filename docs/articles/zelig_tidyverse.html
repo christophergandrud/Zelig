@@ -51,9 +51,6 @@
       <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
-      <a href="../articles/index.html#section-zelig-generalized-additive-model-details">Zelig Generalized Additive Model Details</a>
-    </li>
-    <li>
       <a href="../articles/index.html#section-other">Other</a>
     </li>
   </ul>
@@ -199,12 +196,12 @@ swiss <span class="op">%&gt;%</span><span class="st"> </span>
 
 <span class="kw">head</span>(sims.full)</code></pre></div>
 <pre><code>##   setx_value Agriculture Examination expected_value predicted_value
-## 1          x           1    16.48936       69.21851        67.99369
-## 2          x           1    16.48936       78.04938        62.77401
-## 3          x           1    16.48936       80.32213        63.99249
-## 4          x           1    16.48936       73.32492        74.99320
-## 5          x           1    16.48936       74.60341        73.18201
-## 6          x           1    16.48936       75.29466        72.62647</code></pre>
+## 1          x           1    16.48936       85.95357        86.33290
+## 2          x           1    16.48936       80.57535        86.32032
+## 3          x           1    16.48936       68.79061        64.86278
+## 4          x           1    16.48936       77.16452        85.57194
+## 5          x           1    16.48936       82.09409        86.63330
+## 6          x           1    16.48936       74.73686        61.24637</code></pre>
 <p>Each row contains information for an individual “observation”, i.e. a quantity of interest calculated from one draw of the model parameters from the multivariate normal distribution.</p>
 <p>The first three columns of the object returned by <code>zelig_qi_to_df</code> in this case contain information that identifies the scenario that the quantity of interest is from. For example, the first row is from a scenario where <code>Agriculture</code> is fitted at <code>1</code> and <code>Examination</code> is fitted at the sample mean 16.4893617. The <code>setx_value</code> column identifies if the values were fitted by a <code>setx</code> call as <code>x</code> or <code>x1</code>–a contrasting scenario used to find first differences.</p>
 <p>The final two columns contain the expected and predicted value of the quantity of interest, respectively.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
@@ -213,12 +210,12 @@ swiss <span class="op">%&gt;%</span><span class="st"> </span>
 <pre><code>## Slimming Expected Values . . .</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(sims.slimmed)</code></pre></div>
 <pre><code>##   setx_value Agriculture Examination qi_ci_min qi_ci_median qi_ci_max
-## 1          x           1    16.48936  66.26203     74.73548  83.53675
-## 2          x           6    16.48936  66.62814     74.25230  82.31222
-## 3          x          11    16.48936  66.92160     73.77974  81.05596
-## 4          x          16    16.48936  67.32931     73.33021  79.82141
-## 5          x          21    16.48936  67.72467     72.87712  78.54363
-## 6          x          26    16.48936  68.02628     72.38788  77.41115</code></pre>
+## 1          x           1    16.48936  66.34238     74.62261  83.64591
+## 2          x           6    16.48936  66.73729     74.25473  82.34100
+## 3          x          11    16.48936  66.92843     73.81773  81.05293
+## 4          x          16    16.48936  67.29407     73.26824  79.74265
+## 5          x          21    16.48936  67.29388     72.80614  78.49492
+## 6          x          26    16.48936  67.45332     72.40321  77.29143</code></pre>
 <p>Now we have one row for each scenario. This contains the columns <code>qi_ci_min</code>, <code>qi_ci_median</code>, and <code>qi_ci_max</code> for the central interval of the simulations from each scenario. By default <code>qi_ci_min</code> and <code>qi_ci_max</code> contain central interval bounds at the lower 2.5 and upper 97.5 percentiles, respectively. <code>qi_ci_median</code> contains the simulated distribution’s median. The interval can be changed with the <code>ci</code> argument. You can choose expected value (<code>ev</code>) or predicted value (<code>pv</code>) with the <code>qi_ci_type</code> argument.</p>
 <p>Now we have everything to make a ggplot2 plot summarizing the simulated quantity of interest:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sims.slimmed, <span class="kw">aes</span>(Agriculture, qi_ci_median)) <span class="op">+</span>
