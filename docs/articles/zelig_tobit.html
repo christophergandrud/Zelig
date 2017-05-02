@@ -48,6 +48,12 @@
       <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
+      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig Choice Model Details</a>
+    </li>
+    <li>
+      <a href="../articles/index.html#section-zelig-generalized-additive-model-details">Zelig Generalized Additive Model Details</a>
+    </li>
+    <li>
       <a href="../articles/index.html#section-other">Other</a>
     </li>
   </ul>
@@ -169,6 +175,11 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(tobin)</code></pre></div>
 <p>Estimating linear regression using <code>tobit</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(durable <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>quant, <span class="dt">model =</span> <span class="st">"tobit"</span>, <span class="dt">data =</span> tobin)</code></pre></div>
+<pre><code>## How to cite this model in Zelig:
+##   Christian Kleiber, and Achim Zeileis. 2011.
+##   tobit: Linear regression for Left-Censored Dependent Variable
+##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
+##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <p>Summarize estimated paramters:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out)</code></pre></div>
 <pre><code>## Model: 

@@ -17,6 +17,10 @@ navbar:
           href: "articles/index.html#section-core-zelig-model-details"
         - text: "Zelig Choice Model Details"
           href: "articles/index.html#section-zelig-choice-model-details"
+        - text: "Zelig Choice Model Details"
+          href: "articles/index.html#section-zelig-ecological-inference-ei-model-details"
+#        - text: "Zelig Generalized Additive Model Details"
+#          href: "articles/index.html#section-zelig-generalized-additive-model-details"
         - text: "Other"
           href: "articles/index.html#section-other"
     - text: "Function Reference"
@@ -104,7 +108,12 @@ articles:
   - title: "Zelig Ecological Inference (EI) Model Details"
     contents:
       - zeligei_eidynamic
-      - 
+      - zeligei_eihier
+      - zeligei_eiml
+      - zeligei_eirxc
+#  - title: "Zelig Generalized Additive Model Details"
+#    contents:
+#        - zeliggam_logitgam
   - title: "Other"
     contents:
       - about

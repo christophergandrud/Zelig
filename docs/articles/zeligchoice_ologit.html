@@ -48,6 +48,12 @@
       <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
+      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig Choice Model Details</a>
+    </li>
+    <li>
+      <a href="../articles/index.html#section-zelig-generalized-additive-model-details">Zelig Generalized Additive Model Details</a>
+    </li>
+    <li>
       <a href="../articles/index.html#section-other">Other</a>
     </li>
   </ul>
@@ -166,6 +172,11 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <p>Estimate the model:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(ncost <span class="op">~</span><span class="st"> </span>mil <span class="op">+</span><span class="st"> </span>coop, <span class="dt">model =</span> <span class="st">"ologit"</span>,
                <span class="dt">data =</span> sanction)</code></pre></div>
+<pre><code>## How to cite this model in Zelig:
+##   William N. Venables, and Brian D. Ripley. 2011.
+##   ologit: Ordinal Logit Regression for Ordered Categorical Dependent Variables
+##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
+##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <p>Summarize estimated paramters:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out)</code></pre></div>
 <pre><code>## Model: 
@@ -216,6 +227,11 @@ Graphs of Quantities of Interest for Ordered Logit
 <p>Using the sample data <code>sanction</code>, estimate the empirical model and returning the coefficients:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(<span class="kw">as.factor</span>(cost) <span class="op">~</span><span class="st"> </span>mil <span class="op">+</span><span class="st"> </span>coop, <span class="dt">model =</span> <span class="st">"ologit"</span>,
                <span class="dt">data =</span> sanction)</code></pre></div>
+<pre><code>## How to cite this model in Zelig:
+##   William N. Venables, and Brian D. Ripley. 2011.
+##   ologit: Ordinal Logit Regression for Ordered Categorical Dependent Variables
+##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
+##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out)</code></pre></div>
 <pre><code>## Model: 
 ## Call:

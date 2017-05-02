@@ -25,7 +25,7 @@ options(cite = FALSE)
 
 
 
-Quinn's Dynamic Ecological Inference Model with `eidynamic` from ZeligEI.
+Quinn's Dynamic Ecological Inference Model with `eidynamic` in ZeligEI.
 
 Syntax
 ------

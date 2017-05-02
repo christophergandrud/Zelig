@@ -76,22 +76,32 @@ zelig_core <- list(name = "Zelig",
                             )),
                        list(name = "Choice",
                             children = list(
-                                list(name = "blogit"),
-                                list(name = "bprobit"),
-                                list(name = "obinchoice"),
-                                list(name = "ologit"),
-                                list(name = "oprobit"),
-                                list(name = "mlogit"),
-                                list(name = "bbinchoice")
+                                list(name = "obinchoice",
+                                    children = list(
+                                        list(name = "ologit"),
+                                        list(name = "oprobit")
+                                )),
+                                list(name = "bbinchoice",
+                                    children = list(
+                                        list(name = "blogit"),
+                                        list(name = "bprobit")
+                                )),
+                                list(name = "mlogit")
                             )),
-                       list(name = "GAM",
-                            children = list(
-                                list(name = "gam")
-                            )),
+#                       list(name = "GAM",
+#                            children = list(
+#                                list(name = "binchoice GAM",
+#                                    children = list(
+#                                        list(name = "probit"),
+#                                        list(name = "logit")
+#                            ))
+#                        )),
                        list(name = "EI",
                             children = list(
                                 list(name = "dynamic"),
-                                list(name = "hierarchical")
+                                list(name = "hierarchical"),
+                                list(name = "maximum likelihood"),
+                                list(name = "multinomial dirichlet")
                             ))
                    ))
 

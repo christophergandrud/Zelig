@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AR • Zelig</title>
+<title>Maximum Likelihood Ecological Inference • Zelig</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -127,7 +127,7 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>AR</h1>
+      <h1>Maximum Likelihood Ecological Inference</h1>
             
             <h4 class="date">2017-05-02</h4>
           </div>
@@ -137,19 +137,51 @@
 <div class="contents">
 <p><em>Built using Zelig version 5.1.0.90000</em></p>
 <hr>
-<p>Time-Series Model with Autoregressive Disturbance with <code>ar</code>.</p>
+<p>Ecological Inference Model by Maximum Likelihood with <code>eiml</code> in ZeligEI.</p>
 <div id="syntax" class="section level2">
 <h2 class="hasAnchor">
 <a href="#syntax" class="anchor"></a>Syntax</h2>
-<p>With reference classes:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span>zar<span class="op">$</span><span class="kw">new</span>()
-z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2, <span class="dt">weights =</span> w, <span class="dt">data =</span> mydata)
+<p>The EI models accept several different formula syntaxes. If <span class="math inline">\(C1\)</span> and <span class="math inline">\(C2\)</span> are the column totals, and <span class="math inline">\(R1\)</span> and <span class="math inline">\(R2\)</span> are the row totals, and <span class="math inline">\(N=R1_i + R2_i = C1_i + C2_i\)</span> is the total in unit <span class="math inline">\(i\)</span>, then the formula can be expressed with just one row and one column, with the totals provided separately as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(C1 <span class="op">~</span><span class="st"> </span>R1, <span class="dt">N =</span> N, <span class="dt">data =</span> data)</code></pre></div>
+<p>The argument <code>N</code> can be either a numeric vector of the total in each <em>i</em>-th unit, or the character name of a variable in the dataset that contains these values.</p>
+<p>Or with both rows and columns coupled together, and omitting the totals:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(<span class="kw">cbind</span>(C1,C2) <span class="op">~</span><span class="st"> </span><span class="kw">cbind</span>(R1,R2), <span class="dt">data =</span> data)</code></pre></div>
+<p>Additionally, if <code>C1</code>, <code>C2</code>, <code>R1</code>, <code>R2</code> are percentages rather than counts, then either formula method above is acceptable, however, <code>N</code> must always be provided.</p>
+<p>First load packages:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"Zelig"</span>)
+<span class="kw">library</span>(<span class="st">"ZeligEI"</span>)</code></pre></div>
+<p>Here is an example of all the syntax for the analysis using the first syntax method, and the direct use of the reference classes:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span>zeiml<span class="op">$</span><span class="kw">new</span>()
+z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(C1 <span class="op">~</span><span class="st"> </span>R1, <span class="dt">N =</span> myN, <span class="dt">weights =</span> w, <span class="dt">data =</span> myData)
 z5<span class="op">$</span><span class="kw"><a href="../reference/setx.html">setx</a></span>()
 z5<span class="op">$</span><span class="kw"><a href="../reference/sim.html">sim</a></span>()</code></pre></div>
-<p>With the Zelig 4 compatibility wrappers:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2, <span class="dt">model =</span> <span class="st">"ar"</span>, <span class="dt">weights =</span> w, <span class="dt">data =</span> mydata)
+<p>With the Zelig 4 compatibility wrappers this looks like:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(C1 <span class="op">~</span><span class="st"> </span>R1, <span class="dt">N=</span>N, <span class="dt">model =</span> <span class="st">"eiml"</span>, <span class="dt">weights =</span> w, <span class="dt">data =</span> myData)
 x.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out)
 s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.html">sim</a></span>(z.out, <span class="dt">x =</span> x.out)</code></pre></div>
+</div>
+<div id="examples" class="section level2">
+<h2 class="hasAnchor">
+<a href="#examples" class="anchor"></a>Examples</h2>
+<p>We’ll use a dataset from the <code>ei</code> package, of black and non-black turnout in 141 precincts.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"ei"</span>, <span class="dt">quietly=</span><span class="ot">TRUE</span>)
+<span class="kw">data</span>(sample)</code></pre></div>
+<p>Here is the model estimated in Zelig.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span>zeiml<span class="op">$</span><span class="kw">new</span>()
+z.out<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(t <span class="op">~</span><span class="st"> </span>x, <span class="dt">N =</span> <span class="st">"n"</span>, <span class="dt">data =</span> sample)</code></pre></div>
+<pre><code>## [1] "Running 2x2 ei"</code></pre>
+<pre><code>## Maximizing likelihood</code></pre>
+<pre><code>## Importance Sampling..</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out)</code></pre></div>
+<pre><code>##     Length      Class       Mode 
+##          1 Zelig-eiml         S4</code></pre>
+</div>
+<div id="see-also" class="section level2">
+<h2 class="hasAnchor">
+<a href="#see-also" class="anchor"></a>See also</h2>
+<p>This model is part of the ei package by Gary King and Molly Roberts. Advanced users may wish to refer to <code>help(ei)</code> in the ei package.</p>
+<p>King G (1997). <em>A Solution to the Ecological Inference Problem: Reconstructing Individual Behavior from Aggregate Data</em>. Princeton University Press, Princeton.</p>
+<p>King G and Roberts M (2016). <em>ei: Ecological Inference</em>. R package version 1.3-3, &lt;URL: <a href="https://CRAN.R-project.org/package=ei" class="uri">https://CRAN.R-project.org/package=ei</a>&gt;.</p>
 </div>
 </div>
   </div>
@@ -159,6 +191,8 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#syntax">Syntax</a></li>
+      <li><a href="#examples">Examples</a></li>
+      <li><a href="#see-also">See also</a></li>
       </ul>
 </div>
       </div>

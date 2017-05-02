@@ -48,6 +48,12 @@
       <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
+      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig Choice Model Details</a>
+    </li>
+    <li>
+      <a href="../articles/index.html#section-zelig-generalized-additive-model-details">Zelig Generalized Additive Model Details</a>
+    </li>
+    <li>
       <a href="../articles/index.html#section-other">Other</a>
     </li>
   </ul>
@@ -162,6 +168,11 @@ z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zeli
                 <span class="dt">data =</span> apistrat)</code></pre></div>
 <pre><code>## Warning in eval(family$initialize): non-integer #successes in a binomial
 ## glm!</code></pre>
+<pre><code>## How to cite this model in Zelig:
+##   Nicholas Carnes. 2017.
+##   probit-survey: Probit Regression with Survey Weights
+##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
+##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
 <pre><code>## Model: 
 ## 
@@ -226,6 +237,11 @@ Graphs of Quantities of Interest for Probit Survey Model
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(yr.rnd.numeric <span class="op">~</span><span class="st"> </span>meals <span class="op">+</span><span class="st"> </span>mobility, <span class="dt">model =</span> <span class="st">"probit.survey"</span>, <span class="dt">strata=</span><span class="op">~</span>stype, <span class="dt">fpc=</span><span class="op">~</span>fpc, <span class="dt">data =</span> apistrat)</code></pre></div>
 <pre><code>## Warning in eval(family$initialize): non-integer #successes in a binomial
 ## glm!</code></pre>
+<pre><code>## How to cite this model in Zelig:
+##   Nicholas Carnes. 2017.
+##   probit-survey: Probit Regression with Survey Weights
+##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
+##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out2)</code></pre></div>
 <pre><code>## Model: 
 ## 
@@ -281,6 +297,11 @@ scd<span class="op">$</span>sued &lt;-<span class="st"> </span><span class="kw">
 <pre><code>## Warning in eval(family$initialize): non-integer #successes in a binomial
 ## glm!</code></pre>
 <pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre><code>## How to cite this model in Zelig:
+##   Nicholas Carnes. 2017.
+##   probit-survey: Probit Regression with Survey Weights
+##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
+##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out3)</code></pre></div>
 <pre><code>## Model: 
 ## 
