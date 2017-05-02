@@ -171,33 +171,33 @@ that it was somewhere between $(0.002, 0.005)$. To estimate a
 model with a range of feasible estimates for $\tau$ (using the
 default prior correction method for case control correction):
 
-```{r, eval = TRUE}
+```{r, eval = FALSE}
 z.out2 <- zelig(conflict ~ major + contig + power + maxdem + mindem + years, data = mid, model = "relogit", tau = c(0.002, 0.005))
 ```
 
 Summarize the model output:
 
-```{r, eval = TRUE}
+```{r, eval = FALSE}
 z.out2
 ```
 
 Set the explanatory variables to their means:
 
-```{r, eval = TRUE}
+```{r, eval = FALSE}
 x.out2 <- setx(z.out2)
 ```
 
 Simulate quantities of interest:
 
-```{r, eval = TRUE}
+```{r, eval = FALSE}
 s.out <- sim(z.out2, x = x.out2)
 ```
 
-```{r, eval = TRUE}
+```{r, eval = FALSE}
 summary(s.out2)
 ```
 
-```{r Zelig-relogit2, dev=c("png", "pdf"), eval = TRUE, fig.cap = "Graphs of Quantities of Interest for Rare Events Logistic Regression"}
+```{r Zelig-relogit2, dev=c("png", "pdf"), eval = FALSE, fig.cap = "Graphs of Quantities of Interest for Rare Events Logistic Regression"}
 plot(s.out2)
 ```
 

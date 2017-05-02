@@ -165,16 +165,16 @@ w2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c<
 ## 
 ## Weighted Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -2.7841 -1.0011 -0.4650  0.3919  2.9804 
+## -2.6522 -1.2344 -0.4596  0.2224  3.2509 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)   0.1457     0.2883   0.506  0.61442
-## x             1.4432     0.5023   2.873  0.00509
+## (Intercept)  -0.3951     0.3083  -1.281 0.203486
+## x             1.9384     0.4952   3.914 0.000178
 ## 
-## Residual standard error: 1.29 on 88 degrees of freedom
-## Multiple R-squared:  0.08577,    Adjusted R-squared:  0.07538 
-## F-statistic: 8.256 on 1 and 88 DF,  p-value: 0.005091
+## Residual standard error: 1.329 on 88 degrees of freedom
+## Multiple R-squared:  0.1483, Adjusted R-squared:  0.1386 
+## F-statistic: 15.32 on 1 and 88 DF,  p-value: 0.0001785
 ## 
 ## Next step: Use 'setx' method</code></pre>
 <p>In our second example, the weights are provided as a separate vector of the same length as the dataset. These weights give weight to both relationships present when we constructed the data, and we see the estimated relationship is now negative.</p>
@@ -188,16 +188,16 @@ w2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c<
 ## 
 ## Weighted Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -5.0956 -0.8511 -0.1549  0.8337  3.6364 
+## -4.9228 -0.8965 -0.0920  0.9671  4.5348 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept) -0.06997    0.34074  -0.205    0.838
-## x            0.37675    0.61268   0.615    0.540
+## (Intercept) -0.06659    0.45019  -0.148    0.883
+## x           -0.68744    0.72241  -0.952    0.344
 ## 
-## Residual standard error: 1.667 on 88 degrees of freedom
-## Multiple R-squared:  0.004278,   Adjusted R-squared:  -0.007037 
-## F-statistic: 0.3781 on 1 and 88 DF,  p-value: 0.5402
+## Residual standard error: 1.782 on 88 degrees of freedom
+## Multiple R-squared:  0.01019,    Adjusted R-squared:  -0.001063 
+## F-statistic: 0.9055 on 1 and 88 DF,  p-value: 0.3439
 ## 
 ## Next step: Use 'setx' method</code></pre>
 <p>Some checking of the supplied weights are conducted, and warnings or error messages will be given to the user if, for example, the supplied weights are of the wrong length, or the variable name supplied is not present in the dataset. Negative weights are treated as zero weights. Here we use the object oriented approach to building the Zelig object.</p>
