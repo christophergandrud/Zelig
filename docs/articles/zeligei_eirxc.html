@@ -141,8 +141,7 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>( <span class="kw">cbind</span>(C1,C2,C3) <span class="op">~</span><span class="st"> </span><span class="kw">cbind</span>(R1,R2,R3), <span class="dt">N=</span>N, <span class="dt">data=</span>data)</code></pre></div>
 <p>The argument <code>N</code> can be either a numeric vector of the total in each <em>i</em>-th unit, or the character name of a variable in the dataset that contains these values.</p>
 <p>First load packages:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"Zelig"</span>)
-<span class="kw">library</span>(<span class="st">"ZeligEI"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(zeligverse)</code></pre></div>
 <p>Here is an example of all the syntax for the analysis using the first syntax method, and the direct use of the reference classes:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span>zeirxc<span class="op">$</span><span class="kw">new</span>()
 z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(<span class="kw">cbind</span>(C1, C2, C3) <span class="op">~</span><span class="st"> </span><span class="kw">cbind</span>(R1, R2, R3), <span class="dt">N =</span> myN,
@@ -166,8 +165,51 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 z.out<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(<span class="kw">cbind</span>(dem, rep, non) <span class="op">~</span><span class="st"> </span><span class="kw">cbind</span>(black, white, natam),
             <span class="dt">N =</span> <span class="st">"total"</span>, <span class="dt">data =</span> senc)
 <span class="kw">summary</span>(z.out)</code></pre></div>
-<pre><code>##      Length       Class        Mode 
-##           1 Zelig-eirxc          S4</code></pre>
+<pre><code>## Model: 
+## 
+## Formula:  cbind(dem, rep, non) ~ cbind(black, white, natam) 
+## Total sims:   
+## Burnin discarded:  
+## Sims saved:  
+## 
+## 
+## Acceptance ratios for Beta (averaged over units):
+##       dem   rep  
+## black 0.467 0.394
+## white 0.313 0.285
+## natam 0.593 0.522
+## 
+## Acceptance ratios for alpha:
+##        columns
+## rows    dem   rep   non  
+##   black 0.683 0.192 0.144
+##   white 0.702 0.552 0.388
+##   natam 0.629 0.203 0.156
+## 
+## Draws for Alpha:
+##           Mean   Std. Error 2.5%   97.5% 
+## black.dem 4.9606 0.8259     3.6629 7.0602
+## white.dem 6.9323 0.4460     6.1259 7.8585
+## natam.dem 5.9738 1.1092     3.6357 7.8956
+## black.rep 0.6211 0.0873     0.4562 0.8134
+## white.rep 4.1032 0.2658     3.5925 4.5817
+## natam.rep 0.6134 0.0897     0.4676 0.8301
+## black.non 0.4989 0.0810     0.3727 0.6651
+## white.non 2.1443 0.1392     1.9154 2.4543
+## natam.non 0.6025 0.0891     0.4654 0.7921
+## 
+## Aggregate cell counts (summed over units):
+##           Mean   Std. Error 2.5%   97.5% 
+## black.dem  66542   1155      64360  68005
+## white.dem 124692   1332     122913 127083
+## natam.dem  25112    192      24683  25404
+## black.rep   6733    547       6117   7862
+## white.rep  94161    670      92712  95146
+## natam.rep   1240    118       1020   1476
+## black.non   4971    801       3792   6347
+## white.non  41682    889      40120  43024
+## natam.non   1156    169        840   1482
+## Next step: Use 'setx' method</code></pre>
 <p>You can check for convergence before summarizing the estimates with three diagnostic tests. See the section <a href="diagnostics.html">Diagnostics for Zelig Models</a> for more examples of these tests, and interpretation of their meaning. For brevity we only show the first set of parameters, the <span class="math inline">\(\alpha\)</span>’s, as there are twice as many <span class="math inline">\(\beta\)</span>’s as there are precincts:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gd &lt;-<span class="st"> </span>z.out<span class="op">$</span><span class="kw">geweke.diag</span>()
 <span class="kw">print</span>(gd[[<span class="dv">1</span>]])</code></pre></div>

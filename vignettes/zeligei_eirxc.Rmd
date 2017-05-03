@@ -23,8 +23,6 @@ options(cite = FALSE)
 ```
 ---
 
-
-
 Multinomial Dirichlet model for Ecological Inference in RxC tables with `rxc` using ZeligEI.
 
 Syntax
@@ -46,9 +44,8 @@ The argument `N` can be either a numeric vector of the total in each *i*-th unit
 
 First load packages:
 
-```{r, eval = FALSE}
-library("Zelig")
-library("ZeligEI")
+```{r, eval = TRUE, message=FALSE}
+library(zeligverse)
 ```
 
 Here is an example of all the syntax for the analysis using the first syntax method, and the direct use of the reference classes:
@@ -75,7 +72,6 @@ Examples
 
 ```{r, eval = TRUE, echo = FALSE}
 rm(list=ls(pattern="\\.out"))
-suppressWarnings(suppressMessages(library(ZeligEI)))
 set.seed(1234)
 ```
 

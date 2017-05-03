@@ -44,13 +44,13 @@ All models in Zelig can be estimated and results explored presented using four s
 
 4. `plot` to plot the simulation results.
 
-### Zelig 5 reference classes
+#### Zelig 5 reference classes
 
 Zelig 5 introduced [reference classes](http://adv-r.had.co.nz/R5.html). These
 enable a different way of working with Zelig that is detailed in [a separate vignette](docs/articles/zelig5_vs_zelig5.html). Examples throughout the package
 documentation use both the ways of interacting with Zelig.
 
-## Zelig 5 Quickstart Guide
+## Zelig Quickstart Guide
 
 Let’s walk through an example. This example uses the swiss dataset. It contains
 data on fertility and socioeconomic factors in Switzerland’s 47 French-speaking
@@ -62,13 +62,15 @@ details).
 
 ## Installing and Loading Zelig
 
-If you haven't already done so, open your R console and install Zelig:
+If you haven't already done so, open your R console and install Zelig. We 
+recommend installing Zelig with the zeligverse package. This installs core
+Zelig and ancillary packages at once.
 
 ```{r eval=FALSE}
-install.packages('Zelig')
+install.packages('zeligverse')
 ```
 
-Alternatively you can install the development version with:
+Alternatively you can install the development version of Zelig with:
 
 ```{r eval=FALSE}
 devtools::install_github('IQSS/Zelig')
@@ -77,13 +79,13 @@ devtools::install_github('IQSS/Zelig')
 Once Zelig is installed, load it:
 
 ```{r message=FALSE}
-library(Zelig)
+library(zeligverse)
 ```
 
 ## Building Models
 
 Let’s assume we want to estimate the effect of education on fertility. Since
-fertility is a continuous variable, least squares is an appropriate model
+fertility is a continuous variable, least squares (`ls`) is an appropriate model
 choice. To estimate our model, we call the `zelig()` function with three two
 arguments: equation, model type, and data:
 
@@ -160,7 +162,7 @@ z5_2 <- setx(z5_2, Education = 5:15)
 z5_2 <- sim(z5_2)
 ```
 
-Then use the `graph()` method as before:
+Then use the `plot()` function as before:
 
 ```{r example_plot_ci_plot, fig.height=5, fig.width=5}
 z5_2 <- plot(z5_2)

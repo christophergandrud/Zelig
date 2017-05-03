@@ -21,7 +21,7 @@ knitr::opts_knit$set(
 For convenience, you may wish to transform one or more of your covariates within the `zelig` model estimation call. For example, imagine we want to natural log transform the variable `dist` in a linear regression:
 
 ```{r, message=FALSE}
-library(Zelig)
+library(zeligverse)
 library(dplyr)
 
 z.log <- zelig(speed ~ log(dist), data = cars, model = 'ls', cite = FALSE)

@@ -134,7 +134,7 @@
 <h2 class="hasAnchor">
 <a href="#supported-transformations" class="anchor"></a> Supported transformations</h2>
 <p>For convenience, you may wish to transform one or more of your covariates within the <code>zelig</code> model estimation call. For example, imagine we want to natural log transform the variable <code>dist</code> in a linear regression:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Zelig)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(zeligverse)
 <span class="kw">library</span>(dplyr)
 
 z.log &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(speed <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(dist), <span class="dt">data =</span> cars, <span class="dt">model =</span> <span class="st">'ls'</span>, <span class="dt">cite =</span> <span class="ot">FALSE</span>)</code></pre></div>

@@ -142,8 +142,7 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(<span class="kw">cbind</span>(C1,C2) <span class="op">~</span><span class="st"> </span><span class="kw">cbind</span>(R1,R2), <span class="dt">data =</span> data)</code></pre></div>
 <p>Additionally, if <code>C1</code>, <code>C2</code>, <code>R1</code>, <code>R2</code> are percentages rather than counts, then either formula method above is acceptable, however, <code>N</code> must always be provided.</p>
 <p>First load packages:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"Zelig"</span>)
-<span class="kw">library</span>(<span class="st">"ZeligEI"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(zeligverse)</code></pre></div>
 <p>Here is an example of all the syntax for the analysis using the first syntax method, and the direct use of the reference classes:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span>zeiml<span class="op">$</span><span class="kw">new</span>()
 z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(C1 <span class="op">~</span><span class="st"> </span>R1, <span class="dt">N =</span> myN, <span class="dt">weights =</span> w, <span class="dt">data =</span> myData)
@@ -167,8 +166,51 @@ z.out<span class="op">$</span><span class="kw"><a href="../reference/zelig.html"
 <pre><code>## Maximizing likelihood</code></pre>
 <pre><code>## Importance Sampling..</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out)</code></pre></div>
-<pre><code>##     Length      Class       Mode 
-##          1 Zelig-eiml         S4</code></pre>
+<pre><code>## Model: 
+## $Erho
+## [1] 0.5
+## 
+## $Esigma
+## [1] 0.5
+## 
+## $Ebeta
+## [1] 0.5
+## 
+## $N
+## [1] 75
+## 
+## $Resamp
+## [1] 21
+## 
+## $`Maximum likelihood results in scale of estimation (and se's)`
+##         Bb0       Bw0       sigB       sigW       rho Zb Zw
+##  -1.1533874 0.8214529 -2.2860101 -1.8816375 0.4128279  0  0
+##   0.1018115 0.1017286  0.2494434  0.1572393 0.3651596  0  0
+## 
+## $`Untruncated psi's`
+##         BB        BW        SB        SW       RHO
+##  0.1955265 0.7227119 0.1069191 0.1531497 0.3520577
+## 
+## $`Truncated psi's (ultimate scale)`
+##         BB        BW         SB        SW       RHO
+##  0.2031422 0.7139941 0.09837747 0.1418888 0.2960979
+## 
+## $`Aggregate Bounds`
+##            betab     betaw
+## lower 0.09549504 0.3979843
+## upper 0.60893461 0.8031228
+## 
+## $`Estimates of Aggregate Quantities of Interest`
+##         mean          sd
+## Bb 0.2028756 0.012304964
+## Bw 0.7183923 0.009709447
+## 
+## $precision
+## [1] 4
+## 
+## attr(,"class")
+## [1] "summary"
+## Next step: Use 'setx' method</code></pre>
 </div>
 <div id="see-also" class="section level2">
 <h2 class="hasAnchor">

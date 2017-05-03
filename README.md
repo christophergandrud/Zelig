@@ -35,7 +35,7 @@ using four simple functions:
 
 4.  `plot` to plot the simulation results.
 
-### Zelig 5 reference classes
+#### Zelig 5 reference classes
 
 Zelig 5 introduced [reference classes](http://adv-r.had.co.nz/R5.html).
 These enable a different way of working with Zelig that is detailed in
@@ -43,8 +43,8 @@ These enable a different way of working with Zelig that is detailed in
 throughout the package documentation use both the ways of interacting
 with Zelig.
 
-Zelig 5 Quickstart Guide
-------------------------
+Zelig Quickstart Guide
+----------------------
 
 Let’s walk through an example. This example uses the swiss dataset. It
 contains data on fertility and socioeconomic factors in Switzerland’s 47
@@ -57,23 +57,25 @@ measure (see Muehlenbein (2010, 80-81) for details).
 Installing and Loading Zelig
 ----------------------------
 
-If you haven't already done so, open your R console and install Zelig:
+If you haven't already done so, open your R console and install Zelig.
+We recommend installing Zelig with the zeligverse package. This installs
+core Zelig and ancillary packages at once.
 
-    install.packages('Zelig')
+    install.packages('zeligverse')
 
-Alternatively you can install the development version with:
+Alternatively you can install the development version of Zelig with:
 
     devtools::install_github('IQSS/Zelig')
 
 Once Zelig is installed, load it:
 
-    library(Zelig)
+    library(zeligverse)
 
 Building Models
 ---------------
 
 Let’s assume we want to estimate the effect of education on fertility.
-Since fertility is a continuous variable, least squares is an
+Since fertility is a continuous variable, least squares (`ls`) is an
 appropriate model choice. To estimate our model, we call the `zelig()`
 function with three two arguments: equation, model type, and data:
 
@@ -148,22 +150,22 @@ After setting our predictor value, we simulate using the `sim()` method:
     ##  -----
     ## ev
     ##       mean       sd      50%     2.5%    97.5%
-    ## 1 75.38612 1.623396 75.34354 72.18625 78.63348
+    ## 1 75.23186 1.690413 75.33837 71.89875 78.42275
     ## pv
     ##          mean       sd      50%     2.5%    97.5%
-    ## [1,] 75.48348 9.546445 75.51191 56.84544 93.45947
+    ## [1,] 75.17377 9.604147 74.80339 57.16008 94.10329
     ## 
     ##  sim x1 :
     ##  -----
     ## ev
-    ##       mean       sd      50%     2.5%    97.5%
-    ## 1 66.61393 1.512494 66.63719 63.58909 69.56729
+    ##       mean       sd      50%  2.5%    97.5%
+    ## 1 66.70863 1.543645 66.70687 63.57 69.65925
     ## pv
     ##          mean       sd      50%     2.5%    97.5%
-    ## [1,] 66.57075 9.209551 66.56047 48.62036 85.20099
+    ## [1,] 66.74889 9.370223 66.69275 48.14495 85.53156
     ## fd
-    ##        mean       sd      50%      2.5%     97.5%
-    ## 1 -8.772184 1.424851 -8.81728 -11.49766 -6.009336
+    ##        mean       sd       50%      2.5%     97.5%
+    ## 1 -8.523233 1.444024 -8.531915 -11.39767 -5.688249
 
 At this point, we’ve estimated a model, set the predictor value, and
 estimated easily interpretable quantities of interest. The `summary()`
@@ -192,7 +194,7 @@ values:
     # run simulations and estimate quantities of interest
     z5_2 <- sim(z5_2)
 
-Then use the `graph()` method as before:
+Then use the `plot()` function as before:
 
     z5_2 <- plot(z5_2)
 

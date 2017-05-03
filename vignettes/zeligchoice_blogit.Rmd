@@ -43,9 +43,8 @@ Syntax
 
 First load packages:
 
-```{r, eval = FALSE}
-library("Zelig")
-library("ZeligChoice")
+```{r, eval = TRUE, message=FALSE}
+library(zeligverse)
 ```
 
 With reference classes:
@@ -102,8 +101,6 @@ Examples
 
 ```{r, eval = TRUE, echo = FALSE}
 rm(list=ls(pattern="\\.out"))
-suppressWarnings(suppressMessages(library(Zelig)))
-suppressWarnings(suppressMessages(library(ZeligChoice)))
 set.seed(1234)
 ```
 
