@@ -211,3 +211,9 @@ Then use the `graph()` method as before:
 ```{r example_plot_ci_plot, fig.height=5, fig.width=5}
 z5$graph()
 ```
+
+# Building Zelig (for developers)
+
+Zelig can be fully checked and build using the code in
+[check_build_zelig.R](check_build_zelig.R). Note that this can be time consuming
+due to the extensive test coverage.

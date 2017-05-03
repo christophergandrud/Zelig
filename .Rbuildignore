@@ -12,3 +12,4 @@ _pkgdown.yml
 docs/*
 vignettes/_static/*
 ^\.iqss_reportcard\.yml$
+check_build_zelig.R

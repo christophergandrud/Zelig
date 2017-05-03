@@ -48,7 +48,7 @@
       <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
-      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig Choice Model Details</a>
+      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig EI Model Details</a>
     </li>
     <li>
       <a href="../articles/index.html#section-other">Other</a>
@@ -126,7 +126,7 @@
     <div class="page-header toc-ignore">
       <h1>Zelig 5 Quickstart Guide</h1>
             
-            <h4 class="date">2017-05-02</h4>
+            <h4 class="date">2017-05-03</h4>
           </div>
 
     
@@ -167,7 +167,10 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># initialize Zelig5 least squares object</span>
 z5 &lt;-<span class="st"> </span>zls<span class="op">$</span><span class="kw">new</span>()</code></pre></div>
 <p>To estimate our model, we call the <code><a href="../reference/zelig.html">zelig()</a></code> method, which is a function that is internal to the Zelig object. We pass the <code><a href="../reference/zelig.html">zelig()</a></code> method two arguments: equation and data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># estimate ls model</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load data</span>
+<span class="kw">data</span>(swiss)
+
+<span class="co"># estimate ls model</span>
 z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Fertility <span class="op">~</span><span class="st"> </span>Education, <span class="dt">data =</span> swiss)
 
 <span class="co"># model summary</span>
@@ -218,23 +221,23 @@ z5<span class="op">$</span><span class="kw"><a href="../reference/sim.html">sim<
 ##  sim x :
 ##  -----
 ## ev
-##       mean      sd      50%     2.5%    97.5%
-## 1 75.23509 1.60176 75.20385 72.03737 78.40025
+##       mean       sd      50%     2.5%    97.5%
+## 1 75.28696 1.579012 75.26155 72.12195 78.40771
 ## pv
-##          mean     sd      50%    2.5%    97.5%
-## [1,] 75.29457 9.3904 75.13676 57.0608 94.26473
+##          mean      sd      50%     2.5%    97.5%
+## [1,] 75.26377 9.65287 75.09359 55.71736 93.65316
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
-##       mean       sd     50%     2.5%    97.5%
-## 1 66.64329 1.529325 66.6546 63.58506 69.47965
+##       mean       sd      50%     2.5%    97.5%
+## 1 66.62948 1.489989 66.70249 63.63701 69.40581
 ## pv
-##          mean       sd     50%     2.5%    97.5%
-## [1,] 66.22369 9.595421 66.2919 46.80831 85.14914
+##          mean       sd      50%     2.5%    97.5%
+## [1,] 66.82022 9.755046 66.95574 47.80735 86.76737
 ## fd
-##        mean       sd       50%      2.5%     97.5%
-## 1 -8.591799 1.461341 -8.535683 -11.36851 -5.790441</code></pre>
+##        mean       sd     50%      2.5%    97.5%
+## 1 -8.657476 1.388986 -8.6831 -11.21982 -5.98007</code></pre>
 <p>At this point, we’ve estimated a model, set the predictor value, and estimated easily interpretable quantities of interest. The <code>summary()</code> method shows us our quantities of interest, namely, our expected and predicted values at each level of education, as well as our first differences–the difference in expected values at the set levels of education.</p>
 </div>
 <div id="visualizations" class="section level3">

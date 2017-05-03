@@ -48,7 +48,7 @@
       <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
-      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig Choice Model Details</a>
+      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig EI Model Details</a>
     </li>
     <li>
       <a href="../articles/index.html#section-other">Other</a>
@@ -126,7 +126,7 @@
     <div class="page-header toc-ignore">
       <h1>Diagnostics for MCMC convergence</h1>
             
-            <h4 class="date">2017-05-02</h4>
+            <h4 class="date">2017-05-03</h4>
           </div>
 
     
@@ -138,11 +138,6 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(macro)
 z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(unem <span class="op">~</span><span class="st"> </span>gdp <span class="op">+</span><span class="st"> </span>capmob <span class="op">+</span><span class="st"> </span>trade, <span class="dt">model =</span> <span class="st">"normal.bayes"</span>,
                <span class="dt">data =</span> macro, <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   Ben Goodrich, and Ying Lu. 2013.
-##   normal-bayes: Bayesian Normal Linear Regression
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <p>You can check for convergence before summarizing the estimates with three diagnostic tests.</p>
 <div id="geweke-diagnostic" class="section level3">
 <h3 class="hasAnchor">

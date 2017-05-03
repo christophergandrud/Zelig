@@ -48,7 +48,7 @@
       <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
-      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig Choice Model Details</a>
+      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig EI Model Details</a>
     </li>
     <li>
       <a href="../articles/index.html#section-other">Other</a>
@@ -126,7 +126,7 @@
     <div class="page-header toc-ignore">
       <h1>Negative Binomial</h1>
             
-            <h4 class="date">2017-05-02</h4>
+            <h4 class="date">2017-05-03</h4>
           </div>
 
     
@@ -156,11 +156,6 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(sanction)</code></pre></div>
 <p>Estimate the model:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(num <span class="op">~</span><span class="st"> </span>target <span class="op">+</span><span class="st"> </span>coop, <span class="dt">model =</span> <span class="st">"negbin"</span>, <span class="dt">data =</span> sanction)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   William N. Venables, and Brian D. Ripley. 2008.
-##   negbin: Negative Binomial Regression for Event Count Dependent Variables
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out)</code></pre></div>
 <pre><code>## Model: 
 ## 

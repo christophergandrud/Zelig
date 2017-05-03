@@ -48,7 +48,7 @@
       <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
-      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig Choice Model Details</a>
+      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig EI Model Details</a>
     </li>
     <li>
       <a href="../articles/index.html#section-other">Other</a>
@@ -126,7 +126,7 @@
     <div class="page-header toc-ignore">
       <h1>Normal Survey Regression</h1>
             
-            <h4 class="date">2017-05-02</h4>
+            <h4 class="date">2017-05-03</h4>
           </div>
 
     
@@ -162,11 +162,6 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(api00 <span class="op">~</span><span class="st"> </span>meals <span class="op">+</span><span class="st"> </span>yr.rnd, <span class="dt">model =</span> <span class="st">"normal.survey"</span>,
                 <span class="dt">weights=</span><span class="op">~</span>pw, <span class="dt">data =</span> apistrat)</code></pre></div>
 <pre><code>## Warning: Supplied weights argument is not a vector or a variable name in the dataset, and will be ignored.</code></pre>
-<pre><code>## How to cite this model in Zelig:
-##   Nicholas Carnes. 2017.
-##   normal-survey: Normal Regression for Continuous Dependent Variables with Survey Weights
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
 <pre><code>## Model: 
 ## 
@@ -228,13 +223,8 @@ Graphs of Quantities of Interest for Normal Survey Model
 <a href="#example-2-user-has-details-about-complex-survey-design-but-not-sample-weights" class="anchor"></a>Example 2: User has Details about Complex Survey Design (but not sample weights)</h3>
 <p>Suppose that the survey house that provided the dataset excluded probability weights but made other details about the survey design available. We can still estimate a model without probability weights that takes instead variables that identify each the stratum and/or cluster from which each observation was selected and the size of the finite sample from which each observation was selected.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(api00 <span class="op">~</span><span class="st"> </span>meals <span class="op">+</span><span class="st"> </span>yr.rnd, <span class="dt">model =</span> <span class="st">"normal.survey"</span>,
-                <span class="dt">strata =</span> <span class="op">~</span>stype, <span class="dt">fpc =</span> <span class="op">~</span>fpc, <span class="dt">data =</span> apistrat)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   Nicholas Carnes. 2017.
-##   normal-survey: Normal Regression for Continuous Dependent Variables with Survey Weights
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out2)</code></pre></div>
+                <span class="dt">strata =</span> <span class="op">~</span>stype, <span class="dt">fpc =</span> <span class="op">~</span>fpc, <span class="dt">data =</span> apistrat)
+<span class="kw">summary</span>(z.out2)</code></pre></div>
 <pre><code>## Model: 
 ## 
 ## Call:
@@ -273,11 +263,6 @@ Graphs of Quantities of Interest for Normal Survey Model
                 <span class="dt">data =</span> scd, <span class="dt">na.action =</span> <span class="ot">NULL</span>)</code></pre></div>
 <pre><code>## Warning in svrepdesign.default(data = data, repweights = repweights, type =
 ## type, : No sampling weights provided: equal probability assumed</code></pre>
-<pre><code>## How to cite this model in Zelig:
-##   Nicholas Carnes. 2017.
-##   normal-survey: Normal Regression for Continuous Dependent Variables with Survey Weights
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out3)</code></pre></div>
 <pre><code>## Model: 
 ## 

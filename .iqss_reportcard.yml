@@ -1,4 +1,4 @@
-# Created by IQSSdevtools (0.0.0.9000). Do not edit by hand. 
+# Created by IQSSdevtools (0.0.0.9000). Do not edit by hand.
 
  Documentation:
   readme: yes
@@ -8,7 +8,7 @@
   vignettes: yes
   website:
     openscholar: no
-    pkgdown_website: no
+    pkgdown_website: yes
 License:
   gpl3_license: yes
 Version_Control:
@@ -22,13 +22,13 @@ Testing:
     build_check_completed: yes
     no_check_warnings: yes
     no_check_errors: yes
-    no_check_notes: yes
-  test_coverage: 88
+    no_check_notes: no
+  test_coverage: 90
 Background:
   package_name: Zelig
   package_version: 5.1-0.90000
   package_language: R
-  package_commit_sha: 0e5a01c9912c2effdd80e6b3edef7b5d3e862b32
+  package_commit_sha: 92484d0316cd5d6eb19b4ad35890425f536c8b31
   iqss_bestpractices_version: 0.0.0.9000
   iqssdevtools_version: 0.0.0.9000
-  check_time: 2017-04-24 14:26:41
+  check_time: 2017-05-03 10:49:20

@@ -5,3 +5,4 @@ R/.Rapp.history
 inst/doc
 vignettes/*html
 vignettes/*R
+docs/articles/*R

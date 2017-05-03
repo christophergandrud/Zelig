@@ -33,7 +33,8 @@ All models in Zelig 5 can be estimated and results explored presented
 using a five simple steps:
 
 -   Initialise the Zelig object, e.g with `z.out <- zls$new()` for a
-    least squares model. Then populate the object with:
+    least squares
+-   model. Then populate the object with:
 
 -   `zelig` to estimate the parameters,
 
@@ -111,30 +112,33 @@ To estimate our model, we call the `zelig()` method, which is a function
 that is internal to the Zelig object. We pass the `zelig()` method two
 arguments: equation and data:
 
+    # load data
+    data(swiss)
+
     # estimate ls model
     z5$zelig(Fertility ~ Education, data = swiss)
 
     # model summary
     summary(z5)
 
-    ## Model:
-    ##
+    ## Model: 
+    ## 
     ## Call:
     ## z5$zelig(formula = Fertility ~ Education, data = swiss)
-    ##
+    ## 
     ## Residuals:
-    ##     Min      1Q  Median      3Q     Max
-    ## -17.036  -6.711  -1.011   9.526  19.689
-    ##
+    ##     Min      1Q  Median      3Q     Max 
+    ## -17.036  -6.711  -1.011   9.526  19.689 
+    ## 
     ## Coefficients:
     ##             Estimate Std. Error t value Pr(>|t|)
     ## (Intercept)  79.6101     2.1041  37.836  < 2e-16
     ## Education    -0.8624     0.1448  -5.954 3.66e-07
-    ##
+    ## 
     ## Residual standard error: 9.446 on 45 degrees of freedom
-    ## Multiple R-squared:  0.4406, Adjusted R-squared:  0.4282
+    ## Multiple R-squared:  0.4406, Adjusted R-squared:  0.4282 
     ## F-statistic: 35.45 on 1 and 45 DF,  p-value: 3.659e-07
-    ##
+    ## 
     ## Next step: Use 'setx' method
 
 The -0.8624 coefficient on education suggests a negative relationship
@@ -165,7 +169,7 @@ predictor value using the `setx()` method:
     ## setx1:
     ##   (Intercept) Education
     ## 1           1        15
-    ##
+    ## 
     ## Next step: Use 'sim' method
 
 After setting our predictor value, we simulate using the `sim()` method:
@@ -176,27 +180,27 @@ After setting our predictor value, we simulate using the `sim()` method:
     # model summary
     summary(z5)
 
-    ##
+    ## 
     ##  sim x :
     ##  -----
     ## ev
     ##       mean       sd      50%     2.5%    97.5%
-    ## 1 75.25386 1.624169 75.27712 72.29926 78.42785
+    ## 1 75.30633 1.712296 75.29288 72.10225 78.69098
     ## pv
-    ##          mean      sd      50%     2.5%    97.5%
-    ## [1,] 75.67124 9.46876 75.86216 57.19442 93.84189
-    ##
+    ##         mean       sd      50%     2.5%    97.5%
+    ## [1,] 75.3072 9.776684 75.05797 56.31378 94.48218
+    ## 
     ##  sim x1 :
     ##  -----
     ## ev
     ##       mean       sd      50%     2.5%    97.5%
-    ## 1 66.70171 1.543556 66.63554 63.80424 69.89197
+    ## 1 66.67607 1.484399 66.68545 63.86326 69.43965
     ## pv
-    ##          mean       sd      50%     2.5%   97.5%
-    ## [1,] 67.26523 9.408431 67.37761 48.55274 85.9508
+    ##          mean       sd      50%     2.5%    97.5%
+    ## [1,] 66.80284 9.859551 66.27425 49.00097 86.44272
     ## fd
     ##        mean       sd       50%      2.5%     97.5%
-    ## 1 -8.552144 1.494392 -8.493887 -11.49664 -5.719183
+    ## 1 -8.630258 1.452493 -8.604153 -11.49513 -6.037038
 
 At this point, we’ve estimated a model, set the predictor value, and
 estimated easily interpretable quantities of interest. The `summary()`
@@ -232,3 +236,10 @@ Then use the `graph()` method as before:
     z5$graph()
 
 ![](man/figures/example_plot_ci_plot-1.png)
+
+Building Zelig (for developers)
+===============================
+
+Zelig can be fully checked and build using the code in
+[check\_build\_zelig.R](check_build_zelig.R). Note that this can be time
+consuming due to the extensive test coverage.

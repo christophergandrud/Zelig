@@ -48,7 +48,7 @@
       <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
-      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig Choice Model Details</a>
+      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig EI Model Details</a>
     </li>
     <li>
       <a href="../articles/index.html#section-other">Other</a>
@@ -126,7 +126,7 @@
     <div class="page-header toc-ignore">
       <h1>Poisson Survey Regression</h1>
             
-            <h4 class="date">2017-05-02</h4>
+            <h4 class="date">2017-05-03</h4>
           </div>
 
     
@@ -160,13 +160,8 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(api, <span class="dt">package=</span><span class="st">"survey"</span>)</code></pre></div>
 <p>In this example, we will estimate a model using each school’s academic performance in 2000 and an indicator for year-round schools to predict the number of students who enrolled in each California school.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(enroll <span class="op">~</span><span class="st"> </span>api99 <span class="op">+</span><span class="st"> </span>yr.rnd ,
-                <span class="dt">model =</span> <span class="st">"poisson.survey"</span>, <span class="dt">data =</span> apistrat)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   Nicholas Carnes. 2017.
-##   poisson-survey: Poisson Regression with Survey Weights
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
+                <span class="dt">model =</span> <span class="st">"poisson.survey"</span>, <span class="dt">data =</span> apistrat)
+<span class="kw">summary</span>(z.out1)</code></pre></div>
 <pre><code>## Model: 
 ## 
 ## Call:
@@ -228,13 +223,8 @@ Graphs of Quantities of Interest for Poisson Survey Model
 <p>Suppose that the survey house that provided the dataset excluded probability weights but made other details about the survey design available. We can still estimate a model without probability weights that takes instead variables that identify each the stratum and/or cluster from which each observation was selected and the size of the finite sample from which each observation was selected.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(enroll <span class="op">~</span><span class="st"> </span>api99 <span class="op">+</span><span class="st"> </span>yr.rnd ,
                 <span class="dt">model =</span> <span class="st">"poisson.survey"</span>, <span class="dt">data =</span> apistrat,
-                <span class="dt">strata =</span> <span class="op">~</span>stype, <span class="dt">fpc =</span> <span class="op">~</span>fpc)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   Nicholas Carnes. 2017.
-##   poisson-survey: Poisson Regression with Survey Weights
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out2)</code></pre></div>
+                <span class="dt">strata =</span> <span class="op">~</span>stype, <span class="dt">fpc =</span> <span class="op">~</span>fpc)
+<span class="kw">summary</span>(z.out2)</code></pre></div>
 <pre><code>## Model: 
 ## 
 ## Call:
@@ -271,11 +261,6 @@ Graphs of Quantities of Interest for Poisson Survey Model
                 <span class="dt">repweights =</span> BRRrep, <span class="dt">type =</span> <span class="st">"BRR"</span>, <span class="dt">data =</span> scd)</code></pre></div>
 <pre><code>## Warning in svrepdesign.default(data = data, repweights = repweights, type =
 ## type, : No sampling weights provided: equal probability assumed</code></pre>
-<pre><code>## How to cite this model in Zelig:
-##   Nicholas Carnes. 2017.
-##   poisson-survey: Poisson Regression with Survey Weights
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out3)</code></pre></div>
 <pre><code>## Model: 
 ## 

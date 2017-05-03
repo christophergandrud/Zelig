@@ -48,7 +48,7 @@
       <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
-      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig Choice Model Details</a>
+      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig EI Model Details</a>
     </li>
     <li>
       <a href="../articles/index.html#section-other">Other</a>
@@ -126,7 +126,7 @@
     <div class="page-header toc-ignore">
       <h1>Getter Functions</h1>
             
-            <h4 class="date">2017-05-02</h4>
+            <h4 class="date">2017-05-03</h4>
           </div>
 
     
@@ -138,13 +138,8 @@
 <p>As a key example, the <code>get_qi()</code> method extracts simulated quantities of interest. It has two arguments. The first <code>qi</code> is the name of quantity of interest desired, typically, <code>"ev"</code> for expected values, <code>"pv"</code> for predicted values or <code>"fd"</code> for first differences. The second argument <code>xvalue</code> states which of the set values of x should be used for getting the quantity of interest. The values of x are typically <code>"x"</code> or <code>"x1"</code>. If you supply an argument value that does not exist in the Zelig object, Zelig will give you a warning message listing all the names present.</p>
 <p>Here is the example from the Poisson model:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(sanction)
-zqi.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(num <span class="op">~</span><span class="st"> </span>target <span class="op">+</span><span class="st"> </span>coop <span class="op">+</span><span class="st"> </span>mil, <span class="dt">model =</span> <span class="st">"poisson"</span>, <span class="dt">data =</span> sanction)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   R Core Team. 2007.
-##   poisson: Poisson Regression for Event Count Dependent Variables
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(zqi.out)</code></pre></div>
+zqi.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(num <span class="op">~</span><span class="st"> </span>target <span class="op">+</span><span class="st"> </span>coop <span class="op">+</span><span class="st"> </span>mil, <span class="dt">model =</span> <span class="st">"poisson"</span>, <span class="dt">data =</span> sanction)
+<span class="kw">summary</span>(zqi.out)</code></pre></div>
 <pre><code>## Model: 
 ## 
 ## Call:

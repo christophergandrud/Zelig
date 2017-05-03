@@ -48,7 +48,7 @@
       <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
-      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig Choice Model Details</a>
+      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig EI Model Details</a>
     </li>
     <li>
       <a href="../articles/index.html#section-other">Other</a>
@@ -126,7 +126,7 @@
     <div class="page-header toc-ignore">
       <h1>Bivariate Probit</h1>
             
-            <h4 class="date">2017-05-02</h4>
+            <h4 class="date">2017-05-03</h4>
           </div>
 
     
@@ -175,13 +175,8 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <p>Load the data and estimate the model:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(sanction)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(<span class="kw">cbind</span>(import, export) <span class="op">~</span><span class="st"> </span>coop <span class="op">+</span><span class="st"> </span>cost <span class="op">+</span><span class="st"> </span>target,
-                <span class="dt">model =</span> <span class="st">"bprobit"</span>, <span class="dt">data =</span> sanction)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   Thomas W. Yee. 2007.
-##   bprobit: Bivariate Probit Regression for Dichotomous Dependent Variables
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
+                <span class="dt">model =</span> <span class="st">"bprobit"</span>, <span class="dt">data =</span> sanction)
+<span class="kw">summary</span>(z.out1)</code></pre></div>
 <pre><code>## Model: 
 ## 
 ## Call:
@@ -225,43 +220,43 @@ x.high &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx
 ##  sim x :
 ##  -----
 ## ev
-##                       mean          sd         50%        2.5%      97.5%
-## Pr(Y1=0, Y2=0) 0.767004621 0.080441536 0.777975306 0.566186159 0.89217008
-## Pr(Y1=0, Y2=1) 0.164549466 0.074173430 0.152996283 0.052351653 0.33918052
-## Pr(Y1=1, Y2=0) 0.060938479 0.039865360 0.051484157 0.010904527 0.17095164
-## Pr(Y1=1, Y2=1) 0.007507434 0.008891385 0.004617223 0.000094764 0.03134604
+##                       mean          sd         50%         2.5%      97.5%
+## Pr(Y1=0, Y2=0) 0.764630580 0.081798864 0.777878518 5.815814e-01 0.89078916
+## Pr(Y1=0, Y2=1) 0.166815066 0.074586161 0.155256869 5.544458e-02 0.33914630
+## Pr(Y1=1, Y2=0) 0.060770247 0.039877468 0.050876005 1.201287e-02 0.16601165
+## Pr(Y1=1, Y2=1) 0.007784108 0.009337967 0.004609161 9.728188e-05 0.03486278
 ## pv
 ##                  0     1
-## (Y1=0, Y2=0) 0.219 0.781
-## (Y1=0, Y2=1) 0.848 0.152
-## (Y1=1, Y2=0) 0.944 0.056
+## (Y1=0, Y2=0) 0.225 0.775
+## (Y1=0, Y2=1) 0.859 0.141
+## (Y1=1, Y2=0) 0.927 0.073
 ## (Y1=1, Y2=1) 0.989 0.011
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
 ##                        mean           sd          50%         2.5%
-## Pr(Y1=0, Y2=0) 1.618806e-05 0.0001429066 9.240605e-09 1.188389e-11
-## Pr(Y1=0, Y2=1) 1.267537e-02 0.0296236993 1.989293e-03 6.806839e-06
-## Pr(Y1=1, Y2=0) 3.230458e-03 0.0125149478 1.109751e-04 3.748176e-08
-## Pr(Y1=1, Y2=1) 9.840780e-01 0.0318822794 9.957947e-01 8.898132e-01
+## Pr(Y1=0, Y2=0) 1.670443e-05 0.0001182827 1.712996e-08 1.209845e-11
+## Pr(Y1=0, Y2=1) 1.558458e-02 0.0455993046 2.350477e-03 5.485661e-06
+## Pr(Y1=1, Y2=0) 3.671257e-03 0.0119791160 1.446061e-04 7.788387e-08
+## Pr(Y1=1, Y2=1) 9.807275e-01 0.0464519806 9.953113e-01 8.640046e-01
 ##                       97.5%
-## Pr(Y1=0, Y2=0) 0.0001142273
-## Pr(Y1=0, Y2=1) 0.1063037474
-## Pr(Y1=1, Y2=0) 0.0281498804
-## Pr(Y1=1, Y2=1) 0.9999414454
+## Pr(Y1=0, Y2=0) 0.0001074749
+## Pr(Y1=0, Y2=1) 0.1261655939
+## Pr(Y1=1, Y2=0) 0.0339527601
+## Pr(Y1=1, Y2=1) 0.9999490654
 ## pv
 ##                  0     1
 ## (Y1=0, Y2=0) 1.000 0.000
-## (Y1=0, Y2=1) 0.984 0.016
-## (Y1=1, Y2=0) 0.996 0.004
-## (Y1=1, Y2=1) 0.020 0.980
+## (Y1=0, Y2=1) 0.988 0.012
+## (Y1=1, Y2=0) 0.994 0.006
+## (Y1=1, Y2=1) 0.018 0.982
 ## fd
-##                       mean         sd         50%       2.5%        97.5%
-## Pr(Y1=0, Y2=0) -0.76698843 0.08047309 -0.77797530 -0.8921701 -0.566023391
-## Pr(Y1=0, Y2=1) -0.15187410 0.08304919 -0.14507397 -0.3376616 -0.008004076
-## Pr(Y1=1, Y2=0) -0.05770802 0.04177894 -0.04895675 -0.1661804 -0.003746057
-## Pr(Y1=1, Y2=1)  0.97657055 0.03539200  0.98895438  0.8767456  0.999522537</code></pre>
+##                       mean         sd         50%       2.5%         97.5%
+## Pr(Y1=0, Y2=0) -0.76461388 0.08181496 -0.77787199 -0.8907892 -0.5815814058
+## Pr(Y1=0, Y2=1) -0.15123048 0.08975288 -0.14281993 -0.3303637 -0.0007686820
+## Pr(Y1=1, Y2=0) -0.05709899 0.04203351 -0.04771452 -0.1614671 -0.0001096716
+## Pr(Y1=1, Y2=1)  0.97294335 0.04973499  0.98798632  0.8388854  0.9994773596</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s.out1)</code></pre></div>
 <div class="figure">
 <img src="zeligchoice_bprobit_files/figure-html/Zelig-bprobit1-1.png" alt="Graphs of Quantities of Interest for Bivariate Probit" width="672"><p class="caption">

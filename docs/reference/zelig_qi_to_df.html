@@ -70,7 +70,7 @@
       <a href="../articles/index.html#section-zelig-choice-model-details">Zelig Choice Model Details</a>
     </li>
     <li>
-      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig Choice Model Details</a>
+      <a href="../articles/index.html#section-zelig-ecological-inference-ei-model-details">Zelig EI Model Details</a>
     </li>
     <li>
       <a href="../articles/index.html#section-other">Other</a>
@@ -199,12 +199,12 @@ a is column of the predicted outcomes (<code>predicted_value</code>).</p>
 <span class='no'>z.1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sim.html'>sim</a></span>(<span class='no'>z.1</span>)
 <span class='fu'>head</span>(<span class='fu'>zelig_qi_to_df</span>(<span class='no'>z.1</span>))</div><div class='output co'>#&gt; <span class='message'>zelig_qi_to_df is an experimental function.</span>
 #&gt; <span class='message'>  Please report issues to: https://github.com/IQSS/Zelig/issues</span></div><div class='output co'>#&gt;   setx_value Petal.Length   Species expected_value predicted_value
-#&gt; 1          x         3.76 virginica           1.50            1.33
-#&gt; 2          x         3.76 virginica           1.63            1.59
-#&gt; 3          x         3.76 virginica           1.63            1.67
-#&gt; 4          x         3.76 virginica           1.70            1.53
-#&gt; 5          x         3.76 virginica           1.67            1.46
-#&gt; 6          x         3.76 virginica           1.71            1.95</div><div class='input'>
+#&gt; 1          x        3.758 virginica       1.556644        1.573390
+#&gt; 2          x        3.758 virginica       1.608859        1.357268
+#&gt; 3          x        3.758 virginica       1.646423        1.589401
+#&gt; 4          x        3.758 virginica       1.518272        1.246964
+#&gt; 5          x        3.758 virginica       1.519643        1.389558
+#&gt; 6          x        3.758 virginica       1.707326        1.478405</div><div class='input'>
 <span class='co'>#### QIs for first differences</span>
 <span class='no'>z.2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>Petal.Width</span> ~ <span class='no'>Petal.Length</span> + <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
              <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)
@@ -213,12 +213,12 @@ a is column of the predicted outcomes (<code>predicted_value</code>).</p>
 <span class='no'>z.2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sim.html'>sim</a></span>(<span class='no'>z.2</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>z.2a</span>, <span class='kw'>x1</span> <span class='kw'>=</span> <span class='no'>z.2a</span>)
 <span class='fu'>head</span>(<span class='fu'>zelig_qi_to_df</span>(<span class='no'>z.2</span>))</div><div class='output co'>#&gt; <span class='message'>zelig_qi_to_df is an experimental function.</span>
 #&gt; <span class='message'>  Please report issues to: https://github.com/IQSS/Zelig/issues</span></div><div class='output co'>#&gt;   setx_value Petal.Length   Species expected_value predicted_value
-#&gt; 1          x            2 virginica          1.331           0.970
-#&gt; 2          x            2 virginica          1.159           1.175
-#&gt; 3          x            2 virginica          1.237           1.288
-#&gt; 4          x            2 virginica          0.941           0.929
-#&gt; 5          x            2 virginica          1.137           0.804
-#&gt; 6          x            2 virginica          1.301           1.127</div><div class='input'>
+#&gt; 1          x            2 virginica      0.9795631       1.0710712
+#&gt; 2          x            2 virginica      1.2058482       1.1224267
+#&gt; 3          x            2 virginica      1.2597302       1.6488994
+#&gt; 4          x            2 virginica      1.1584787       1.0987905
+#&gt; 5          x            2 virginica      0.9592988       0.9034156
+#&gt; 6          x            2 virginica      1.0460941       0.9169915</div><div class='input'>
 <span class='co'>#### QIs for first differences, estimated by Species</span>
 <span class='no'>z.3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>Petal.Width</span> ~ <span class='no'>Petal.Length</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"Species"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
              <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)
@@ -227,12 +227,12 @@ a is column of the predicted outcomes (<code>predicted_value</code>).</p>
 <span class='no'>z.3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sim.html'>sim</a></span>(<span class='no'>z.3</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>z.3a</span>, <span class='kw'>x1</span> <span class='kw'>=</span> <span class='no'>z.3a</span>)
 <span class='fu'>head</span>(<span class='fu'>zelig_qi_to_df</span>(<span class='no'>z.3</span>))</div><div class='output co'>#&gt; <span class='message'>zelig_qi_to_df is an experimental function.</span>
 #&gt; <span class='message'>  Please report issues to: https://github.com/IQSS/Zelig/issues</span></div><div class='output co'>#&gt;   setx_value     by Petal.Length expected_value predicted_value
-#&gt; 1          x setosa            2          0.409           0.456
-#&gt; 2          x setosa            2          0.339           0.445
-#&gt; 3          x setosa            2          0.280           0.171
-#&gt; 4          x setosa            2          0.358           0.364
-#&gt; 5          x setosa            2          0.369           0.320
-#&gt; 6          x setosa            2          0.289           0.293</div><div class='input'>
+#&gt; 1          x setosa            2      0.4200569      0.20333867
+#&gt; 2          x setosa            2      0.3072372      0.02505914
+#&gt; 3          x setosa            2      0.4237643      0.44112644
+#&gt; 4          x setosa            2      0.3003825      0.49131407
+#&gt; 5          x setosa            2      0.3697732      0.55603910
+#&gt; 6          x setosa            2      0.3170738      0.34239949</div><div class='input'>
 <span class='co'>#### QIs for a range of fitted values</span>
 <span class='no'>z.4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>Petal.Width</span> ~ <span class='no'>Petal.Length</span> + <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
              <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)
@@ -240,12 +240,12 @@ a is column of the predicted outcomes (<code>predicted_value</code>).</p>
 <span class='no'>z.4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sim.html'>sim</a></span>(<span class='no'>z.4</span>)
 <span class='fu'>head</span>(<span class='fu'>zelig_qi_to_df</span>(<span class='no'>z.4</span>))</div><div class='output co'>#&gt; <span class='message'>zelig_qi_to_df is an experimental function.</span>
 #&gt; <span class='message'>  Please report issues to: https://github.com/IQSS/Zelig/issues</span></div><div class='output co'>#&gt;   setx_value Petal.Length   Species expected_value predicted_value
-#&gt; 1          x            2 virginica           1.51            1.62
-#&gt; 2          x            2 virginica           1.46            1.23
-#&gt; 3          x            2 virginica           1.27            1.17
-#&gt; 4          x            2 virginica           1.35            1.16
-#&gt; 5          x            2 virginica           1.19            1.48
-#&gt; 6          x            2 virginica           1.14            1.05</div><div class='input'>
+#&gt; 1          x            2 virginica       1.294700       1.3123182
+#&gt; 2          x            2 virginica       1.099721       1.1634645
+#&gt; 3          x            2 virginica       1.181263       1.3535331
+#&gt; 4          x            2 virginica       1.070903       0.9460419
+#&gt; 5          x            2 virginica       1.373463       1.3802044
+#&gt; 6          x            2 virginica       1.177438       1.2947376</div><div class='input'>
 <span class='co'>#### QIs for a range of fitted values, estimated by Species</span>
 <span class='no'>z.5</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>Petal.Width</span> ~ <span class='no'>Petal.Length</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"Species"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
             <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)
@@ -253,12 +253,12 @@ a is column of the predicted outcomes (<code>predicted_value</code>).</p>
 <span class='no'>z.5</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sim.html'>sim</a></span>(<span class='no'>z.5</span>)
 <span class='fu'>head</span>(<span class='fu'>zelig_qi_to_df</span>(<span class='no'>z.5</span>))</div><div class='output co'>#&gt; <span class='message'>zelig_qi_to_df is an experimental function.</span>
 #&gt; <span class='message'>  Please report issues to: https://github.com/IQSS/Zelig/issues</span></div><div class='output co'>#&gt;   setx_value     by Petal.Length expected_value predicted_value
-#&gt; 1          x setosa            2          0.332           0.142
-#&gt; 2          x setosa            2          0.335           0.255
-#&gt; 3          x setosa            2          0.409           0.330
-#&gt; 4          x setosa            2          0.373           0.444
-#&gt; 5          x setosa            2          0.282           0.162
-#&gt; 6          x setosa            2          0.358           0.407</div><div class='input'>
+#&gt; 1          x setosa            2      0.3646708       0.2891910
+#&gt; 2          x setosa            2      0.3090093       0.5100030
+#&gt; 3          x setosa            2      0.3037640       0.1264876
+#&gt; 4          x setosa            2      0.3812836       0.4066486
+#&gt; 5          x setosa            2      0.3499157       0.3849238
+#&gt; 6          x setosa            2      0.3865099       0.3164888</div><div class='input'>
 <span class='co'>#### QIs for two ranges of fitted values</span>
 <span class='no'>z.6</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>Petal.Width</span> ~ <span class='no'>Petal.Length</span> + <span class='no'>Species</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
             <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"ls"</span>)
@@ -268,12 +268,12 @@ a is column of the predicted outcomes (<code>predicted_value</code>).</p>
 
 <span class='fu'>head</span>(<span class='fu'>zelig_qi_to_df</span>(<span class='no'>z.6</span>))</div><div class='output co'>#&gt; <span class='message'>zelig_qi_to_df is an experimental function.</span>
 #&gt; <span class='message'>  Please report issues to: https://github.com/IQSS/Zelig/issues</span></div><div class='output co'>#&gt;   setx_value Petal.Length Species expected_value predicted_value
-#&gt; 1          x            2  setosa          0.374          0.7942
-#&gt; 2          x            2  setosa          0.364          0.5264
-#&gt; 3          x            2  setosa          0.323          0.0511
-#&gt; 4          x            2  setosa          0.397          0.3919
-#&gt; 5          x            2  setosa          0.364          0.0994
-#&gt; 6          x            2  setosa          0.388          0.4204</div><div class='input'>
+#&gt; 1          x            2  setosa      0.3422110       0.6173951
+#&gt; 2          x            2  setosa      0.3537809       0.3583462
+#&gt; 3          x            2  setosa      0.4216868       0.3571729
+#&gt; 4          x            2  setosa      0.3672208       0.5044029
+#&gt; 5          x            2  setosa      0.4070478       0.1279746
+#&gt; 6          x            2  setosa      0.3711670       0.6798636</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

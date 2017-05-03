@@ -107,3 +107,8 @@ zelig_core <- list(name = "Zelig",
 
 diagonalNetwork(zelig_core, fontSize = 15, fontFamily = 'sans-serif', nodeStroke = 'd16103')
 ```
+
+**Note:** additional multilevel and generalized additive models are available in
+[ZeligMultilevel](https://github.com/IQSS/ZeligMultilevel) and
+[ZeligGAM](https://github.com/IQSS/ZeligGAM) respectively.
+However, these are unstable packages and should be used with caution.
