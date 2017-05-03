@@ -35,6 +35,8 @@ navbar:
           href: "articles/roadmap.html"
         - text: "Zelig Adoption Metrics"
           href: "https://iqss.github.io/rpackagemetrics/"
+        - text: "Statistical Software Devepment Reportcard"
+          href: "https://raw.githubusercontent.com/IQSS/Zelig/master/.iqss_reportcard.yml"
     - text: "Dev-Blog"
       icon: fa-medium
       href: https://medium.com/zelig-dev/archive

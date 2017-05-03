@@ -1,4 +1,4 @@
-# Created by IQSSdevtools (0.0.0.9000). Do not edit by hand.
+# Created by IQSSdevtools (0.0.0.9000). Do not edit by hand. 
 
  Documentation:
   readme: yes
@@ -28,7 +28,7 @@ Background:
   package_name: Zelig
   package_version: 5.1-0.90000
   package_language: R
-  package_commit_sha: 92484d0316cd5d6eb19b4ad35890425f536c8b31
+  package_commit_sha: c962cf386fe7a1bcec2d9730030580f8cbc8e22a
   iqss_bestpractices_version: 0.0.0.9000
   iqssdevtools_version: 0.0.0.9000
-  check_time: 2017-05-03 10:49:20
+  check_time: 2017-05-03 11:21:32
