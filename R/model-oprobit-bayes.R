@@ -1,6 +1,6 @@
 #' Bayesian Ordered Probit Regression
 #'
-#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig-oprobitbayes.html}
+#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig_oprobitbayes.html}
 #' @import methods
 #' @export Zelig-oprobit-bayes
 #' @exportClass Zelig-oprobit-bayes
@@ -59,7 +59,7 @@ zoprobitbayes$methods(
 zoprobitbayes$methods(
   qi = function(simparam, mm) {
     beta <- simparam$simparam
-    gamma <- simparam$simalpha    
+    gamma <- simparam$simalpha
     labels <- levels(model.response(model.frame(.self$formula, data = .self$data)))
     # x is implicitly cast into a matrix
     eta <- beta %*% t(mm)
@@ -86,4 +86,3 @@ zoprobitbayes$methods(
     return(list(ev = ev, pv = pv))
   }
 )
-

@@ -1,6 +1,6 @@
 #' Generalized Estimating Equation for Poisson Regression
 #'
-#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig-poissongee.html}
+#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig_poissongee.html}
 #' @import methods
 #' @export Zelig-poisson-gee
 #' @exportClass Zelig-poisson-gee
@@ -36,4 +36,3 @@ zpoissongee$methods(
     return(simparam.local$simparam) # no ancillary parameter
   }
 )
-

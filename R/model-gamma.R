@@ -1,10 +1,10 @@
 #' Gamma Regression for Continuous, Positive Dependent Variables
 #'
-#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig-gamma.html}
+#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig_gamma.html}
 #' @import methods
 #' @export Zelig-gamma
 #' @exportClass Zelig-gamma
-#' 
+#'
 #' @include model-zelig.R
 #' @include model-glm.R
 
@@ -43,10 +43,10 @@ zgamma$methods(
 
 zgamma$methods(
   qi = function(simparam, mm) {
-    coeff <- simparam$simparam 
+    coeff <- simparam$simparam
     eta <- (coeff %*% t(mm) ) * simparam$simalpha  # JH need to better understand this parameterization.  Coefs appear parameterized so E(y_i) = 1/ (x_i\hat{\beta})
     theta <- matrix(1 / eta, nrow = nrow(coeff), ncol=1)
-    ev <- theta * simparam$simalpha 
+    ev <- theta * simparam$simalpha
     pv<- matrix(rgamma(nrow(ev), shape = simparam$simalpha, scale = theta), nrow=nrow(ev), ncol=1)
     return(list(ev = ev, pv = pv))
   }
@@ -63,4 +63,3 @@ zgamma$methods(
     }
   }
 )
-

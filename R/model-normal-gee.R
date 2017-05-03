@@ -1,10 +1,10 @@
 #' Generalized Estimating Equation for Normal Regression
 #'
-#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig-normalgee.html}
+#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig_normalgee.html}
 #' @import methods
 #' @export Zelig-normal-gee
 #' @exportClass Zelig-normal-gee
-#'  
+#'
 #' @include model-zelig.R
 #' @include model-gee.R
 #' @include model-normal.R

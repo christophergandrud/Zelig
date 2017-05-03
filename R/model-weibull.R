@@ -1,6 +1,6 @@
 #' Weibull Regression for Duration Dependent Variables
 #'
-#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig-weibull.html}
+#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig_weibull.html}
 #' @import methods
 #' @export Zelig-tobit-bayes
 #' @exportClass Zelig-tobit-bayes
@@ -12,7 +12,7 @@ zweibull <- setRefClass("Zelig-weibull",
                         fields = list(simalpha = "list",
                                       linkinv = "function",
                                       lambda = "ANY"))
-  
+
 zweibull$methods(
   initialize = function() {
     callSuper()
@@ -53,11 +53,11 @@ zweibull$methods(
       }
       robust.model.call <- .self$model.call
       robust.model.call$robust <- TRUE
-    
+
       robust.zelig.out <- .self$data %>%
       group_by_(.self$by) %>%
       do(z.out = eval(fn2(robust.model.call, quote(as.data.frame(.))))$var )
-    
+
       .self$test.statistics<- list(robust.se = robust.zelig.out$z.out)
     }
   }
@@ -93,13 +93,13 @@ zweibull$methods(
 zweibull$methods(
   mcfun = function(x, b0=0, b1=1, alpha=1, sim=TRUE){
     .self$mcformula <- as.Formula("Surv(y.sim, event) ~ x.sim")
-    
-    
+
+
     mylambda <-exp(b0 + b1 * x)
     event <- rep(1, length(x))
     y.sim <- rweibull(n=length(x), shape=alpha, scale=mylambda)
     y.hat <- mylambda * gamma(1 + (1/alpha))
-    
+
     if(sim){
         mydata <- data.frame(y.sim=y.sim, event=event, x.sim=x)
         return(mydata)
@@ -109,4 +109,3 @@ zweibull$methods(
     }
   }
 )
-

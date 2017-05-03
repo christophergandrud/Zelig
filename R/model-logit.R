@@ -34,7 +34,7 @@
 #' Logistic regression specifies a dichotomous dependent variable as a function
 #' of a set of explanatory variables.
 #'
-#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig-logit.html}
+#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig_logit.html}
 #'
 #' @examples
 #' \dontrun{

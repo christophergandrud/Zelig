@@ -1,10 +1,10 @@
 #' Bayesian Logit Regression
 #'
-#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig-logitbayes.html}
+#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig_logitbayes.html}
 #' @import methods
 #' @export Zelig-logit-bayes
 #' @exportClass Zelig-logit-bayes
-#' 
+#'
 #' @include model-zelig.R
 #' @include model-bayes.R
 #' @include model-logit.R

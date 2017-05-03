@@ -49,7 +49,7 @@ Least Squares Regression for Continuous Dependent Variables
 Use least squares regression analysis to estimate the best linear
 predictor for the specified dependent variables.
 
-Vignette: \url{http://docs.zeligproject.org/en/latest/zelig-ls.html}
+Vignette: \href{http://docs.zeligproject.org/en/latest/zelig_ls.html}{http://docs.zeligproject.org/en/latest/zelig-ls.html}
 }
 \section{Methods}{
 

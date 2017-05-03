@@ -1,6 +1,6 @@
 #' Poisson Regression with Survey Weights
 #'
-#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig-poissonsurvey.html}
+#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig_poissonsurvey.html}
 #' @import methods
 #' @export Zelig-poisson-gee
 #' @exportClass Zelig-poisson-gee

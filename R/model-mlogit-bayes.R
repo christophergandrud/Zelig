@@ -1,6 +1,6 @@
 #' Bayesian Multinomial Logistic Regression
 #'
-#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig-mlogitbayes.html}
+#' Vignette: \url{http://docs.zeligproject.org/en/latest/zelig_mlogitbayes.html}
 #' @import methods
 #' @export Zelig-mlogit-bayes
 #' @exportClass Zelig-mlogit-bayes
@@ -48,7 +48,7 @@ zmlogitbayes$methods(
     for (j in 1:level) {
       colnames(ev)[j] <- paste("P(Y=", j, ")", sep="")
     }
-    for (k in 1:nrow(mm)) {             
+    for (k in 1:nrow(mm)) {
       probs <- as.matrix(ev[, , k])
       temp <- apply(probs, 1, FUN = rmultinom, n = 1, size = 1)
       temp <- as.matrix(t(temp) %*% (1:nrow(temp)))
@@ -59,4 +59,3 @@ zmlogitbayes$methods(
     return(list(ev = ev, pv = pv))
   }
 )
-

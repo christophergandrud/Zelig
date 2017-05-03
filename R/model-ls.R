@@ -33,7 +33,7 @@
 #' @details Use least squares regression analysis to estimate the best linear
 #'   predictor for the specified dependent variables.
 #'
-#' Vignette: [http://docs.zeligproject.org/en/latest/zelig-ls.html](http://docs.zeligproject.org/en/latest/zelig-ls.html)
+#' Vignette: [http://docs.zeligproject.org/en/latest/zelig-ls.html](http://docs.zeligproject.org/en/latest/zelig_ls.html)
 #'
 #' @examples
 #' \dontrun{
