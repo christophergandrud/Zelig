@@ -4,7 +4,7 @@
 \alias{zelig}
 \title{Estimating a Statistical Model}
 \usage{
-zelig(formula, model, data, ..., by = NULL, cite = TRUE)
+zelig(formula, model, data, ..., by = NULL, cite = FALSE)
 }
 \arguments{
 \item{formula}{a symbolic representation of the model to be

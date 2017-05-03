@@ -130,6 +130,9 @@ internal to the Zelig object. We pass the `zelig()` method two arguments:
 equation and data:
 
 ```{r}
+# load data
+data(swiss)
+
 # estimate ls model
 z5$zelig(Fertility ~ Education, data = swiss)
 

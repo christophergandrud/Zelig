@@ -50,12 +50,16 @@ Imports:
     survey,
     VGAM
 Suggests:
+    ei,
+    eiPack,
     knitr,
     networkD3,
     optmatch,
     rmarkdown,
     testthat,
-    tidyverse
+    tidyverse,
+    ZeligChoice,
+    ZeligEI
 Collate:
     'assertions.R'
     'model-zelig.R'
