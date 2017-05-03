@@ -85,6 +85,9 @@
     <li>
       <a href="https://iqss.github.io/rpackagemetrics/">Zelig Adoption Metrics</a>
     </li>
+    <li>
+      <a href="https://raw.githubusercontent.com/IQSS/Zelig/master/.iqss_reportcard.yml">Statistical Software Devepment Reportcard</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -127,26 +130,35 @@
     
 <div class="contents">
 <p><em>Built using Zelig version 5.1.0.90000</em></p>
-<p>The release of Zelig 5.0 expands the set of models available, while simplifying the model wrapping process, and solving architectural problems by completely rewriting into R’s Reference Classes for a fully object-oriented architecture. Comparability wrappers are available so that you can still use pre-Zelig 5 syntax.</p>
-<div id="zelig-5-workflow-overview" class="section level2">
+<div id="zelig-workflow-overview" class="section level2">
 <h2 class="hasAnchor">
-<a href="#zelig-5-workflow-overview" class="anchor"></a>Zelig 5 workflow overview</h2>
-<p>All models in Zelig 5 can be estimated and results explored presented using a five simple steps:</p>
-<ul>
-<li><p>Initialise the Zelig object, e.g with <code>z.out &lt;- zls$new()</code>, for a least squares model. Then populate the object with:</p></li>
+<a href="#zelig-workflow-overview" class="anchor"></a>Zelig workflow overview</h2>
+<p>All models in Zelig can be estimated and results explored presented using four simple functions:</p>
+<ol style="list-style-type: decimal">
 <li><p><code>zelig</code> to estimate the parameters,</p></li>
 <li><p><code>setx</code> to set fitted values for which we want to find quantities of interest,</p></li>
 <li><p><code>sim</code> to simulate the quantities of interest,</p></li>
-<li><p><code>graph</code> to plot the simulation results.</p></li>
-</ul>
+<li><p><code>plot</code> to plot the simulation results.</p></li>
+</ol>
+<div id="zelig-5-reference-classes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#zelig-5-reference-classes" class="anchor"></a>Zelig 5 reference classes</h3>
+<p>Zelig 5 introduced <a href="http://adv-r.had.co.nz/R5.html">reference classes</a>. These enable a different way of working with Zelig that is detailed in <a href="zelig5_vs_zelig5.html">a separate vignette</a>. Examples throughout the package documentation use both the ways of interacting with Zelig.</p>
+</div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>Let’s walk through an example. This example uses the swiss dataset. It contains data on fertility and socioeconomic factors in Switzerland’s 47 French-speaking provinces in 1888 (Mosteller and Tukey, 1977, 549-551). We will model the effect of education on fertility, where education is measured as the percent of draftees with education beyond primary school and fertility is measured using the common standardized fertility measure (see Muehlenbein (2010, 80-81) for details).</p>
-<div id="installing-and-loading-zelig" class="section level3">
-<h3 class="hasAnchor">
-<a href="#installing-and-loading-zelig" class="anchor"></a>Installing and loading Zelig</h3>
+</div>
+<div id="zelig-5-quickstart-guide" class="section level2">
+<h2 class="hasAnchor">
+<a href="#zelig-5-quickstart-guide" class="anchor"></a>Zelig 5 Quickstart Guide</h2>
+<p>Let’s walk through an example. This example uses the swiss dataset. It contains data on fertility and socioeconomic factors in Switzerland’s 47 French-speaking provinces in 1888 (Mosteller and Tukey, 1977, 549-551). We will model the effect of education on fertility, where education is measured as the percent of draftees with education beyond primary school and fertility is measured using the common standardized fertility measure (see Muehlenbein (2010, 80-81) for details).</p>
+</div>
+<div id="installing-and-loading-zelig" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installing-and-loading-zelig" class="anchor"></a>Installing and Loading Zelig</h2>
 <p>If you haven’t already done so, open your R console and install Zelig:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">'Zelig'</span>)</code></pre></div>
 <p>Alternatively you can install the development version with:</p>
@@ -154,21 +166,18 @@
 <p>Once Zelig is installed, load it:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Zelig)</code></pre></div>
 </div>
-<div id="building-models" class="section level3">
-<h3 class="hasAnchor">
-<a href="#building-models" class="anchor"></a>Building models</h3>
-<p>Let’s assume we want to estimate the effect of education on fertility. Since fertility is a continuous variable, least squares is an appropriate model choice. We first create a Zelig least squares object:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># initialize Zelig5 least squares object</span>
-z5 &lt;-<span class="st"> </span>zls<span class="op">$</span><span class="kw">new</span>()</code></pre></div>
-<p>To estimate our model, we call the <code><a href="../reference/zelig.html">zelig()</a></code> method, which is a function that is internal to the Zelig object. We pass the <code><a href="../reference/zelig.html">zelig()</a></code> method two arguments: equation and data:</p>
+<div id="building-models" class="section level2">
+<h2 class="hasAnchor">
+<a href="#building-models" class="anchor"></a>Building Models</h2>
+<p>Let’s assume we want to estimate the effect of education on fertility. Since fertility is a continuous variable, least squares is an appropriate model choice. To estimate our model, we call the <code><a href="../reference/zelig.html">zelig()</a></code> function with three two arguments: equation, model type, and data:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load data</span>
 <span class="kw">data</span>(swiss)
 
 <span class="co"># estimate ls model</span>
-z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Fertility <span class="op">~</span><span class="st"> </span>Education, <span class="dt">data =</span> swiss)
+z5_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Fertility <span class="op">~</span><span class="st"> </span>Education, <span class="dt">model =</span> <span class="st">"ls"</span>, <span class="dt">data =</span> swiss)
 
 <span class="co"># model summary</span>
-<span class="kw">summary</span>(z5)</code></pre></div>
+<span class="kw">summary</span>(z5_<span class="dv">1</span>)</code></pre></div>
 <pre><code>## Model: 
 ## 
 ## Call:
@@ -188,15 +197,13 @@ z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">ze
 ## F-statistic: 35.45 on 1 and 45 DF,  p-value: 3.659e-07
 ## 
 ## Next step: Use 'setx' method</code></pre>
-<p>The -0.8624 coefficient on education suggests a negative relationship between the education of a province and its fertility rate. More precisely, for every one percent increase in draftees educated beyond primary school, the fertility rate of the province decreases 0.8624 units. To help us better interpret this finding, we may want other quantities of interest, such as expected values or first differences. Zelig makes this simple by automating the translation of model estimates into interpretable quantities of interest using Monte Carlo simulation methods (see King, Tomz, and Wittenberg (2000) for more information). For example, let’s say we want to examine the effect of increasing the percent of draftees educated from 5 to 15. To do so, we set our predictor value using the <code><a href="../reference/setx.html">setx()</a></code> method:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># set education to 5</span>
-z5<span class="op">$</span><span class="kw"><a href="../reference/setx.html">setx</a></span>(<span class="dt">Education =</span> <span class="dv">5</span>)
-
-<span class="co"># set education to 15</span>
-z5<span class="op">$</span><span class="kw"><a href="../reference/setx1.html">setx1</a></span>(<span class="dt">Education =</span> <span class="dv">15</span>)
+<p>The NA coefficient on education suggests a negative relationship between the education of a province and its fertility rate. More precisely, for every one percent increase in draftees educated beyond primary school, the fertility rate of the province decreases NA units. To help us better interpret this finding, we may want other quantities of interest, such as expected values or first differences. Zelig makes this simple by automating the translation of model estimates into interpretable quantities of interest using Monte Carlo simulation methods (see King, Tomz, and Wittenberg (2000) for more information). For example, let’s say we want to examine the effect of increasing the percent of draftees educated from 5 to 15. To do so, we set our predictor value using the <code><a href="../reference/setx.html">setx()</a></code> and <code><a href="../reference/setx1.html">setx1()</a></code> functions:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># set education to 5 and 15</span>
+z5_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z5_<span class="dv">1</span>, <span class="dt">Education =</span> <span class="dv">5</span>)
+z5_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx1.html">setx1</a></span>(z5_<span class="dv">1</span>, <span class="dt">Education =</span> <span class="dv">15</span>)
 
 <span class="co"># model summary</span>
-<span class="kw">summary</span>(z5)</code></pre></div>
+<span class="kw">summary</span>(z5_<span class="dv">1</span>)</code></pre></div>
 <pre><code>## setx:
 ##   (Intercept) Education
 ## 1           1         5
@@ -207,52 +214,59 @@ z5<span class="op">$</span><span class="kw"><a href="../reference/setx1.html">se
 ## Next step: Use 'sim' method</code></pre>
 <p>After setting our predictor value, we simulate using the <code><a href="../reference/sim.html">sim()</a></code> method:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># run simulations and estimate quantities of interest</span>
-z5<span class="op">$</span><span class="kw"><a href="../reference/sim.html">sim</a></span>()
+z5_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.html">sim</a></span>(z5_<span class="dv">1</span>)
 
 <span class="co"># model summary</span>
-<span class="kw">summary</span>(z5)</code></pre></div>
+<span class="kw">summary</span>(z5_<span class="dv">1</span>)</code></pre></div>
 <pre><code>## 
 ##  sim x :
 ##  -----
 ## ev
-##       mean       sd      50%     2.5%  97.5%
-## 1 75.27958 1.583131 75.27506 72.08601 78.402
+##      mean       sd      50%     2.5%    97.5%
+## 1 75.2972 1.635731 75.28559 72.06854 78.37218
 ## pv
 ##          mean       sd      50%     2.5%    97.5%
-## [1,] 75.52965 9.360767 75.80857 57.23928 94.18349
+## [1,] 75.47321 9.320033 75.24516 58.30134 94.27331
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
-##       mean       sd      50%     2.5%    97.5%
-## 1 66.63481 1.490059 66.67616 63.78592 69.41044
+##       mean       sd      50%    2.5%    97.5%
+## 1 66.76839 1.518247 66.68914 64.0008 69.81021
 ## pv
 ##          mean       sd      50%     2.5%    97.5%
-## [1,] 66.40562 9.820319 66.25141 48.29684 85.90467
+## [1,] 66.88353 9.178289 67.00937 49.87842 84.54356
 ## fd
-##        mean       sd       50%      2.5%     97.5%
-## 1 -8.644773 1.440644 -8.679356 -11.52669 -6.021022</code></pre>
+##        mean       sd     50%      2.5%     97.5%
+## 1 -8.528805 1.394978 -8.5349 -11.25728 -5.812749</code></pre>
 <p>At this point, we’ve estimated a model, set the predictor value, and estimated easily interpretable quantities of interest. The <code>summary()</code> method shows us our quantities of interest, namely, our expected and predicted values at each level of education, as well as our first differences–the difference in expected values at the set levels of education.</p>
 </div>
-<div id="visualizations" class="section level3">
-<h3 class="hasAnchor">
-<a href="#visualizations" class="anchor"></a>Visualizations</h3>
-<p>Zelig’s <code>graph()</code> method plots the estimated quantities of interest:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5<span class="op">$</span><span class="kw">graph</span>()</code></pre></div>
+<div id="visualizations" class="section level1">
+<h1 class="hasAnchor">
+<a href="#visualizations" class="anchor"></a>Visualizations</h1>
+<p>Zelig’s <code>plot()</code> function plots the estimated quantities of interest:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(z5_<span class="dv">1</span>)</code></pre></div>
 <p><img src="quickstart_files/figure-html/example_plot_graph-1.png" width="672"></p>
-<p>We can also simulate and plot simulations from ranges of simulated values. For example, first use the <code>setrange</code> method to set a range of fitted values for one of the covariates and draw simulations as before:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5 &lt;-<span class="st"> </span>zls<span class="op">$</span><span class="kw">new</span>()
-z5<span class="op">$</span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Fertility <span class="op">~</span><span class="st"> </span>Education, <span class="dt">data =</span> swiss)
+<p>We can also simulate and plot simulations from ranges of simulated values:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Fertility <span class="op">~</span><span class="st"> </span>Education, <span class="dt">model =</span> <span class="st">"ls"</span>, <span class="dt">data =</span> swiss)
 
 <span class="co"># set Education to range from 5 to 15 at single integer increments</span>
-z5<span class="op">$</span><span class="kw">setrange</span>(<span class="dt">Education =</span> <span class="dv">5</span><span class="op">:</span><span class="dv">15</span>)
+z5_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z5_<span class="dv">2</span>, <span class="dt">Education =</span> <span class="dv">5</span><span class="op">:</span><span class="dv">15</span>)
 
 <span class="co"># run simulations and estimate quantities of interest</span>
-z5<span class="op">$</span><span class="kw"><a href="../reference/sim.html">sim</a></span>()</code></pre></div>
+z5_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.html">sim</a></span>(z5_<span class="dv">2</span>)</code></pre></div>
 <p>Then use the <code>graph()</code> method as before:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5<span class="op">$</span><span class="kw">graph</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z5_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">plot</span>(z5_<span class="dv">2</span>)</code></pre></div>
 <p><img src="quickstart_files/figure-html/example_plot_ci_plot-1.png" width="480"></p>
 </div>
+<div id="getting-help" class="section level1">
+<h1 class="hasAnchor">
+<a href="#getting-help" class="anchor"></a>Getting help</h1>
+<p>The primary documentation for Zelig is available at: <a href="http://docs.zeligproject.org/en/latest/" class="uri">http://docs.zeligproject.org/en/latest/</a>.</p>
+<p>Within R, you can access function help using the normal <code>?</code> function, e.g.:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><a href="../reference/setx.html">?setx</a></code></pre></div>
+<p>If you are looking for details on particlar estimation model methods, you can also use the <code>?</code> function. Simply place a <code>z</code> before the model name. For example, to access details about the <code>logit</code> model use:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><a href="../reference/Zelig-logit-class.html">?zlogit</a></code></pre></div>
 </div>
 </div>
   </div>
@@ -261,8 +275,13 @@ z5<span class="op">$</span><span class="kw"><a href="../reference/sim.html">sim<
         <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#zelig-5-workflow-overview">Zelig 5 workflow overview</a></li>
+<li><a href="#zelig-workflow-overview">Zelig workflow overview</a></li>
       <li><a href="#example">Example</a></li>
+      <li><a href="#zelig-5-quickstart-guide">Zelig 5 Quickstart Guide</a></li>
+      <li><a href="#installing-and-loading-zelig">Installing and Loading Zelig</a></li>
+      <li><a href="#building-models">Building Models</a></li>
+      <li><a href="#visualizations">Visualizations</a></li>
+      <li><a href="#getting-help">Getting help</a></li>
       </ul>
 </div>
       </div>

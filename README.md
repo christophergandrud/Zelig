@@ -20,57 +20,28 @@ Status](https://ci.appveyor.com/api/projects/status/github/IQSS/Zelig?branch=mas
 chat](https://badges.gitter.im/Zelig-dev/gitter.png)](https://gitter.im/Zelig-dev/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 [Dev-Blog](https://medium.com/zelig-dev)
 
-The release of Zelig 5.0 expands the set of models available, while
-simplifying the model wrapping process, and solving architectural
-problems by completely rewriting into R’s Reference Classes for a fully
-object-oriented architecture. Comparability wrappers are available so
-that you can still use pre-Zelig 5 syntax.
+Zelig workflow overview
+-----------------------
 
-Zelig 5 workflow overview
--------------------------
+All models in Zelig can be estimated and results explored presented
+using four simple functions:
 
-All models in Zelig 5 can be estimated and results explored presented
-using a five simple steps:
+1.  `zelig` to estimate the parameters,
 
--   Initialise the Zelig object, e.g with `z.out <- zls$new()` for a
-    least squares
--   model. Then populate the object with:
-
--   `zelig` to estimate the parameters,
-
--   `setx` to set fitted values for which we want to find quantities of
+2.  `setx` to set fitted values for which we want to find quantities of
     interest,
 
--   `sim` to simulate the quantities of interest,
+3.  `sim` to simulate the quantities of interest,
 
--   `graph` to plot the simulation results.
+4.  `plot` to plot the simulation results.
 
-### Differences from Zelig 4 and backwards compatability
+### Zelig 5 reference classes
 
-Zelig 5 uses [reference classes](http://adv-r.had.co.nz/R5.html) which
-work a bit differently from what you may expect in R. The big difference
-is that they are "mutable", i.e. assigning values to them does not
-overwrite the objects previous contents.
-
-Zelig 5 does contain wrappers (largely) allowing you to use Zelig 4
-syntax if you'd like. Here is an example workflow with Zelig 5:
-
-    z5 <- zls$new()
-    z5$zelig(Y ~ X1 + X ~ X, weights = w, data = mydata)
-    z5$setx()
-    z5$sim()
-    z5$graph()
-
-Here is the same set of operations using the Zelig 4 wrappers:
-
-    z.out <- zelig(Y ~ X1 + X2, model = "ls", weights = w, data = mydata)
-    x.out <- setx(z.out)
-    s.out <- sim(z.out, x = x.out)
-    plot(s.out)
-
-Note that all of the output objects from the Zelig 4 wrappers are Zelig
-5 reference class objects, so you can mix and match which syntax you
-like.
+Zelig 5 introduced [reference classes](http://adv-r.had.co.nz/R5.html).
+These enable a different way of working with Zelig that is detailed in
+[a separate vignette](docs/articles/zelig5_vs_zelig5.html). Examples
+throughout the package documentation use both the ways of interacting
+with Zelig.
 
 Zelig 5 Quickstart Guide
 ------------------------
@@ -103,62 +74,96 @@ Building Models
 
 Let’s assume we want to estimate the effect of education on fertility.
 Since fertility is a continuous variable, least squares is an
-appropriate model choice. We first create a Zelig least squares object:
-
-    # initialize Zelig5 least squares object
-    z5 <- zls$new()
-
-To estimate our model, we call the `zelig()` method, which is a function
-that is internal to the Zelig object. We pass the `zelig()` method two
-arguments: equation and data:
+appropriate model choice. To estimate our model, we call the `zelig()`
+function with three two arguments: equation, model type, and data:
 
     # load data
     data(swiss)
 
     # estimate ls model
-    z5$zelig(Fertility ~ Education, data = swiss)
+    z5_1 <- zelig(Fertility ~ Education, model = "ls", data = swiss)
 
     # model summary
-    summary(z5)
+    summary(z5_1)
 
-    ##   Length    Class     Mode 
-    ##        1 Zelig-ls       S4
+    ## Model: 
+    ## 
+    ## Call:
+    ## z5$zelig(formula = Fertility ~ Education, data = swiss)
+    ## 
+    ## Residuals:
+    ##     Min      1Q  Median      3Q     Max 
+    ## -17.036  -6.711  -1.011   9.526  19.689 
+    ## 
+    ## Coefficients:
+    ##             Estimate Std. Error t value Pr(>|t|)
+    ## (Intercept)  79.6101     2.1041  37.836  < 2e-16
+    ## Education    -0.8624     0.1448  -5.954 3.66e-07
+    ## 
+    ## Residual standard error: 9.446 on 45 degrees of freedom
+    ## Multiple R-squared:  0.4406, Adjusted R-squared:  0.4282 
+    ## F-statistic: 35.45 on 1 and 45 DF,  p-value: 3.659e-07
+    ## 
+    ## Next step: Use 'setx' method
 
-The -0.8624 coefficient on education suggests a negative relationship
-between the education of a province and its fertility rate. More
-precisely, for every one percent increase in draftees educated beyond
-primary school, the fertility rate of the province decreases 0.8624
-units. To help us better interpret this finding, we may want other
-quantities of interest, such as expected values or first differences.
-Zelig makes this simple by automating the translation of model estimates
-into interpretable quantities of interest using Monte Carlo simulation
-methods (see King, Tomz, and Wittenberg (2000) for more information).
-For example, let’s say we want to examine the effect of increasing the
-percent of draftees educated from 5 to 15. To do so, we set our
-predictor value using the `setx()` method:
+The NA coefficient on education suggests a negative relationship between
+the education of a province and its fertility rate. More precisely, for
+every one percent increase in draftees educated beyond primary school,
+the fertility rate of the province decreases NA units. To help us better
+interpret this finding, we may want other quantities of interest, such
+as expected values or first differences. Zelig makes this simple by
+automating the translation of model estimates into interpretable
+quantities of interest using Monte Carlo simulation methods (see King,
+Tomz, and Wittenberg (2000) for more information). For example, let’s
+say we want to examine the effect of increasing the percent of draftees
+educated from 5 to 15. To do so, we set our predictor value using the
+`setx()` and `setx1()` functions:
 
-    # set education to 5
-    z5$setx(Education = 5)
-
-    # set education to 15
-    z5$setx1(Education = 15)
+    # set education to 5 and 15
+    z5_1 <- setx(z5_1, Education = 5)
+    z5_1 <- setx1(z5_1, Education = 15)
 
     # model summary
-    summary(z5)
+    summary(z5_1)
 
-    ##   Length    Class     Mode 
-    ##        1 Zelig-ls       S4
+    ## setx:
+    ##   (Intercept) Education
+    ## 1           1         5
+    ## setx1:
+    ##   (Intercept) Education
+    ## 1           1        15
+    ## 
+    ## Next step: Use 'sim' method
 
 After setting our predictor value, we simulate using the `sim()` method:
 
     # run simulations and estimate quantities of interest
-    z5$sim()
+    z5_1 <- sim(z5_1)
 
     # model summary
-    summary(z5)
+    summary(z5_1)
 
-    ##   Length    Class     Mode 
-    ##        1 Zelig-ls       S4
+    ## 
+    ##  sim x :
+    ##  -----
+    ## ev
+    ##       mean       sd      50%     2.5%    97.5%
+    ## 1 75.38612 1.623396 75.34354 72.18625 78.63348
+    ## pv
+    ##          mean       sd      50%     2.5%    97.5%
+    ## [1,] 75.48348 9.546445 75.51191 56.84544 93.45947
+    ## 
+    ##  sim x1 :
+    ##  -----
+    ## ev
+    ##       mean       sd      50%     2.5%    97.5%
+    ## 1 66.61393 1.512494 66.63719 63.58909 69.56729
+    ## pv
+    ##          mean       sd      50%     2.5%    97.5%
+    ## [1,] 66.57075 9.209551 66.56047 48.62036 85.20099
+    ## fd
+    ##        mean       sd      50%      2.5%     97.5%
+    ## 1 -8.772184 1.424851 -8.81728 -11.49766 -6.009336
 
 At this point, we’ve estimated a model, set the predictor value, and
 estimated easily interpretable quantities of interest. The `summary()`
@@ -170,30 +175,45 @@ education.
 Visualizations
 ==============
 
-Zelig’s `graph()` method plots the estimated quantities of interest:
+Zelig’s `plot()` function plots the estimated quantities of interest:
 
-    z5$graph()
+    plot(z5_1)
 
 ![](man/figures/example_plot_graph-1.png)
 
 We can also simulate and plot simulations from ranges of simulated
-values. For example, first use the `setrange` method to set a range of
-fitted values for one of the covariates and draw simulations as before:
+values:
 
-    z5 <- zls$new()
-    z5$zelig(Fertility ~ Education, data = swiss)
+    z5_2 <- zelig(Fertility ~ Education, model = "ls", data = swiss)
 
     # set Education to range from 5 to 15 at single integer increments
-    z5$setrange(Education = 5:15)
+    z5_2 <- setx(z5_2, Education = 5:15)
 
     # run simulations and estimate quantities of interest
-    z5$sim()
+    z5_2 <- sim(z5_2)
 
 Then use the `graph()` method as before:
 
-    z5$graph()
+    z5_2 <- plot(z5_2)
 
 ![](man/figures/example_plot_ci_plot-1.png)
+
+Getting help
+============
+
+The primary documentation for Zelig is available at:
+<http://docs.zeligproject.org/en/latest/>.
+
+Within R, you can access function help using the normal `?` function,
+e.g.:
+
+    ?setx
+
+If you are looking for details on particlar estimation model methods,
+you can also use the `?` function. Simply place a `z` before the model
+name. For example, to access details about the `logit` model use:
+
+    ?zlogit
 
 Building Zelig (for developers)
 ===============================
