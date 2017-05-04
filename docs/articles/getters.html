@@ -201,9 +201,9 @@ my.fd &lt;-<span class="st"> </span>zqi.out<span class="op">$</span><span class=
 <p>You can use the <code><a href="../reference/get_qi.html">get_qi()</a></code> function as an alternative to the <code>get_qi</code> method. For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my.pv.lowcoop &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_qi.html">get_qi</a></span>(zqi.out, <span class="dt">qi =</span><span class="st">"pv"</span>, <span class="dt">xvalue =</span> <span class="st">"x"</span>)</code></pre></div>
 </div>
-<div id="average-treatment-effects" class="section level2">
+<div id="average-treatment-effects-on-the-treated" class="section level2">
 <h2 class="hasAnchor">
-<a href="#average-treatment-effects" class="anchor"></a>Average Treatment Effects</h2>
+<a href="#average-treatment-effects-on-the-treated" class="anchor"></a>Average Treatment Effects on the Treated</h2>
 <p>Average Treatment Effects on the Treated (ATT) quantities of interest can be generated with the <code><a href="../reference/ATT.html">ATT()</a></code> method/function, for any <code>zelig</code> model that can construct expected values. These can similarly be retrieved with <code><a href="../reference/get_qi.html">get_qi()</a></code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr) <span class="co"># load %&gt;% pipe operator</span>
 z.att &lt;-<span class="st"> </span>zqi.out <span class="op">%&gt;%</span>
@@ -219,7 +219,7 @@ z.att &lt;-<span class="st"> </span>zqi.out <span class="op">%&gt;%</span>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#getters-in-zelig-5-vs-standard-r-syntax">Getters in Zelig 5 vs standard R syntax</a></li>
       <li><a href="#getting-quantities-of-interest">Getting quantities of interest</a></li>
-      <li><a href="#average-treatment-effects">Average Treatment Effects</a></li>
+      <li><a href="#average-treatment-effects-on-the-treated">Average Treatment Effects on the Treated</a></li>
       </ul>
 </div>
       </div>

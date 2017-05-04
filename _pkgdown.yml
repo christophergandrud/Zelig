@@ -56,6 +56,7 @@ articles:
       - transforming_covariates
       - using_Zelig_with_Amelia
       - using_Zelig_with_MatchIt
+      - att_matchit
       - weights
       - zelig5_vs_zelig4
       - zelig_tidyverse
