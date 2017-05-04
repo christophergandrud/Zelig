@@ -170,11 +170,6 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(mid)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(conflict <span class="op">~</span><span class="st"> </span>major <span class="op">+</span><span class="st"> </span>contig <span class="op">+</span><span class="st"> </span>power <span class="op">+</span><span class="st"> </span>maxdem <span class="op">+</span><span class="st"> </span>mindem <span class="op">+</span><span class="st"> </span>years,
                 <span class="dt">data =</span> mid, <span class="dt">model =</span> <span class="st">"relogit"</span>, <span class="dt">tau =</span> <span class="dv">1042</span><span class="op">/</span><span class="dv">303772</span>)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau. 2017.
-##   relogit: Rare Events Logistic Regression for Dichotomous Dependent Variables
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <p>Summarize the model output:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
 <pre><code>## Model: 
@@ -234,11 +229,6 @@ Graphs of Quantities of Interest for Rare Events Logistic Regression
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(conflict <span class="op">~</span><span class="st"> </span>major <span class="op">+</span><span class="st"> </span>contig <span class="op">+</span><span class="st"> </span>power <span class="op">+</span><span class="st"> </span>maxdem <span class="op">+</span><span class="st"> </span>mindem <span class="op">+</span><span class="st"> </span>years,
                 <span class="dt">data =</span> mid, <span class="dt">model =</span> <span class="st">"relogit"</span>, <span class="dt">tau =</span> <span class="dv">1042</span><span class="op">/</span><span class="dv">303772</span>,
                 <span class="dt">case.control =</span> <span class="st">"weighting"</span>)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau. 2017.
-##   relogit: Rare Events Logistic Regression for Dichotomous Dependent Variables
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <p>Summarize the model output:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out2)</code></pre></div>
 <pre><code>## Model: 

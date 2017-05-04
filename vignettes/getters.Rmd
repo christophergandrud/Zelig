@@ -89,12 +89,11 @@ my.pv.lowcoop <- get_qi(zqi.out, qi ="pv", xvalue = "x")
 Average Treatment Effects
 -------------------------
 
-Average Treatment Effects on Treated (ATT) quantities of interest can be generated with the `ATT()` method, for any zelig model that can construct expected values.  These can similarly be retrieved with `get_qi()`
+Average Treatment Effects on the Treated (ATT) quantities of interest can be generated with the `ATT()` method/function, for any `zelig` model that can construct expected values. These can similarly be retrieved with `get_qi()`
 
 ```{r}
 library(dplyr) # load %>% pipe operator
-z.att <- zelig(num ~ target + coop + mil, model = "poisson",
-                 data = sanction) %>%
+z.att <- zqi.out %>%
              ATT(treatment = "mil") %>%
              get_qi(qi = "ATT", xvalue = "TE")
 ```

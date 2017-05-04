@@ -172,11 +172,6 @@ sorted.turnout &lt;-<span class="st"> </span>turnout[<span class="kw">order</spa
 <p>Estimating parameter values:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote <span class="op">~</span><span class="st"> </span>race <span class="op">+</span><span class="st"> </span>educate, <span class="dt">model =</span> <span class="st">"probit.gee"</span>,
                 <span class="dt">id =</span> <span class="st">"cluster"</span>, <span class="dt">data =</span> sorted.turnout)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   Patrick Lam. 2011.
-##   probit-gee: General Estimating Equation for Probit Regression
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <p>Summarize estimated paramters:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
 <pre><code>## Model: 
@@ -268,11 +263,6 @@ corr.mat &lt;-<span class="st"> </span><span class="kw">fixed2Zcor</span>(corr.m
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote <span class="op">~</span><span class="st"> </span>race <span class="op">+</span><span class="st"> </span>educate, <span class="dt">model =</span> <span class="st">"probit.gee"</span>,
                 <span class="dt">id =</span> <span class="st">"cluster"</span>, <span class="dt">data =</span> sorted.turnout,
                 <span class="dt">corstr =</span> <span class="st">"fixed"</span>, <span class="dt">zcor =</span> corr.mat)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   Patrick Lam. 2011.
-##   probit-gee: General Estimating Equation for Probit Regression
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <p>Viewing the regression output:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out2)</code></pre></div>
 </div>

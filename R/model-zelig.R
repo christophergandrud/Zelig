@@ -180,11 +180,11 @@ z$methods(
 z$methods(
     cite = function() {
         "Provide citation information about Zelig and Zelig model, and about wrapped package and wrapped model"
-        title <- paste(.self$name, ": ", .self$description, sep="")
+        title <- paste(.self$name, ": ", .self$description, sep = "")
         localauthors <- ""
-        if (length(.self$modelauthors) & (!identical(.self$modelauthors,""))){
+        if (length(.self$modelauthors) & (!identical(.self$modelauthors, ""))){
             # covers both empty styles: character(0) and "" --the latter being length 1.
-            localauthors<-.self$modelauthors
+            localauthors <- .self$modelauthors
         } else if (length(.self$packageauthors) & (!identical(.self$packageauthors,""))){
             localauthors<-.self$packageauthors
         } else {
@@ -214,7 +214,7 @@ z$methods(
             mycites <- c(mycites, citation(.self$packagename()))
             # Concatentate model specific Zelig references with package references
         }
-        mycites<-mycites[!duplicated(mycites)]
+        mycites <- mycites[!duplicated(mycites)]
         # Remove duplicates (many packages have duplicate references in their lists)
         s <- capture.output(print(mycites, style = mystyle))
         if(style == "sphinx"){
@@ -231,7 +231,7 @@ z$methods(
 
 z$methods(
   zelig = function(formula, data, model = NULL, ..., weights = NULL, by,
-                   bootstrap = FALSE) {
+                   bootstrap = FALSE, cite = FALSE) {
     "The zelig function estimates a variety of statistical models"
 
     fn2 <- function(fc, data) {
@@ -728,7 +728,7 @@ z$methods(
 
 
 z$methods(
-  ATT = function(treatment, treated=1, quietly=TRUE, num=NULL) {
+  ATT = function(treatment, treated = 1, quietly = TRUE, num = NULL) {
     "Generic Method for Computing Simulated (Sample) Average Treatment Effects on the Treated"
 
     ## Checks on user provided arguments
@@ -768,7 +768,9 @@ z$methods(
     ## NOTE: THIS IS GOING TO USE THE SAME simparam SET FOR EVERY SPLIT
     .self$sim.out$TE <- .self$data %>%
       group_by_(.self$by) %>%
-      do(ATT = .self$simATT(simparam=.self$simparam$simparam[[1]], data=. , depvar=depvar, treatment=treatment, treated=treated) )   # z.out = eval(fn2(.self$model.call, quote(as.data.frame(.)))))
+      do(ATT = .self$simATT(simparam = .self$simparam$simparam[[1]], data = . ,
+                            depvar = depvar, treatment = treatment,
+                            treated = treated) )   # z.out = eval(fn2(.self$model.call, quote(as.data.frame(.)))))
 
     if(!quietly){
       return(.self$sim.out$TE)  # The $get_qi() method may generalize, otherwise, write a $getter.

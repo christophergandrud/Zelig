@@ -95,12 +95,15 @@ z.out1 %>% setx(log_rprice = range(log(CigarettesSW$rprice))) %>%
     plot()
 ```
 
+To conduct standard diagnostic tests on the estimated model using functionality
+in the [AER](https://CRAN.R-project.org/package=AER) package, exatract the
+fitted model object with the `from_zelig_model()` function.
+
 
 Model
 -----
 
-Let $Y_i$ be the continuous dependent variable for observation
-$i$.
+Let $Y_i$ be the continuous dependent variable for observation $i$.
 
 
 

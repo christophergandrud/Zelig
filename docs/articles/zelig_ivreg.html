@@ -167,13 +167,9 @@ CigarettesSW<span class="op">$</span>log_rincome &lt;-<span class="st"> </span><
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(<span class="kw">log</span>(packs) <span class="op">~</span><span class="st"> </span>log_rprice <span class="op">+</span><span class="st"> </span>log_rincome <span class="op">|</span>
 <span class="st">                    </span>log_rincome <span class="op">+</span><span class="st"> </span>tdiff <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(tax<span class="op">/</span>cpi),
                     <span class="dt">data =</span> CigarettesSW, <span class="dt">subset =</span> year <span class="op">==</span><span class="st"> "1995"</span>,
-                    <span class="dt">model =</span> <span class="st">"ivreg"</span>)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   Christian Kleiber and Achim Zeileis. 2008.
-##   ivreg: Instrumental-Variable Regression
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
+                    <span class="dt">model =</span> <span class="st">"ivreg"</span>)
+
+<span class="kw">summary</span>(z.out1)</code></pre></div>
 <pre><code>## Model: 
 ## 
 ## Call:
@@ -197,14 +193,16 @@ CigarettesSW<span class="op">$</span>log_rincome &lt;-<span class="st"> </span><
 ## 
 ## Next step: Use 'setx' method</code></pre>
 <p>We can then simulate and plot the expected value of the log of the <code>packs</code> response variable across the range of the observed <code>rprice</code> regressor values:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(<span class="dt">log_rprice =</span> <span class="kw">range</span>(<span class="kw">log</span>(CigarettesSW<span class="op">$</span>rprice))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw"><a href="../reference/sim.html">sim</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(<span class="dt">log_rprice =</span> <span class="kw">range</span>(<span class="kw">log</span>(CigarettesSW<span class="op">$</span>rprice))) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/sim.html">sim</a></span>() <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">plot</span>()</code></pre></div>
 <p><img src="zelig_ivreg_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
+<p>To conduct standard diagnostic tests on the estimated model using functionality in the <a href="https://CRAN.R-project.org/package=AER">AER</a> package, exatract the fitted model object with the <code><a href="../reference/from_zelig_model.html">from_zelig_model()</a></code> function.</p>
 </div>
 <div id="model" class="section level2">
 <h2 class="hasAnchor">
 <a href="#model" class="anchor"></a>Model</h2>
+<p>Let <span class="math inline">\(Y_i\)</span> be the continuous dependent variable for observation <span class="math inline">\(i\)</span>.</p>
 </div>
 <div id="see-also" class="section level2">
 <h2 class="hasAnchor">

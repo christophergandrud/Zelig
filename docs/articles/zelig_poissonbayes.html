@@ -178,11 +178,6 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <p>Estimating the Poisson regression using <code>poisson.bayes</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(num <span class="op">~</span><span class="st"> </span>target <span class="op">+</span><span class="st"> </span>coop, <span class="dt">model =</span> <span class="st">"poisson.bayes"</span>,
                <span class="dt">data =</span> sanction, <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   Ben Goodrich, and Ying Lu. 2013.
-##   poisson-bayes: Bayesian Poisson Regression
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <p>You can check for convergence before summarizing the estimates with three diagnostic tests. See the section <a href="diagnostics.html">Diagnostics for Zelig Models</a> for examples of the output with interpretation:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out<span class="op">$</span><span class="kw">geweke.diag</span>()
 z.out<span class="op">$</span><span class="kw">heidel.diag</span>()

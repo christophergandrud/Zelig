@@ -169,13 +169,8 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <p>Load the data and estimate the model:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(sanction)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(<span class="kw">cbind</span>(import, export) <span class="op">~</span><span class="st"> </span>coop <span class="op">+</span><span class="st"> </span>cost <span class="op">+</span><span class="st"> </span>target,
-                <span class="dt">model =</span> <span class="st">"blogit"</span>, <span class="dt">data =</span> sanction)</code></pre></div>
-<pre><code>## How to cite this model in Zelig:
-##   Thomas W. Yee. 2007.
-##   blogit: Bivariate Logit Regression for Dichotomous Dependent Variables
-##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
-##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
+                <span class="dt">model =</span> <span class="st">"blogit"</span>, <span class="dt">data =</span> sanction)
+<span class="kw">summary</span>(z.out1)</code></pre></div>
 <pre><code>## Model: 
 ## 
 ## Call:
