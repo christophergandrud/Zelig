@@ -23,7 +23,8 @@ knitr::opts_chunk$set(
 Instrumental Variable Regression (2 Stage Least Squares) for Continuous
 Dependent Variables with `ivreg`.
 
-## Syntax
+Syntax
+------
 
 With Zelig 5 reference classes:
 
@@ -46,7 +47,8 @@ x.out <- setx(z.out)
 s.out <- sim(z.out, x = x.out)
 ```
 
-## Examples
+Examples
+--------
 
 Load Zelig and other packages used in the example:
 
@@ -55,9 +57,9 @@ library(Zelig)
 library(dplyr) # for the pipe operator %>%
 ```
 
-Before estimating the model, let's attach the example data and make some 
-transformations to it. Notably, `zivreg` does not currently support logging 
-regressors in the `zelig` call. To get around this, we simply find the logged 
+Before estimating the model, let's attach the example data and make some
+transformations to it. Notably, `zivreg` does not currently support logging
+regressors in the `zelig` call. To get around this, we simply find the logged
 values before estimating the model:
 
 ```{r}
@@ -84,10 +86,29 @@ z.out1 <- zelig(log(packs) ~ log_rprice + log_rincome |
 summary(z.out1)
 ```
 
-We can then simulate and plot quantities of interest:
+We can then simulate and plot the expected value of the log of the `packs`
+response variable across the range of the observed `rprice` regressor values:
 
 ```{r}
-z.out1 %>% setx() %>% sim() %>% plot()
+z.out1 %>% setx(log_rprice = range(log(CigarettesSW$rprice))) %>%
+    sim() %>%
+    plot()
 ```
 
 
+Model
+-----
+
+Let $Y_i$ be the continuous dependent variable for observation
+$i$.
+
+
+
+See also
+--------
+
+`ivreg` is from Christian Kleiber and Achim Zeileis (2008). Applied Econometrics
+with R. New York: Springer-Verlag. ISBN 978-0-387-77316-2. URL <https://CRAN.R-project.org/package=AER>. For more information use
+`?AER::ivreg`.
+
+Greene, W. H. (1993) Econometric Analysis, 2nd ed., Macmillan.

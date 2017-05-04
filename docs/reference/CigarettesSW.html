@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Setting Explanatory Variable Values for First Differences — setx1 • Zelig</title>
+<title>Cigarette Consumption Panel Data — CigarettesSW • Zelig</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -143,98 +143,34 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Setting Explanatory Variable Values for First Differences</h1>
+    <h1>Cigarette Consumption Panel Data</h1>
     </div>
 
     
-    <p>This documentation describes the <code>setx1</code> Zelig 4 compatibility wrapper
-function. The wrapper is primarily useful for setting fitted values
-for creating first differences in piped workflows.</p>
+    <p>Cigarette Consumption Panel Data</p>
     
 
-    <pre class="usage"><span class='fu'>setx1</span>(<span class='no'>obj</span>, <span class='kw'>fn</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>cond</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>obj</th>
-      <td><p>output object from <code><a href='zelig.html'>zelig</a></code></p></td>
-    </tr>
-    <tr>
-      <th>fn</th>
-      <td><p>a list of functions to apply to the data frame</p></td>
-    </tr>
-    <tr>
-      <th>data</th>
-      <td><p>a new data frame used to set the values of
-explanatory variables. If <code>data = NULL</code> (the default), the
-data frame called in <code><a href='zelig.html'>zelig</a></code> is used</p></td>
-    </tr>
-    <tr>
-      <th>cond</th>
-      <td><p>a logical value indicating whether unconditional
-(default) or conditional (choose <code>cond = TRUE</code>) prediction
-should be performed. If you choose <code>cond = TRUE</code>, <code>setx1</code>
-will coerce <code>fn = NULL</code> and ignore the additional arguments in
-<code>&#8230;</code>. If <code>cond = TRUE</code> and <code>data = NULL</code>,
-<code>setx1</code> will prompt you for a data frame.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>user-defined values of specific variables for overwriting the
-default values set by the function <code>fn</code>. For example, adding
-<code>var1 = mean(data\$var1)</code> or <code>x1 = 12</code> explicitly sets the value
-of <code>x1</code> to 12. In addition, you may specify one explanatory variable
-as a range of values, creating one observation for every unique value in
-the range of values</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>The output is returned in a field to the Zelig object. For
-  unconditional prediction, <code>x.out</code> is a model matrix based
-  on the specified values for the explanatory variables. For multiple
-  analyses (i.e., when choosing the <code>by</code> option in <code><a href='zelig.html'>zelig</a></code>,
-  <code>setx1</code> returns the selected values calculated over the entire
-  data frame. If you wish to calculate values over just one subset of
-  the data frame, the 5th subset for example, you may use:
-  <code>x.out &lt;- setx(z.out[[5]])</code></p>
+    <p>A data set with 96 observations and 9 variables</p>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p>The full Zelig manual may be accessed online at
-  <a href = 'http://docs.zeligproject.org/en/latest/'>http://docs.zeligproject.org/en/latest/</a></p>
+    <p>From Christian Kleiber and Achim Zeileis (2008). Applied
+Econometrics with R. New York: Springer-Verlag. ISBN 978-0-387-77316-2. URL
+<a href = 'https://CRAN.R-project.org/package=AER'>https://CRAN.R-project.org/package=AER</a></p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>) <span class='co'># contains pipe operator %&gt;%</span>
-<span class='fu'>data</span>(<span class='no'>turnout</span>)
-
-<span class='co'># plot first differences</span>
-<span class='fu'><a href='zelig.html'>zelig</a></span>(<span class='no'>Fertility</span> ~ <span class='no'>Education</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>swiss</span>, <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>'ls'</span>) <span class='kw'>%&gt;%</span>
-      <span class='fu'><a href='setx.html'>setx</a></span>(<span class='no'>z4</span>, <span class='kw'>Education</span> <span class='kw'>=</span> <span class='fl'>10</span>) <span class='kw'>%&gt;%</span>
-      <span class='fu'>setx1</span>(<span class='no'>z4</span>, <span class='kw'>Education</span> <span class='kw'>=</span> <span class='fl'>30</span>) <span class='kw'>%&gt;%</span>
-      <span class='fu'><a href='sim.html'>sim</a></span>() <span class='kw'>%&gt;%</span>
-      <span class='fu'>plot</span>()</div><img src='setx1-2.png' alt='' width='540' height='400' /><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#format">Format</a></li>
 
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    
-Christopher Gandrud, Matt Owen, Olivia Lau, Kosuke Imai
+      <li><a href="#source">Source</a></li>
+          </ul>
 
   </div>
 </div>

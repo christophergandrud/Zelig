@@ -123,7 +123,7 @@
     <div class="page-header toc-ignore">
       <h1>Ordered Probit</h1>
             
-            <h4 class="date">2017-05-03</h4>
+            <h4 class="date">2017-05-04</h4>
           </div>
 
     
@@ -163,6 +163,11 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
                          <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">"net gain"</span>, <span class="st">"little effect"</span>, <span class="st">"modest lost"</span>, <span class="st">"major loss"</span>))</code></pre></div>
 <p>Estimate the model:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(ncost <span class="op">~</span><span class="st"> </span>mil <span class="op">+</span><span class="st"> </span>coop, <span class="dt">model =</span> <span class="st">"oprobit"</span>, <span class="dt">data =</span> sanction)</code></pre></div>
+<pre><code>## How to cite this model in Zelig:
+##   William N. Venables, and Brian D. Ripley. 2011.
+##   oprobit: Ordinal Probit Regression for Ordered Categorical Dependent Variables
+##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
+##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <p>Summarize estimated paramters:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out)</code></pre></div>
 <pre><code>## Model: 
@@ -194,18 +199,18 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 ##  -----
 ## ev
 ##                       mean           sd          50%         2.5%
-## net gain      4.222658e-01 6.115683e-02 4.192618e-01 3.059022e-01
-## little effect 5.202798e-01 9.001411e-02 5.318661e-01 3.100651e-01
-## modest lost   1.440359e-05 1.162046e-05 1.276885e-05 2.425079e-10
-## major loss    5.743995e-02 7.666365e-02 2.460539e-02 7.625862e-08
+## net gain      4.204822e-01 0.0614536000 4.211487e-01 3.055606e-01
+## little effect 5.220909e-01 0.0898001210 5.274460e-01 3.136752e-01
+## modest lost   1.445638e-05 0.0000116875 1.284248e-05 3.245666e-10
+## major loss    5.741242e-02 0.0766066582 2.466033e-02 1.067141e-07
 ##                      97.5%
-## net gain      0.5469587564
-## little effect 0.6607319292
-## modest lost   0.0000355219
-## major loss    0.2706138225
+## net gain      0.5444166605
+## little effect 0.6727439787
+## modest lost   0.0000355471
+## major loss    0.2678158040
 ## pv
-##       mean        sd 50% 2.5% 97.5%
-## [1,] 1.707 0.7040218   2    1     4</code></pre>
+##       mean       sd 50% 2.5% 97.5%
+## [1,] 1.702 0.709718   2    1     4</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s.out)</code></pre></div>
 <div class="figure">
 <img src="zeligchoice_oprobit_files/figure-html/Zelig-oprobit1-1.png" alt="Graphs of Quantities of Interest for Ordered Probit" width="672"><p class="caption">
@@ -218,8 +223,13 @@ Graphs of Quantities of Interest for Ordered Probit
 <a href="#first-differences" class="anchor"></a>First Differences</h3>
 <p>Using the sample data <code>sanction</code>, let us estimate the empirical model and return the coefficients:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(<span class="kw">as.factor</span>(cost) <span class="op">~</span><span class="st"> </span>mil <span class="op">+</span><span class="st"> </span>coop, <span class="dt">model =</span> <span class="st">"oprobit"</span>,
-               <span class="dt">data =</span> sanction)
-<span class="kw">summary</span>(z.out)</code></pre></div>
+               <span class="dt">data =</span> sanction)</code></pre></div>
+<pre><code>## How to cite this model in Zelig:
+##   William N. Venables, and Brian D. Ripley. 2011.
+##   oprobit: Ordinal Probit Regression for Ordered Categorical Dependent Variables
+##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
+##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out)</code></pre></div>
 <pre><code>## Model: 
 ## Call:
 ## z5$zelig(formula = as.factor(cost) ~ mil + coop, data = sanction)
@@ -249,31 +259,31 @@ x.high &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx
 ##  -----
 ## ev
 ##         mean         sd         50%         2.5%     97.5%
-## 1 0.54288771 0.06995501 0.544590497 4.060535e-01 0.6760732
-## 2 0.38533851 0.05486318 0.387455513 2.751589e-01 0.4914237
-## 3 0.04906135 0.03981788 0.039689976 6.689526e-04 0.1353234
-## 4 0.02271243 0.03949684 0.005320679 1.816885e-07 0.1396465
+## 1 0.54063808 0.06781178 0.545177721 4.014215e-01 0.6686594
+## 2 0.38773365 0.05351191 0.391120436 2.776921e-01 0.4893008
+## 3 0.04890851 0.04001919 0.039261846 4.987695e-04 0.1359964
+## 4 0.02271977 0.03986492 0.005083584 1.867483e-07 0.1418396
 ## pv
 ##       mean        sd 50% 2.5% 97.5%
-## [1,] 1.604 0.7291884   1    1     4
+## [1,] 1.599 0.7407751   1    1     4
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
 ##         mean         sd        50%        2.5%     97.5%
-## 1 0.05960423 0.04225302 0.05071894 0.009402278 0.1636072
-## 2 0.43117362 0.15968637 0.41145130 0.186182597 0.7965273
-## 3 0.28071653 0.08856474 0.27822507 0.125526756 0.4539383
-## 4 0.22850562 0.16013422 0.20569121 0.003117053 0.5673259
+## 1 0.05890804 0.04130743 0.05032893 0.009928432 0.1681794
+## 2 0.43483566 0.16314387 0.41333016 0.187065246 0.8175809
+## 3 0.27884079 0.08909879 0.27447653 0.121181259 0.4639010
+## 4 0.22741551 0.16052194 0.20664215 0.003761621 0.5696715
 ## pv
 ##       mean        sd 50% 2.5% 97.5%
-## [1,] 2.718 0.8850194   3    1     4
+## [1,] 2.722 0.8874139   3    1     4
 ## fd
-##          mean         sd        50%         2.5%      97.5%
-## 1 -0.48328348 0.08469796 -0.4878318 -0.637184262 -0.3021362
-## 2  0.04583511 0.15772277  0.0202039 -0.197729742  0.4108002
-## 3  0.23165518 0.10383812  0.2350871  0.036711423  0.4283876
-## 4  0.20579319 0.13453007  0.1956972  0.003116364  0.4723950</code></pre>
+##          mean         sd         50%         2.5%      97.5%
+## 1 -0.48173004 0.08367226 -0.48503281 -0.633651954 -0.3075439
+## 2  0.04710202 0.15924106  0.01997809 -0.192669600  0.4199314
+## 3  0.22993228 0.10335105  0.23147091  0.038869058  0.4254108
+## 4  0.20469574 0.13486057  0.19740217  0.003761521  0.4765690</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s.out2)</code></pre></div>
 <div class="figure">
 <img src="zeligchoice_oprobit_files/figure-html/Zelig-oprobit2-1.png" alt="Graphs of Quantities of Interest for Ordered Probit" width="672"><p class="caption">

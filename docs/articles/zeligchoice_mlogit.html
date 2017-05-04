@@ -123,7 +123,7 @@
     <div class="page-header toc-ignore">
       <h1>Mutlinomial Logit</h1>
             
-            <h4 class="date">2017-05-03</h4>
+            <h4 class="date">2017-05-04</h4>
           </div>
 
     
@@ -158,6 +158,11 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <p>Estimate the empirical model:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(<span class="kw">as.factor</span>(vote88) <span class="op">~</span><span class="st"> </span>pristr <span class="op">+</span><span class="st"> </span>othcok <span class="op">+</span><span class="st"> </span>othsocok,
                 <span class="dt">model =</span> <span class="st">"mlogit"</span>, <span class="dt">data =</span> mexico)</code></pre></div>
+<pre><code>## How to cite this model in Zelig:
+##   Thomas W. Yee. 2007.
+##   mlogit: Multinomial Logistic Regression for Dependent Variables with Unordered Categorical Values
+##   in Christine Choirat, Christopher Gandrud, James Honaker, Kosuke Imai, Gary King, and Olivia Lau,
+##   "Zelig: Everyone's Statistical Software," http://zeligproject.org/</code></pre>
 <p>Summarize estimated paramters:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
 <pre><code>## Model: 

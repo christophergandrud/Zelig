@@ -123,7 +123,7 @@
     <div class="page-header toc-ignore">
       <h1>Logistic Regression</h1>
             
-            <h4 class="date">2017-05-03</h4>
+            <h4 class="date">2017-05-04</h4>
           </div>
 
     
@@ -156,7 +156,8 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 <pre><code>## Loading required package: survival</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(turnout)</code></pre></div>
 <p>Estimating parameter values for the logistic regression:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>race, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">data =</span> turnout, <span class="dt">cite =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(vote <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>race, <span class="dt">model =</span> <span class="st">"logit"</span>, <span class="dt">data =</span> turnout,
+                <span class="dt">cite =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <p>Summarize estimated paramters:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(z.out1)</code></pre></div>
 <pre><code>## Model: 
@@ -192,11 +193,11 @@ s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.h
 ##  sim x :
 ##  -----
 ## ev
-##           mean         sd       50%      2.5%    97.5%
-## [1,] 0.7479357 0.01200213 0.7483218 0.7230101 0.770325
+##           mean         sd       50%      2.5%     97.5%
+## [1,] 0.7484029 0.01241545 0.7492268 0.7224788 0.7716296
 ## pv
-##         0    1
-## [1,] 0.28 0.72</code></pre>
+##          0     1
+## [1,] 0.287 0.713</code></pre>
 <p>Show the results graphically:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s.out1)</code></pre></div>
 <p><img src="zelig_logit_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
@@ -216,23 +217,23 @@ s.out2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.
 ##  sim x :
 ##  -----
 ## ev
-##          mean         sd       50%      2.5%     97.5%
-## [1,] 0.822158 0.01083547 0.8222262 0.8005982 0.8425422
+##           mean         sd       50%      2.5%     97.5%
+## [1,] 0.8229948 0.01078332 0.8233491 0.8004727 0.8423252
 ## pv
 ##          0     1
-## [1,] 0.214 0.786
+## [1,] 0.175 0.825
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
 ##           mean         sd       50%      2.5%     97.5%
-## [1,] 0.7088242 0.01354582 0.7091546 0.6803375 0.7365595
+## [1,] 0.7089374 0.01350564 0.7093891 0.6814425 0.7338968
 ## pv
 ##         0    1
-## [1,] 0.28 0.72
+## [1,] 0.32 0.68
 ## fd
-##            mean         sd        50%       2.5%       97.5%
-## [1,] -0.1133338 0.01154602 -0.1131958 -0.1362784 -0.08953216</code></pre>
+##            mean         sd       50%       2.5%      97.5%
+## [1,] -0.1140575 0.01172058 -0.114238 -0.1376249 -0.0924383</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s.out2)</code></pre></div>
 <p><img src="zelig_logit_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
 </div>

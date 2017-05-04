@@ -123,7 +123,7 @@
     <div class="page-header toc-ignore">
       <h1>Least Squares Regression</h1>
             
-            <h4 class="date">2017-05-03</h4>
+            <h4 class="date">2017-05-04</h4>
           </div>
 
     
@@ -144,7 +144,7 @@ z5<span class="op">$</span><span class="kw"><a href="../reference/sim.html">sim<
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2, <span class="dt">model =</span> <span class="st">"ls"</span>, <span class="dt">weights =</span> w, <span class="dt">data =</span> mydata)
 x.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(z.out)
 s.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sim.html">sim</a></span>(z.out, <span class="dt">x =</span> x.out)</code></pre></div>
-<p>For more details about the difference between Zelig’s reference classes and compatibility wrappers see the <a href="articles/quickstart.html">Quickstart Vignette</a>.</p>
+<p>For more details about the difference between Zelig’s reference classes and compatibility wrappers see the <a href="zelig5_vs_zelig4.html">Quickstart Vignette</a>.</p>
 <p>The following examples typically use the compatibility wrappers.</p>
 </div>
 <div id="examples" class="section level2">
@@ -195,22 +195,22 @@ x.low &lt;-<span class="st"> </span><span class="kw"><a href="../reference/setx.
 ##  -----
 ## ev
 ##       mean        sd      50%     2.5%    97.5%
-## 1 5.422488 0.1949921 5.421283 5.041852 5.813631
+## 1 5.427942 0.1861287 5.424772 5.062819 5.796678
 ## pv
-##          mean       sd     50%       2.5%   97.5%
-## [1,] 5.454034 2.824875 5.43589 -0.1889013 10.7081
+##          mean       sd      50%       2.5%   97.5%
+## [1,] 5.467136 2.687564 5.474666 0.05989133 10.4364
 ## 
 ##  sim x1 :
 ##  -----
 ## ev
 ##       mean        sd      50%     2.5%    97.5%
-## 1 4.599154 0.1813107 4.606038 4.238279 4.950184
+## 1 4.602201 0.1843268 4.603028 4.232728 4.963538
 ## pv
-##          mean       sd     50%       2.5%    97.5%
-## [1,] 4.669994 2.764458 4.56999 -0.6419726 10.09331
+##          mean       sd      50%       2.5%    97.5%
+## [1,] 4.723114 2.747992 4.658342 -0.5015405 10.32342
 ## fd
-##         mean       sd        50%      2.5%      97.5%
-## 1 -0.8233341 0.235834 -0.8263987 -1.280561 -0.3510775</code></pre>
+##         mean        sd       50%      2.5%      97.5%
+## 1 -0.8257413 0.2330175 -0.820151 -1.291955 -0.3573935</code></pre>
 <p>Plot the simulated distributions:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s.out1)</code></pre></div>
 <p><img src="zelig_ls_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
