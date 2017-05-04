@@ -34,7 +34,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Vignettes
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -52,7 +52,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Function Reference
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -72,7 +72,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     About
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -93,20 +93,20 @@
 <li>
   <a href="https://medium.com/zelig-dev/archive">
     <span class="fa fa-medium"></span>
-     
+
     Dev-Blog
   </a>
 </li>
 <li>
   <a href="https://twitter.com/zeligproject">
     <span class="fa fa-twitter fa-2x"></span>
-     
+
   </a>
 </li>
 <li>
   <a href="https://github.com/IQSS/Zelig">
     <span class="fa fa-github fa-2x"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -117,17 +117,17 @@
 </div>
 <!--/.navbar -->
 
-      
+
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
       <h1>Getter Functions</h1>
-            
+
             <h4 class="date">2017-05-04</h4>
           </div>
 
-    
-    
+
+
 <div class="contents">
 <p><em>Built using Zelig version 5.1.0.90000</em></p>
 <hr>
@@ -145,11 +145,11 @@ zqi.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zel
 <span class="co"># get coefficients with Zelig 5 reference class method</span>
 zqi.out<span class="op">$</span><span class="kw">get_coef</span>()</code></pre></div>
 <pre><code>## [[1]]
-## (Intercept)      target        coop         mil 
+## (Intercept)      target        coop         mil
 ## -0.91568588 -0.04129327  1.24000401 -0.73499112</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get coefficients with R coef method</span>
 <span class="kw">coef</span>(zqi.out)</code></pre></div>
-<pre><code>## (Intercept)      target        coop         mil 
+<pre><code>## (Intercept)      target        coop         mil
 ## -0.91568588 -0.04129327  1.24000401 -0.73499112</code></pre>
 </div>
 <div id="getting-quantities-of-interest" class="section level2">
@@ -163,30 +163,30 @@ zqi.out<span class="op">$</span><span class="kw">get_coef</span>()</code></pre><
 <span class="kw">data</span>(sanction)
 zqi.out &lt;-<span class="st"> </span><span class="kw"><a href="../reference/zelig.html">zelig</a></span>(num <span class="op">~</span><span class="st"> </span>target <span class="op">+</span><span class="st"> </span>coop <span class="op">+</span><span class="st"> </span>mil, <span class="dt">model =</span> <span class="st">"poisson"</span>, <span class="dt">data =</span> sanction)
 <span class="kw">summary</span>(zqi.out)</code></pre></div>
-<pre><code>## Model: 
-## 
+<pre><code>## Model:
+##
 ## Call:
 ## z5$zelig(formula = num ~ target + coop + mil, data = sanction)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -7.9294  -1.2812  -0.2519  -0.2074  17.1719  
-## 
+##
+## Deviance Residuals:
+##     Min       1Q   Median       3Q      Max
+## -7.9294  -1.2812  -0.2519  -0.2074  17.1719
+##
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(&gt;|z|)
 ## (Intercept) -0.91569    0.17728  -5.165 2.40e-07
 ## target      -0.04129    0.05905  -0.699    0.484
 ## coop         1.24000    0.04641  26.718  &lt; 2e-16
 ## mil         -0.73499    0.14630  -5.024 5.06e-07
-## 
+##
 ## (Dispersion parameter for poisson family taken to be 1)
-## 
+##
 ##     Null deviance: 1583.77  on 77  degrees of freedom
 ## Residual deviance:  690.17  on 74  degrees of freedom
 ## AIC: 915.69
-## 
+##
 ## Number of Fisher Scoring iterations: 6
-## 
+##
 ## Next step: Use 'setx' method</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zqi.out &lt;-<span class="st"> </span>zqi.out <span class="op">%&gt;%</span>
 <span class="st">            </span><span class="kw"><a href="../reference/setx.html">setx</a></span>(<span class="dt">coop =</span> <span class="dv">1</span>) <span class="op">%&gt;%</span>
