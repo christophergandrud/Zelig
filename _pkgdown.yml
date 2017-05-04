@@ -68,6 +68,7 @@ articles:
       - zelig_gamma
       - zelig_gammagee
       - zelig_gammasurvey
+      - zelig_ivreg
       - zelig_logit
       - zelig_logitbayes
       - zelig_logitgee
@@ -130,6 +131,7 @@ reference:
     contents:
       - zls
       - zlogit
+      - zivreg
   - title: "Exterior Interaction Functions"
     desc: >
       Functions for helping Zelig interact with the non-Zelig R world

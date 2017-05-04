@@ -72,7 +72,8 @@ zelig_core <- list(name = "Zelig",
                                         list(name = "normal"),
                                         list(name = "poisson")
                                         )),
-                                list(name = "ls")
+                                list(name = "ls"),
+                                list(name = "ivreg")
                             )),
                        list(name = "Choice",
                             children = list(

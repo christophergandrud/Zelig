@@ -13,6 +13,19 @@
       "wrapper": ["ls"],
       "tree": ["Zelig-ls"]
     },
+    "ivreg": {
+      "name": ["ivreg"],
+      "description": ["Instrumental-Variable Regression"],
+      "outcome": {
+        "modelingType": ["continous"]
+      },
+      "explanatory": {
+        "modelingType": ["continuous", "discrete", "nominal", "ordinal", "binary"]
+      },
+      "vignette.url": ["http://docs.zeligproject.org/en/latest/zelig-ivreg.html"],
+      "wrapper": ["ivreg"],
+      "tree": ["Zelig-ivreg"]
+    },
     "logit": {
       "name": ["logit"],
       "description": ["Logistic Regression for Dichotomous Dependent Variables"],

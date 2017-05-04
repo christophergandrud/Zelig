@@ -3,7 +3,7 @@ title: "Least Squares Regression"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Least squares regression with ls}
+  %\VignetteIndexEntry{zelig-ls}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -13,6 +13,10 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_knit$set(
         stop_on_error = 2L
+)
+knitr::opts_chunk$set(
+    fig.height = 11,
+    fig.width = 7
 )
 ```
 
@@ -41,7 +45,7 @@ s.out <- sim(z.out, x = x.out)
 ```
 
 For more details about the difference between Zelig's reference classes and
-compatibility wrappers see the [Quickstart Vignette](articles/quickstart.html).
+compatibility wrappers see the [Quickstart Vignette](zelig5_vs_zelig4.html).
 
 The following examples typically use the compatibility wrappers.
 
@@ -88,7 +92,7 @@ summary(s.out1)
 
 Plot the simulated distributions:
 
-```{r fig.height=11, fig.width=7}
+```{r}
 plot(s.out1)
 ```
 
@@ -121,7 +125,7 @@ s.out2 <- sim(z.out2, x = x.US, x1 = x.Japan)
 
 and plot the results:
 
-```{r fig.height=11, fig.width=7}
+```{r}
 plot(s.out2)
 ```
 
